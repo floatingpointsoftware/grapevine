@@ -1,55 +1,58 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Library\Database;
+namespace FloatingPoint\Forum\Library\Database;
 
 abstract class EloquentRepository implements RepositoryInterface
 {
 	/**
-	 * The eloquent model that this repository represents.
+	 * Many resources within shift may be restricted by the account the user is assigned to (if applicable).
+	 * As a result, resources can
+	 *
+	 * @var bool
+	 */
+	protected $restrictByAccount = true;
+
+	/**
+	 * Stores the model object for querying.
 	 *
 	 * @var Eloquent
 	 */
 	protected $model;
 
 	/**
-	 * Create a resource based on the data provided.
+	 * Get a specific resource.
 	 *
-	 * @param array $data Optional
+	 * @param integer $id
+	 *
 	 * @return Resource
 	 */
-	public function getNew(array $data = [])
+	public function getById($id)
 	{
-		$model = $this->getModel();
-		$model->fill($data);
+		return $this->getBy('id', $id);
+	}
+
+	/**
+	 * Searches for a resource with the id provided. If no resource is found that matches
+	 * the $id value, then it will throw a ModelNotFoundException.
+	 *
+	 * @param $id
+	 *
+	 * @return Resource
+	 * @throws ModelNotFoundException
+	 */
+	public function requireById($id)
+	{
+		$model = $this->getById($id);
+
+		if (!$model) {
+			throw with(new ModelNotFoundException)->setModel(get_class($this->model));
+		}
 
 		return $model;
 	}
 
 	/**
-	 * Delete a specific resource. Returns the resource that was deleted.
-	 *
-	 * @param object $resource
-	 * @param boolean $permanent
-	 * @return Resource
-	 */
-	public function delete($resource, $permanent = false)
-	{
-		// TODO: Implement delete() method.
-	}
-
-	/**
-	 * Get a specific resource.
-	 *
-	 * @param integer $id
-	 * @return Resource
-	 */
-	public function getById($id)
-	{
-		// TODO: Implement getById() method.
-	}
-
-	/**
-	 * Acts as a generic method for retrieving a record by a given field/value pair.
+	 * Retrieve a model based on the field and value.
 	 *
 	 * @param $field
 	 * @param $value
@@ -57,59 +60,107 @@ abstract class EloquentRepository implements RepositoryInterface
 	 */
 	public function getBy($field, $value)
 	{
-		// TODO: Implement getBy() method.
+		return $this->model->where($field, '=', $value)->first();
 	}
 
 	/**
-	 * Similar to getById, but should raise an EntityNotFoundException.
+	 * Returns the model that is being used by the repository.
 	 *
-	 * @param $id
-	 * @return mixed
+	 * @return Eloquent
 	 */
-	public function requireById($id)
+	public function getModel()
 	{
-		// TODO: Implement requireById() method.
+		return $this->model;
 	}
 
 	/**
-	 * @param $resource
+	 * Sets the model to be used by the repository.
+	 *
+	 * @param $model
+	 */
+	public function setModel($model)
+	{
+		$this->model = $model;
+	}
+
+	/**
+	 * Create a resource based on the data provided.
+	 *
 	 * @param array $data
+	 * @return Resource
+	 */
+	public function getNew(array $data = [])
+	{
+		return $this->model->newInstance($data);
+	}
+
+	/**
+	 * Delete a specific resource. Returns the resource that was deleted.
+	 *
+	 * @param object  $resource
+	 * @param boolean $permanent
+	 *
+	 * @return Resource
+	 */
+	public function delete($resource, $permanent = false)
+	{
+		if ($permanent) {
+			$resource->forceDelete();
+		}
+		else {
+			$resource->delete();
+		}
+
+		return $resource;
+	}
+
+	/**
+	 * Update a resource based on the id and data provided.
+	 *
+	 * @param object $resource
+	 * @param array  $data
+	 *
 	 * @return Resource
 	 */
 	public function update($resource, $data = [])
 	{
-		// TODO: Implement update() method.
+		if (is_array($data) && count($data) > 0) {
+			$resource->fill($data);
+		}
+
+		return $this->save($resource);
 	}
 
 	/**
-	 * Saves the provided resource.
+	 * Saves the resource provided to the database.
 	 *
 	 * @param $resource
-	 * @return mixed
+	 *
+	 * @return Resource
 	 */
 	public function save($resource)
 	{
-		// TODO: Implement save() method.
+		$attributes = $resource->getDirty();
+
+		if (!empty($attributes)) {
+			$resource->save();
+		}
+		else {
+			$resource->touch();
+		}
+
+		return $resource;
 	}
 
 	/**
-	 * Save 1-n resources.
-	 *
-	 * @param $resources
-	 * @return mixed
+	 * Save all resources provided to the method.
 	 */
 	public function saveAll()
 	{
-		// TODO: Implement saveAll() method.
-	}
+		$resources = func_get_args();
 
-	/**
-	 * Returns a new instance of the eloquent model.
-	 *
-	 * @return mixed
-	 */
-	public function getModel()
-	{
-		return (new $this->model);
+		foreach ($resources as $resource) {
+			$this->save($resource);
+		}
 	}
 }

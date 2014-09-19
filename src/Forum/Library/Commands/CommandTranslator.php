@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPointSoftware\Library\Commands;
+namespace FloatingPoint\Library\Commands;
 
 /**
  *  This class provides translation of CommandRequest objects to their associated validator and handler classes

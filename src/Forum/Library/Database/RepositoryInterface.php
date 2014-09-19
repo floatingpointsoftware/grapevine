@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Library\Database;
+namespace FloatingPoint\Forum\Library\Database;
 
 interface RepositoryInterface
 {

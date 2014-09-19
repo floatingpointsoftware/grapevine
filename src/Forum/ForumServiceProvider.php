@@ -1,10 +1,10 @@
 <?php
 
-namespace Floatingpointsoftware\Forum;
+namespace FloatingPoint\Forum;
 
-use FloatingPointSoftware\Forum\Domain\Forums\ForumsServiceProvider;
-use FloatingPointSoftware\Library\Commands\CommandTranslator;
-use FloatingPointSoftware\Library\Support\ServiceProvider;
+use FloatingPoint\Forum\Domain\Forums\ForumsServiceProvider;
+use FloatingPoint\Forum\Library\Commands\CommandTranslator;
+use FloatingPoint\Forum\Library\Support\ServiceProvider;
 use Laracasts\Commander\CommanderServiceProvider;
 
 class ForumServiceProvider extends ServiceProvider

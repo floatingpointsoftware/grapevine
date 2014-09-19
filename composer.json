@@ -18,6 +18,8 @@
 	    "laracasts/commander": "~1.0"
     },
 	"require-dev": {
+		"mockery/mockery": "dev-master@dev",
+		"orchestra/testbench": "3.0.*",
 		"phpunit/phpunit": "4.2.*"
 	},
     "autoload": {
@@ -25,8 +27,15 @@
             "src/migrations"
         ],
         "psr-4": {
-            "FloatingPoint\\Forum\\": "src/Forum"
+            "FloatingPoint\\Forum\\": "src/Forum",
+            "Tests\\": "tests"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "git://github.com/orchestral/phpseclib.git"
+		}
+	]
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPointSoftware\Library\Support;
+namespace FloatingPoint\Forum\Library\Support;
 
 use File;
 use Illuminate\Foundation\AliasLoader;

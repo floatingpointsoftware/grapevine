@@ -2,8 +2,9 @@
 
 namespace FloatingPoint\Forum\Domain\Forums;
 
-use FloatingPointSoftware\Forum\Domain\Forums\Repositories\ForumRepositoryInterface;
-use FloatingPointSoftware\Forum\Domain\Forums\Repositories\EloquentForumRepository;
+use FloatingPoint\Forum\Domain\Forums\Repositories\ForumRepositoryInterface;
+use FloatingPoint\Forum\Domain\Forums\Repositories\EloquentForumRepository;
+use FloatingPoint\Forum\Library\Support\ServiceProvider;
 
 class ForumsServiceProvider extends ServiceProvider
 {
