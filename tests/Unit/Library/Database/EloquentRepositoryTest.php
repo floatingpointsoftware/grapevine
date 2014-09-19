@@ -62,6 +62,7 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
 
 		$foundRecord->shouldReceive('fill')->once()->with($params);
 		$foundRecord->shouldReceive('getDirty')->andReturn(true);
+		$foundRecord->exists = true;
 		$foundRecord->shouldReceive('save')->once();
 
 		$this->assertEquals($foundRecord, $this->repository->update($foundRecord, $params));
@@ -72,6 +73,7 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
 		$mockRecord = m::mock('resource');
 		$mockRecord->shouldReceive('getDirty')->once()->andReturn(false);
 		$mockRecord->shouldReceive('touch')->once();
+		$mockRecord->exists = true;
 
 		$this->assertEquals($mockRecord, $this->repository->save($mockRecord));
 	}
@@ -84,6 +86,7 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
 		$foundRecord->shouldReceive('fill')->with($params);
 		$foundRecord->shouldReceive('touch');
 		$foundRecord->shouldReceive('getDirty')->andReturn(false);
+		$foundRecord->exists = true;
 
 		$this->assertEquals($foundRecord, $this->repository->update($foundRecord, $params));
 	}

@@ -4,7 +4,6 @@ namespace FloatingPoint\Forum\Domain\Forums\Services;
 
 use Event;
 use FloatingPoint\Forum\Domain\Forums\Commands\CreateForum;
-use FloatingPoint\Forum\Domain\Forums\Events\ForumWasCreated;
 use Laracasts\Commander\CommanderTrait;
 
 /**
@@ -27,11 +26,7 @@ class ForumService
 	 */
 	public function createForum(array $input = [])
 	{
-		$forum = $this->execute(CreateForum::class, $input);
-
-		Event::fire('forum.created'. [new ForumWasCreated($forum)]);
-		
-		return $forum;
+		return $this->execute(CreateForum::class, $input);
 	}
 
 	public function updateForum(array $input = [])
