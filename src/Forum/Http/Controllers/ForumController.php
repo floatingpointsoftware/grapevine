@@ -3,7 +3,7 @@
 namespace FloatingPoint\Http\Controllers;
 
 use FloatingPoint\Forum\Domain\Forums\Services\ForumService;
-use FloatingPoint\Forum\Http\Requests\CreateForumRequest;
+use FloatingPoint\Forum\Http\Requests\Forums\CreateForumRequest;
 use FloatingPoint\Forum\Library\Support\Controller;
 use Illuminate\Http\Request;
 
@@ -27,12 +27,12 @@ class ForumController extends Controller
 	 *
 	 * @return mixed
 	 */
-	public function getIndex()
+	public function index()
 	{
 		return view('forum.index', ['forums' => $this->forumService->getForumList($this->request->all())]);
 	}
 
-	public function postCreate(CreateForumRequest $request)
+	public function store(CreateForumRequest $request)
 	{
 		$forum = $this->forumService->createForum($request->all());
 

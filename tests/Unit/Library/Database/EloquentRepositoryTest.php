@@ -2,7 +2,6 @@
 
 namespace Tests\Unit\Library\Database;
 
-use FloatingPoint\Forum\Library\Database\EloquentRepository;
 use Mockery as m;
 use Tests\Stubs\EloquentRepositoryStub;
 
