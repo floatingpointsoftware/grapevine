@@ -27,7 +27,7 @@
             "src/migrations"
         ],
         "psr-4": {
-            "FloatingPoint\\Forum\\": "src/Forum",
+            "FloatingPoint\\Grapevine\\": "src/Grapevine",
             "Tests\\": "tests"
         }
     },

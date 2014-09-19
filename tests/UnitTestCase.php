@@ -18,7 +18,7 @@ class UnitTestCase extends TestCase
 	protected function getPackageProviders()
 	{
 		return [
-			'FloatingPoint\Forum\ForumServiceProvider'
+			'FloatingPoint\Grapevine\GrapevineServiceProvider'
 		];
 	}
 

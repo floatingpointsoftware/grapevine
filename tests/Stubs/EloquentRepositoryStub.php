@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs;
 
-use FloatingPoint\Forum\Library\Database\EloquentRepository;
+use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
 
 class EloquentRepositoryStub extends EloquentRepository
 {
