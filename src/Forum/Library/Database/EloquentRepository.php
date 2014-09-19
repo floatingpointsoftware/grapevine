@@ -19,7 +19,10 @@ abstract class EloquentRepository implements RepositoryInterface
 	 */
 	public function getNew(array $data = [])
 	{
-		// TODO: Implement getNew() method.
+		$model = $this->getModel();
+		$model->fill($data);
+
+		return $model;
 	}
 
 	/**
@@ -95,7 +98,7 @@ abstract class EloquentRepository implements RepositoryInterface
 	 * @param $resources
 	 * @return mixed
 	 */
-	public function saveAll(...$resources)
+	public function saveAll()
 	{
 		// TODO: Implement saveAll() method.
 	}

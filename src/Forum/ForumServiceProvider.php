@@ -39,4 +39,14 @@ class ForumServiceProvider extends ServiceProvider
 	{
 		$this->package('floatingpointsoftware/forum');
 	}
+
+	/**
+	 * Sets up the routes required by the application.
+	 */
+	public function register()
+	{
+		parent::register();
+
+		require_once __DIR__.'/Http/routes.php';
+	}
 }

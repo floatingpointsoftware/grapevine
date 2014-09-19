@@ -11,7 +11,7 @@ class ForumService
 
 	public function createForum(array $input = [])
 	{
-		$this->execute(CreateForumCommand::class, $input);
+		return $this->execute(CreateForumCommand::class, $input);
 	}
 
 	public function updateForum(array $input = [])

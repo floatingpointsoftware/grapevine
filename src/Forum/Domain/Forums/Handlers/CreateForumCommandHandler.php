@@ -21,6 +21,12 @@ class CreateForumCommandHandler implements CommandHandler
 		$this->forumRepository = $forumRepository;
 	}
 
+	/**
+	 * Handle the command, creating a new forum record and returning the result.
+	 *
+	 * @param $command
+	 * @return mixed
+	 */
 	public function handle($command)
 	{
 		$forum = $this->forumRepository->getNew($command->name, $command->description);
