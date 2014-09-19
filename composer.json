@@ -1,0 +1,27 @@
+{
+    "name": "floatingpointsoftware/forum",
+    "description": "Laravel 4 forum package by Floating Point Software.",
+    "authors": [
+        {
+            "name": "Kirk Bushell",
+            "email": "torm3nt@gmail.com"
+        },
+	    {
+		    "name": "Mike Dugan",
+		    "email": "mike@mjdugan.com"
+	    }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "illuminate/support": "5.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-4": {
+            "FloatingPointSoftware\\Forum\\": "src/Forum"
+        }
+    },
+    "minimum-stability": "stable"
+}
