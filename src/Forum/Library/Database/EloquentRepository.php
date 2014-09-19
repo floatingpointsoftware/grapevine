@@ -2,7 +2,7 @@
 
 namespace FloatingPointSoftware\Forum\Library\Database;
 
-abstract class Repository implements RepositoryInterface
+abstract class EloquentRepository implements RepositoryInterface
 {
 	/**
 	 * The eloquent model that this repository represents.
@@ -102,7 +102,7 @@ abstract class Repository implements RepositoryInterface
 
 	/**
 	 * Returns a new instance of the eloquent model.
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function getModel()

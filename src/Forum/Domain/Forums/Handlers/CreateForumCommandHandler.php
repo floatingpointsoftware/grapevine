@@ -1,10 +1,12 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Domain\Forums;
+namespace FloatingPointSoftware\Forum\Domain\Forums\Handlers;
 
+use FloatingPointSoftware\Forum\Domain\Forums\ForumRepository;
+use FloatingPointSoftware\Forum\Domain\Forums\Repositories\ForumRepositoryInterface;
 use Laracasts\Commander\CommandHandler;
 
-class NewForumCommandHandler implements CommandHandler
+class CreateForumCommandHandler implements CommandHandler
 {
 	/**
 	 * @var ForumRepository
@@ -12,7 +14,7 @@ class NewForumCommandHandler implements CommandHandler
 	private $forumRepository;
 
 	/**
-	 * @param ForumRepositoryInterface $forumRepository
+	 * @param \FloatingPointSoftware\Forum\Domain\Forums\Repositories\ForumRepositoryInterface $forumRepository
 	 */
 	function __construct(ForumRepositoryInterface $forumRepository)
 	{

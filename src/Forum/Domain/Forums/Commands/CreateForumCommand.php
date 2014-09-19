@@ -1,8 +1,8 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Domain\Forums;
+namespace FloatingPointSoftware\Forum\Domain\Forums\Commands;
 
-class NewForumCommand
+class CreateForumCommand
 {
 	private $name;
 	private $description;

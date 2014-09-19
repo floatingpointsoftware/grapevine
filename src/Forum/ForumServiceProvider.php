@@ -2,7 +2,10 @@
 
 namespace Floatingpointsoftware\Forum;
 
-use Illuminate\Support\ServiceProvider;
+use FloatingPointSoftware\Forum\Domain\Forums\ForumsServiceProvider;
+use FloatingPointSoftware\Library\Commands\CommandTranslator;
+use FloatingPointSoftware\Library\Support\ServiceProvider;
+use Laracasts\Commander\CommanderServiceProvider;
 
 class ForumServiceProvider extends ServiceProvider
 {
@@ -14,6 +17,20 @@ class ForumServiceProvider extends ServiceProvider
 	protected $defer = false;
 
 	/**
+	 * Defines the aliases that this service provider will setup.
+	 *
+	 * @var array
+	 */
+	protected $aliases = [
+		'Laracasts\CommanderCommandTranslator' => CommandTranslator::class
+	];
+
+	protected $serviceProviders = [
+		CommanderServiceProvider::class,
+		ForumsServiceProvider::class
+	];
+
+	/**
 	 * Bootstrap the application events.
 	 *
 	 * @return void
@@ -21,25 +38,5 @@ class ForumServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->package('floatingpointsoftware/forum');
-	}
-
-	/**
-	 * Register the service provider.
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
-		$this->app->register('Laracasts\Commander\CommanderServiceProvider');
-	}
-
-	/**
-	 * Get the services provided by the provider.
-	 *
-	 * @return array
-	 */
-	public function provides()
-	{
-		return array();
 	}
 }
