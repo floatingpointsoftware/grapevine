@@ -35,6 +35,6 @@ class ForumController extends Controller
 	 */
 	public function getIndex()
 	{
-		return View::make('forum:index', ['forums' => $this->forumService->getForumList($this->request->all())]);
+		return view('forum.index', ['forums' => $this->forumService->getForumList($this->request->all())]);
 	}
 }
