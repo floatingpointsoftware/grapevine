@@ -21,7 +21,7 @@
             "src/migrations"
         ],
         "psr-4": {
-            "FloatingPointSoftware\\Forum\\": "src/Forum"
+            "FloatingPoint\\Forum\\": "src/Forum"
         }
     },
     "minimum-stability": "dev"

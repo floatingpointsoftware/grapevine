@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Domain\Forums\Models;
+namespace FloatingPoint\Forum\Domain\Forums\Models;
 
 class Forum extends \Eloquent
 {

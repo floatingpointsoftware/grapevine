@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Domain\Forums\Services;
+namespace FloatingPoint\Forum\Domain\Forums\Services;
 
 class TopicService
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Domain\Forums\Handlers;
+namespace FloatingPoint\Forum\Domain\Forums\Handlers;
 
 use FloatingPointSoftware\Forum\Domain\Forums\ForumRepository;
 use FloatingPointSoftware\Forum\Domain\Forums\Repositories\ForumRepositoryInterface;

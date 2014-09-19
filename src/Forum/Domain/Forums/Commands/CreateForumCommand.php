@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Domain\Forums\Commands;
+namespace FloatingPoint\Forum\Domain\Forums\Commands;
 
 class CreateForumCommand
 {

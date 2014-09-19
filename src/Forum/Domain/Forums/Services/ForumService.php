@@ -1,8 +1,8 @@
 <?php
 
-namespace FloatingPointSoftware\Forum\Domain\Forums\Services;
+namespace FloatingPoint\Forum\Domain\Forums\Services;
 
-use FloatingPointSoftware\Forum\Domain\Forums\Commands\CreateForumCommand;
+use FloatingPoint\Forum\Domain\Forums\Commands\CreateForumCommand;
 use Laracasts\Commander\CommanderTrait;
 
 class ForumService
