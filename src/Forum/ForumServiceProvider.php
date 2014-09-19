@@ -1,9 +1,11 @@
-<?php namespace Floatingpointsoftware\Forum;
+<?php
+
+namespace Floatingpointsoftware\Forum;
 
 use Illuminate\Support\ServiceProvider;
 
-class ForumServiceProvider extends ServiceProvider {
-
+class ForumServiceProvider extends ServiceProvider
+{
 	/**
 	 * Indicates if loading of the provider is deferred.
 	 *
@@ -28,7 +30,7 @@ class ForumServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->app->register('Laracasts\Commander\CommanderServiceProvider');
 	}
 
 	/**
@@ -40,5 +42,4 @@ class ForumServiceProvider extends ServiceProvider {
 	{
 		return array();
 	}
-
 }
