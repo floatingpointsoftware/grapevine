@@ -14,7 +14,7 @@ class CreateForumCommandHandler implements CommandHandler
 	private $forumRepository;
 
 	/**
-	 * @param \FloatingPointSoftware\Forum\Domain\Forums\Repositories\ForumRepositoryInterface $forumRepository
+	 * @param \FloatingPoint\Forum\Domain\Forums\Repositories\ForumRepositoryInterface $forumRepository
 	 */
 	function __construct(ForumRepositoryInterface $forumRepository)
 	{

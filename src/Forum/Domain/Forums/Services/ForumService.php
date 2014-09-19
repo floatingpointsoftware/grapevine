@@ -28,4 +28,9 @@ class ForumService
 	{
 
 	}
+
+	public function getForumList(array $params = [])
+	{
+
+	}
 }
