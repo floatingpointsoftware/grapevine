@@ -67,6 +67,15 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
 		$this->assertEquals($foundRecord, $this->repository->update($foundRecord, $params));
 	}
 
+	public function testCleanModelsShouldNotSave()
+	{
+		$mockRecord = m::mock('resource');
+		$mockRecord->shouldReceive('getDirty')->once()->andReturn(false);
+		$mockRecord->shouldReceive('touch')->once();
+
+		$this->assertEquals($mockRecord, $this->repository->save($mockRecord));
+	}
+
 	public function testUpdateShouldTouchAndReturnExistingCleanRecord()
 	{
 		$params = ['testParam' => 1];
