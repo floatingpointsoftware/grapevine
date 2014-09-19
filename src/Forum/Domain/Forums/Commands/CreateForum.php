@@ -2,7 +2,7 @@
 
 namespace FloatingPoint\Forum\Domain\Forums\Commands;
 
-class CreateForumCommand
+class CreateForum
 {
 	private $name;
 	private $description;

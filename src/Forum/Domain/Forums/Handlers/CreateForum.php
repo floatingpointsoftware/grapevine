@@ -5,9 +5,12 @@ namespace FloatingPoint\Forum\Domain\Forums\Handlers;
 use FloatingPointSoftware\Forum\Domain\Forums\ForumRepository;
 use FloatingPointSoftware\Forum\Domain\Forums\Repositories\ForumRepositoryInterface;
 use Laracasts\Commander\CommandHandler;
+use Laracasts\Commander\Events\DispatchableTrait;
 
-class CreateForumCommandHandler implements CommandHandler
+class CreateForum implements CommandHandler
 {
+	use DispatchableTrait;
+
 	/**
 	 * @var ForumRepository
 	 */

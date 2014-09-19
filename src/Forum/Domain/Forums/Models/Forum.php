@@ -12,20 +12,4 @@ class Forum extends \Eloquent
 	 * @var array
 	 */
 	protected $fillable = ['name', 'description'];
-
-	/**
-	 * Create a new forum model and persist it to the database.
-	 *
-	 * @param $name
-	 * @param $description
-	 * @return static
-	 */
-	public function createForum($name, $description)
-	{
-		$forum = new static(compact('name', 'description'));
-
-		$forum->raise(new ForumWasCreated($forum));
-
-		return $forum;
-	}
 }
