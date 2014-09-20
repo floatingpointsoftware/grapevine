@@ -41,6 +41,10 @@ class ValidationCommandBus implements CommandBusInterface
 	{
 		$validator = $this->commandTranslator->toValidator($command);
 
-		$this->app->make($validator)->validate();
+		$this->app->make($validator)
+			->setInput($command->data())
+			->validate();
+
+		return $this->commandBus->execute($command);
 	}
 }
