@@ -3,13 +3,9 @@
 namespace FloatingPoint\Grapevine\Domain\Forums\Handlers;
 
 use FloatingPoint\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface;
-use Laracasts\Commander\CommandHandler;
-use Laracasts\Commander\Events\DispatchableTrait;
 
 class CreateForum implements CommandHandler
 {
-    use DispatchableTrait;
-
     /**
      * @var ForumRepository
      */

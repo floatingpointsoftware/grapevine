@@ -4,8 +4,6 @@ namespace FloatingPoint\Grapevine\Library\Support;
 
 class Controller extends \Illuminate\Routing\Controller
 {
-    use CommanderTrait;
-
     /**
      * TODO set the user class
      */

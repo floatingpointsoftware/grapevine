@@ -4,7 +4,6 @@ namespace FloatingPoint\Grapevine\Domain\Forums\Services;
 
 use Event;
 use FloatingPoint\Grapevine\Domain\Forums\Commands\CreateForum;
-use FloatingPoint\Grapevine\Library\Commands\CommandBusTrait;
 
 /**
  * Class ForumService
@@ -15,8 +14,6 @@ use FloatingPoint\Grapevine\Library\Commands\CommandBusTrait;
  */
 class ForumService
 {
-    use CommandBusTrait;
-
     /**
      * Execute the create forum command and return the response.
      *
