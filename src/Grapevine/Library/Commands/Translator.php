@@ -9,13 +9,13 @@ namespace FloatingPoint\Grapevine\Library\Commands;
  * @author Mike Dugan
  */
 
-class CommandTranslator implements \Laracasts\Commander\CommandTranslator
+class Translator implements \Laracasts\Commander\CommandTranslator
 {
 	/**
 	 * Parses a command object to a command handler
 	 *
 	 * @param $command
-	 * @throws CommandHandlerException
+	 * @throws HandlerException
 	 * @return string
 	 */
 	public function toCommandHandler($command)
@@ -23,7 +23,7 @@ class CommandTranslator implements \Laracasts\Commander\CommandTranslator
 		$handler = $this->assembleNamespace(get_class($command), 'Handler');
 
 		if (!class_exists($handler)) {
-			throw new CommandHandlerException($handler);
+			throw new HandlerException($handler);
 		}
 
 		return $handler;

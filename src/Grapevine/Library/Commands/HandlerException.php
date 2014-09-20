@@ -2,7 +2,7 @@
 
 namespace FloatingPoint\Grapevine\Library\Commands;
 
-class CommandHandlerException extends \Exception
+class HandlerException extends \Exception
 {
 	public function __construct($handler)
 	{

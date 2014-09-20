@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine;
 
 use Authority\AuthorityL4\AuthorityL4ServiceProvider;
 use FloatingPoint\Grapevine\Domain\Forums\ForumsServiceProvider;
-use FloatingPoint\Grapevine\Library\Commands\CommandTranslator;
+use FloatingPoint\Grapevine\Library\Commands\Translator;
 use FloatingPoint\Grapevine\Library\Support\ServiceProvider;
 use Laracasts\Commander\CommanderServiceProvider;
 
@@ -23,7 +23,7 @@ class GrapevineServiceProvider extends ServiceProvider
 	 * @var array
 	 */
 	protected $aliases = [
-		'Laracasts\CommanderCommandTranslator' => CommandTranslator::class
+		'Laracasts\CommanderCommandTranslator' => Translator::class
 	];
 
 	protected $serviceProviders = [
