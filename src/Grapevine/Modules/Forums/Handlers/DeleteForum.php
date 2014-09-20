@@ -1,11 +1,11 @@
 <?php
 
-namespace FloatingPoint\Domain\Forums\Handlers;
+namespace FloatingPoint\Grapevine\Modules\Forums\Handlers;
 
 use FloatingPoint\Grapevine\Library\Commands\Command;
 use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 
-class DeleteForum
+class DeleteForum implements CommandHandler
 {
     /**
      * @var

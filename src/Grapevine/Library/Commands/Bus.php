@@ -34,6 +34,7 @@ class Bus implements BusInterface
     /**
      * @param Application $app
      * @param Translator  $commandTranslator
+     * @param Log         $log
      */
     public function __construct(Application $app, Translator $commandTranslator, Log $log)
     {
