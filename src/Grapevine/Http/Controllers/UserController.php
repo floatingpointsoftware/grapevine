@@ -2,7 +2,6 @@
 
 namespace FloatingPoint\Http\Controllers;
 
-use FloatingPoint\Grapevine\Http\Requests\ListUsersRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Forums\Services\UserService;
 
@@ -26,10 +25,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(ListUsersRequest $request)
+    public function index()
     {
-        return view('user.index',
-            ['users' => $this->userService->getUserList($request->all())]);
+	    $users = $this->userService->getUserList(Request::all());
+
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -38,14 +38,32 @@ class UserController extends Controller
      * @param CreateUserRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(CreateUserRequest $request)
+    public function store()
     {
-        $this->userService->createUser($request->all());
+        $this->userService->createUser(Request::all());
 
-        return redirect('home');
+        return redirectTo('home');
     }
 
-    public function register()
+	/**
+	 * Renders a registration form for the user.
+	 *
+	 * @return \Illuminate\View\View
+	 */
+	public function getRegister()
     {
+		return view('user.register');
     }
+
+	/**
+	 * Handle the data passed in via the user for registration.
+	 *
+	 * @return Response
+	 */
+	public function postRegister()
+	{
+		$this->userService->registerUser(Request::all());
+
+		return redirectTo('home');
+	}
 }
