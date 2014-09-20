@@ -4,10 +4,10 @@ namespace FloatingPoint\Grapevine\Library\Commands;
 
 use Illuminate\Console\Application;
 
-class ValidationCommandBus implements CommandBusInterface
+class ValidationBus implements BusInterface
 {
 	/**
-	 * @var CommandBus
+	 * @var Bus
 	 */
 	private $commandBus;
 
@@ -22,9 +22,9 @@ class ValidationCommandBus implements CommandBusInterface
 	private $commandTranslator;
 
 	/**
-	 * @param CommandBus $commandBus
+	 * @param Bus $commandBus
 	 */
-	public function __construct(CommandBus $commandBus, Application $app, Translator $commandTranslator)
+	public function __construct(Bus $commandBus, Application $app, Translator $commandTranslator)
 	{
 		$this->commandBus = $commandBus;
 		$this->app = $app;

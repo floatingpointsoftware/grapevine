@@ -2,7 +2,7 @@
 
 namespace FloatingPoint\Grapevine\Library\Commands;
 
-interface CommandBusInterface
+interface BusInterface
 {
 	/**
 	 * Executes the provided command.

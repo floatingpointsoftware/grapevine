@@ -5,7 +5,7 @@ namespace FloatingPoint\Grapevine\Library\Commands;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Logging\Log;
 
-class CommandBus implements CommandBusInterface
+class Bus implements BusInterface
 {
     /**
      * @var Application
