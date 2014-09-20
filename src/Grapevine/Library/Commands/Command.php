@@ -76,9 +76,11 @@ abstract class Command implements CommandInterface
 		foreach ($params as $param) {
 			$parameter = $param->getName();
 
-			if (isset($input[$parameter])) {
-				$constructorArguments[] = $input[$parameter];
+			if (!isset($input[$parameter])) {
+				throw new InvalidCommandArgumentException($reflector->getName(), $parameter);
 			}
+
+			$constructorArguments[] = $input[$parameter];
 		}
 
 		return $reflector->newInstanceArgs($constructorArguments);
