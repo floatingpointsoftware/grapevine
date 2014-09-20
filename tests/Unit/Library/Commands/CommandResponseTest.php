@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Unit\Library\Commands;
+namespace Tests\Unit\Library\Commands;
 
 use FloatingPoint\Grapevine\Library\Commands\CommandResponse;
 
