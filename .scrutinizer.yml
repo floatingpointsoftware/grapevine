@@ -61,6 +61,33 @@ checks:
         psr2_switch_declaration: true
         psr2_class_declaration: true
         psr2_control_structure_declaration: true
+        no_error_suppression: true
+        no_debug_code: true
+        naming_conventions:
+            local_variable: '^[a-z][a-zA-Z0-9]*$'
+            abstract_class_name: ^Abstract|Factory$
+            utility_class_name: 'Utils?$'
+            constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$'
+            property_name: '^[a-z][a-zA-Z0-9]*$'
+            method_name: '^(?:[a-z]|__)[a-zA-Z0-9]*$'
+            parameter_name: '^[a-z][a-zA-Z0-9]*$'
+            interface_name: '^[A-Z][a-zA-Z0-9]*Interface$'
+            type_name: '^[A-Z][a-zA-Z0-9]*$'
+            exception_name: '^[A-Z][a-zA-Z0-9]*Exception$'
+            isser_method_name: '^(?:is|has|should|may|supports)'
+        avoid_todo_comments: true
+        avoid_fixme_comments: true
+        avoid_duplicate_types: true
+        too_many_arguments: true
+        single_namespace_per_use: true
+        require_scope_for_properties: true
+        require_scope_for_methods: true
+        require_php_tag_first: true
+        require_braces_around_control_structures: true
+        properties_in_camelcaps: true
+        prefer_unix_line_ending: true
+        no_unnecessary_if: true
+        no_unnecessary_function_call_in_for_loop: true
 
 tools:
     external_code_coverage: true
@@ -69,7 +96,7 @@ tools:
     php_analyzer: true
     php_code_sniffer:
         config:
-            standard: "PSR2"
+            standard: 'PSR2'
     sensiolabs_security_checker: true
     php_cpd: true
     php_changetracking: true
