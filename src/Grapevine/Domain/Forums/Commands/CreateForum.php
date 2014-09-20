@@ -2,7 +2,9 @@
 
 namespace FloatingPoint\Grapevine\Domain\Forums\Commands;
 
-class CreateForum
+use FloatingPoint\Grapevine\Library\Commands\Command;
+
+class CreateForum implements Command
 {
     private $name;
     private $description;

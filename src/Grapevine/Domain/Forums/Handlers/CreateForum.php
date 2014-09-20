@@ -2,8 +2,7 @@
 
 namespace FloatingPoint\Grapevine\Domain\Forums\Handlers;
 
-use FloatingPointSoftware\Grapevine\Domain\Forums\ForumRepository;
-use FloatingPointSoftware\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface;
+use FloatingPoint\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface;
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 
@@ -17,7 +16,7 @@ class CreateForum implements CommandHandler
     private $forumRepository;
 
     /**
-     * @param \FloatingPoint\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface $forumRepository
+     * @param ForumRepositoryInterface $forumRepository
      */
     function __construct(ForumRepositoryInterface $forumRepository)
     {
