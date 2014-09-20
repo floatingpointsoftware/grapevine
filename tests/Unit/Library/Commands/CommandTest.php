@@ -34,4 +34,10 @@ class CommandTest extends \Tests\UnitTestCase
 	{
 		CommandWithArguments::fromInput(['Someone', 'Over there']);
 	}
+
+	public function testDataRetrievalFromCommand()
+	{
+		$this->assertArrayHasKey('name', $this->command->data());
+		$this->assertArrayHasKey('address', $this->command->data());
+	}
 }
