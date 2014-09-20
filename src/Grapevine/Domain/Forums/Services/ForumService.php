@@ -4,11 +4,10 @@ namespace FloatingPoint\Grapevine\Domain\Forums\Services;
 
 use Event;
 use FloatingPoint\Grapevine\Domain\Forums\Commands\CreateForum;
-use Laracasts\Commander\CommanderTrait;
+use FloatingPoint\Grapevine\Library\Commands\CommandBusTrait;
 
 /**
  * Class ForumService
- *
  * Manages the functionality specific to actions relating to forums. CRUD operations,
  * as well as moving, archiving, deletions, subscriptions.etc.
  *
@@ -16,36 +15,32 @@ use Laracasts\Commander\CommanderTrait;
  */
 class ForumService
 {
-	use CommanderTrait;
+    use CommandBusTrait;
 
-	/**
-	 * Execute the create forum command and return the response.
-	 *
-	 * @param array $input
-	 * @return mixed
-	 */
-	public function createForum(array $input = [])
-	{
-		return $this->execute(CreateForum::class, $input);
-	}
+    /**
+     * Execute the create forum command and return the response.
+     *
+     * @param array $input
+     * @return mixed
+     */
+    public function createForum(array $input = [])
+    {
+        return $this->execute(CreateForum::class, $input);
+    }
 
-	public function updateForum(array $input = [])
-	{
+    public function updateForum(array $input = [])
+    {
+    }
 
-	}
+    public function deleteForum($forumId)
+    {
+    }
 
-	public function deleteForum($forumId)
-	{
+    public function getForum($forumId)
+    {
+    }
 
-	}
-
-	public function getForum($forumId)
-	{
-
-	}
-
-	public function getForumList(array $params = [])
-	{
-
-	}
+    public function getForumList(array $params = [])
+    {
+    }
 }
