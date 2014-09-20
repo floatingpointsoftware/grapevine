@@ -52,7 +52,7 @@ class CommandBus implements CommandBusInterface
     {
         $handler = $this->commandTranslator->toCommandHandler($command);
 
-	    $this->log->info($command.' executed', $command->data());
+	    $this->log->info(get_class($command).'.Executed', $command->data());
 
         return $this->app->make($handler)->handle($command);
     }

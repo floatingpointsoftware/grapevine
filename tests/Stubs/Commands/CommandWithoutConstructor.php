@@ -2,9 +2,7 @@
 
 namespace Tests\Stubs\Commands;
 
-use FloatingPoint\Grapevine\Library\Commands\Command;
-
-class CommandWithoutConstructor extends Command
+class CommandWithoutConstructor extends \FloatingPoint\Grapevine\Library\Commands\Command
 {
 	
 } 

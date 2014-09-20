@@ -2,9 +2,7 @@
 
 namespace Tests\Stubs\Commands;
 
-use FloatingPoint\Grapevine\Library\Commands\Command;
-
-class CommandWithArguments extends Command
+class CommandWithArguments extends \FloatingPoint\Grapevine\Library\Commands\Command
 {
 	public $name;
 	public $address;
