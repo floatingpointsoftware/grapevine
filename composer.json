@@ -6,22 +6,23 @@
             "name": "Kirk Bushell",
             "email": "torm3nt@gmail.com"
         },
-	    {
-		    "name": "Mike Dugan",
-		    "email": "mike@mjdugan.com"
-	    }
+        {
+            "name": "Mike Dugan",
+            "email": "mike@mjdugan.com"
+        }
     ],
     "require": {
         "php": ">=5.5.0",
-	    "illuminate/html": "~5.0",
-	    "illuminate/support": "5.0.*",
-	    "laracasts/commander": "~1.0"
+        "illuminate/html": "~5.0",
+        "illuminate/support": "5.0.*",
+        "laracasts/commander": "~1.0"
     },
-	"require-dev": {
-		"mockery/mockery": "dev-master@dev",
-		"orchestra/testbench": "3.0.*",
-		"phpunit/phpunit": "4.2.*"
-	},
+    "require-dev": {
+        "mockery/mockery": "dev-master@dev",
+        "orchestra/testbench": "3.0.*",
+        "phpunit/phpunit": "4.2.*",
+        "apigen/apigen": "2.8.1"
+    },
     "autoload": {
         "classmap": [
             "src/migrations"
@@ -32,10 +33,10 @@
         }
     },
     "minimum-stability": "dev",
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "git://github.com/orchestral/phpseclib.git"
-		}
-	]
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git://github.com/orchestral/phpseclib.git"
+        }
+    ]
 }
