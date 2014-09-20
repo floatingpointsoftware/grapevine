@@ -2,6 +2,7 @@
 
 namespace FloatingPoint\Grapevine;
 
+use Authority\AuthorityL4\AuthorityL4ServiceProvider;
 use FloatingPoint\Grapevine\Domain\Forums\ForumsServiceProvider;
 use FloatingPoint\Grapevine\Library\Commands\CommandTranslator;
 use FloatingPoint\Grapevine\Library\Support\ServiceProvider;
@@ -27,7 +28,8 @@ class GrapevineServiceProvider extends ServiceProvider
 
 	protected $serviceProviders = [
 		CommanderServiceProvider::class,
-		ForumsServiceProvider::class
+		ForumsServiceProvider::class,
+		//Authority\AuthorityL4\AuthorityL4ServiceProvider::class
 	];
 
 	/**

@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPoint\Library\Commands;
+namespace FloatingPoint\Grapevine\Library\Commands;
 
 /**
  *  This class provides translation of CommandRequest objects to their associated validator and handler classes
@@ -15,16 +15,15 @@ class CommandTranslator implements \Laracasts\Commander\CommandTranslator
 	 * Parses a command object to a command handler
 	 *
 	 * @param $command
-	 * @throws \Exception
+	 * @throws CommandHandlerException
 	 * @return string
 	 */
 	public function toCommandHandler($command)
 	{
 		$handler = $this->assembleNamespace(get_class($command), 'Handler');
 
-		if (! class_exists($handler)) {
-			$message = "Command handler [$handler] does not exist.";
-			throw new \Exception($message);
+		if (!class_exists($handler)) {
+			throw new CommandHandlerException($handler);
 		}
 
 		return $handler;

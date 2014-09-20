@@ -5,7 +5,6 @@ namespace FloatingPoint\Http\Controllers;
 use FloatingPoint\Grapevine\Domain\Forums\Services\UserService;
 use FloatingPoint\Grapevine\Http\Requests\ListUsersRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -27,15 +26,26 @@ class UserController extends Controller
 	 *
 	 * @return mixed
 	 */
-	public function index()
+	public function index(ListUsersRequest $request)
 	{
-		return view('user.index', ['users' => $this->userService->getUserList($this->request->all())]);
+		return view('user.index', ['users' => $this->userService->getUserList($request->all())]);
 	}
 
-	public function store(CreateForumRequest $request)
+	/**
+	 * For modifying users, as an admin.
+	 *
+	 * @param CreateUserRequest $request
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
+	public function store(CreateUserRequest $request)
 	{
-		$user = $this->userService->createForum($request->all());
+		$this->userService->createUser($request->all());
 
-		return redirect();
+		return redirect('home');
+	}
+
+	public function register()
+	{
+
 	}
 }
