@@ -4,5 +4,11 @@ namespace FloatingPoint\Grapevine\Library\Commands;
 
 interface CommandHandlerInterface
 {
-	function handle(CommandInterface $command);
+    /**
+     * Handle a command
+     *
+     * @param CommandInterface $command
+     * @return mixed
+     */
+    function handle(CommandInterface $command);
 } 

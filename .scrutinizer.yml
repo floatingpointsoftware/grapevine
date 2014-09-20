@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 build:
     environment:
         php: '5.5.12'
@@ -8,7 +6,6 @@ filter:
     paths:
         - 'src/Grapevine/*'
 
->>>>>>> 52410800ea8554a8e8fee3fbfd079050175d1232
 checks:
     php:
         code_rating: true
@@ -72,17 +69,7 @@ tools:
     php_analyzer: true
     php_code_sniffer:
         config:
-<<<<<<< HEAD
             standard: "PSR2"
     sensiolabs_security_checker: true
     php_cpd: true
     php_changetracking: true
-
-filter:
-    paths: [Grapevine/*]
-=======
-            standard: 'PSR2'
-    sensiolabs_security_checker: true
-    php_cpd: true
-    php_changetracking: true
->>>>>>> 52410800ea8554a8e8fee3fbfd079050175d1232

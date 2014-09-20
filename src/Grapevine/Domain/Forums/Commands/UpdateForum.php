@@ -2,9 +2,9 @@
 
 namespace FloatingPoint\Domain\Forums\Commands;
 
-use FloatingPoint\Grapevine\Library\Commands\Command;
+use FloatingPoint\Grapevine\Library\Commands\CommandInterface;
 
-class UpdateForum implements Command
+class UpdateForum implements CommandInterface
 {
     public $id;
     public $attributes;
@@ -17,5 +17,10 @@ class UpdateForum implements Command
     {
         $this->id = $id;
         $this->attributes = $attributes;
+    }
+
+    public function data()
+    {
+        return ['id' => $this->id, 'attributes' => $this->attributes];
     }
 }

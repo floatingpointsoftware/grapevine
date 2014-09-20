@@ -20,6 +20,12 @@ class DeleteForum
         $this->forums = $forums;
     }
 
+    /**
+     * Handle the command, retrieving the forum and returning hte result of the delete operation
+     *
+     * @param Command $command
+     * @return bool
+     */
     public function handle(Command $command)
     {
         $forum = $this->forums->getById($command->id);

@@ -2,9 +2,9 @@
 
 namespace FloatingPoint\Grapevine\Domain\Forums\Commands;
 
-use FloatingPoint\Grapevine\Library\Commands\Command;
+use FloatingPoint\Grapevine\Library\Commands\CommandInterface;
 
-class CreateForum implements Command
+class CreateForum implements CommandInterface
 {
     private $name;
     private $description;
@@ -13,5 +13,10 @@ class CreateForum implements Command
     {
         $this->name = $name;
         $this->description = $description;
+    }
+
+    public function data()
+    {
+        return ['name' => $this->name, 'description' => $this->description];
     }
 }

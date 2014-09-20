@@ -24,22 +24,22 @@ class Bus implements BusInterface
      */
     protected $decorators = [];
 
-	/**
-	 * Logger instance.
-	 *
-	 * @var Log
-	 */
-	private $log;
+    /**
+     * Logger instance.
+     *
+     * @var Log
+     */
+    private $log;
 
-	/**
+    /**
      * @param Application $app
-     * @param Translator $commandTranslator
+     * @param Translator  $commandTranslator
      */
     function __construct(Application $app, Translator $commandTranslator, Log $log)
     {
         $this->app = $app;
         $this->commandTranslator = $commandTranslator;
-	    $this->log = $log;
+        $this->log = $log;
     }
 
     /**
@@ -52,7 +52,7 @@ class Bus implements BusInterface
     {
         $handler = $this->commandTranslator->toCommandHandler($command);
 
-	    $this->log->info(get_class($command).'.Executed', $command->data());
+        $this->log->info(get_class($command) . '.Executed', $command->data());
 
         return $this->app->make($handler)->handle($command);
     }

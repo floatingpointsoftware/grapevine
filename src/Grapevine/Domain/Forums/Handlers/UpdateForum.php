@@ -17,6 +17,12 @@ class UpdateForum
         $this->forums = $forums;
     }
 
+    /**
+     * Handle the command, retrieving the forum and returning the result of the update operation
+     *
+     * @param Command $command
+     * @return Resource
+     */
     public function handle(Command $command)
     {
         $forum = $this->forums->getById($command->id);
