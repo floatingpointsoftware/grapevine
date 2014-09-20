@@ -2,7 +2,7 @@
 
 namespace Tests\Stubs\Commands;
 
-class Command
+class Command extends \FloatingPoint\Grapevine\Library\Commands\Command
 {
 	
 }

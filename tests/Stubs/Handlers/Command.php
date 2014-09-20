@@ -2,7 +2,13 @@
 
 namespace Tests\Stubs\Handlers;
 
-class Command
+use FloatingPoint\Grapevine\Library\Commands\CommandHandlerInterface;
+use FloatingPoint\Grapevine\Library\Commands\CommandInterface;
+
+class Command implements CommandHandlerInterface
 {
-	
-} 
+	public function handle(CommandInterface $command)
+	{
+		return 'handler response';
+	}
+}

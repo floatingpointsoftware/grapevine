@@ -4,7 +4,7 @@ namespace Tests\Stubs\Commands;
 
 use FloatingPoint\Grapevine\Library\Commands\Command;
 
-class CommandWithData implements Command
+class CommandInterfaceWithData extends Command
 {
     public $input;
 
