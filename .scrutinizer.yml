@@ -1,9 +1,3 @@
-tools:
-    php_sim: true
-    php_pdepend: true
-    php_analyzer: true
-filter:
-    paths: [Grapevine/*.php]
 checks:
     php:
         code_rating: true
@@ -60,3 +54,17 @@ checks:
         psr2_class_declaration: true
         psr2_control_structure_declaration: true
 
+tools:
+    external_code_coverage: true
+    php_sim: true
+    php_pdepend: true
+    php_analyzer: true
+    php_code_sniffer:
+        config:
+            standard: "PSR2"
+    sensiolabs_security_checker: true
+    php_cpd: true
+    php_changetracking: true
+
+filter:
+    paths: [Grapevine/*]
