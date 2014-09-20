@@ -3,6 +3,7 @@
 namespace Tests\Unit\Library\Commands;
 
 use Tests\Stubs\Commands\CommandWithArguments;
+use Tests\Stubs\Commands\CommandWithoutConstructor;
 
 class CommandTest extends \Tests\UnitTestCase
 {
@@ -27,8 +28,6 @@ class CommandTest extends \Tests\UnitTestCase
 
 	/**
 	 * @expectedException FloatingPoint\Grapevine\Library\Commands\InvalidCommandArgumentException
-	 * @throws \FloatingPoint\Grapevine\Library\Commands\InvalidCommandArgumentException
-	 * @throws \FloatingPoint\Grapevine\Library\Commands\NullCommandConstructorException
 	 */
 	public function testCommandInstantiationWithInvalidInput()
 	{
@@ -39,5 +38,13 @@ class CommandTest extends \Tests\UnitTestCase
 	{
 		$this->assertArrayHasKey('name', $this->command->data());
 		$this->assertArrayHasKey('address', $this->command->data());
+	}
+
+	/**
+	 * @expectedException FloatingPoint\Grapevine\Library\Commands\NullCommandConstructorException
+	 */
+	public function testCommandWithoutConstructor()
+	{
+		CommandWithoutConstructor::fromInput(['Someone', 'Over there']);
 	}
 }

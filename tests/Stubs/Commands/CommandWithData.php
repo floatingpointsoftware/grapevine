@@ -2,9 +2,9 @@
 
 namespace Tests\Stubs\Commands;
 
-use FloatingPoint\Grapevine\Library\Commands\CommandInterface;
+use FloatingPoint\Grapevine\Library\Commands\Command;
 
-class CommandInterfaceWithData implements CommandInterface
+class CommandInterfaceWithData extends Command
 {
     public $input;
 
