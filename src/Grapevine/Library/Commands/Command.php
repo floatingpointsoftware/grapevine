@@ -12,15 +12,17 @@ abstract class Command implements CommandInterface
 {
     /**
      * Handler class. Convention stipulates that the handler will be found in the Handlers directory
-     * one up from the Commands directory within the namespace. However, you may want a handler
-     * or a validator to be found elsewhere. You can specify them here.
+     * one up from the Commands directory within the namespace. However, you may want a handler to be
+     * found elsewhere. You can specify them here.
      *
      * @var string
      */
     protected $handler = null;
 
     /**
-     * String for the validator class.
+     * String for the validator class. Convention stipulates that the validator will be found in the Validators directory
+     * one up from the Commands directory within the namespace. However, you may want a validator to be found elsewhere.
+     * You can specify them here.
      *
      * @var string
      */

@@ -49,8 +49,7 @@ class Translator implements TranslatorInterface
      */
     private function getCommandHandler($command)
     {
-        return $command->getCommandHandler() ?: $this->assembleNamespace(get_class($command),
-            'Handler');
+        return $command->getCommandHandler() ?: $this->assembleNamespace(get_class($command), 'Handler');
     }
 
     /**
@@ -62,8 +61,7 @@ class Translator implements TranslatorInterface
      */
     private function getValidator($command)
     {
-        return $command->getValidator() ?: $this->assembleNamespace(get_class($command),
-            'Validator');
+        return $command->getValidator() ?: $this->assembleNamespace(get_class($command), 'Validator');
     }
 
     /**

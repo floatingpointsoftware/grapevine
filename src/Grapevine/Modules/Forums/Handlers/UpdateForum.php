@@ -1,11 +1,11 @@
 <?php
 
-namespace FloatingPoint\Domain\Forums\Handlers;
+namespace FloatingPoint\Grapevine\Modules\Forums\Handlers;
 
-use FloatingPoint\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 use FloatingPoint\Grapevine\Library\Commands\Command;
 
-class UpdateForum
+class UpdateForum implements CommandHandler
 {
     /**
      * @var ForumRepositoryInterface
