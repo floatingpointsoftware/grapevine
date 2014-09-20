@@ -45,7 +45,8 @@ class Translator implements TranslatorInterface
      * ie: Dsp\Users\Commands\RegisterUser -> Dsp\Users\Handlers\RegisterUser
      * ie: Dsp\Users\Commands\RegisterUser -> Dsp\Users\Validators\RegisterUser
      *
-     * @param $str
+     * @param string $str
+     * @param string $type
      * @return string
      */
     private function assembleNamespace($str, $type)

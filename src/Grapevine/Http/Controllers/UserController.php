@@ -24,7 +24,7 @@ class UserController extends Controller
 	/**
 	 * Retrieve a list of users and return a view.
 	 *
-	 * @return mixed
+	 * @return \Illuminate\View\View
 	 */
 	public function index(ListUsersRequest $request)
 	{

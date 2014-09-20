@@ -1,6 +1,6 @@
 build:
     environment:
-        php: '5.5.14'
+        php: '5.5.12'
 
 filter:
     paths:

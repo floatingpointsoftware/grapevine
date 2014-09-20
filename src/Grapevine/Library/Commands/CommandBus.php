@@ -37,7 +37,7 @@ class CommandBus
      * Decorate the command bus with any executable actions.
      *
      * @param  string $className
-     * @return mixed
+     * @return CommandBus
      */
     public function decorate($className)
     {

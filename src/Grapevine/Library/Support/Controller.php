@@ -78,7 +78,7 @@ class Controller extends \Illuminate\Routing\Controller
     /**
      * @param      $path
      * @param null $data
-     * @return void
+     * @return \Illuminate\View\View
      */
     protected function view($path, $data = null)
     {

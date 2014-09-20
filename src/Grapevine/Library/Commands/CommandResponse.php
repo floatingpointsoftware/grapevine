@@ -105,18 +105,18 @@ class CommandResponse
      */
     public function failed()
     {
-        return ! $this->success;
+        return !$this->successful();
     }
 
     /**
      * Sets the
      *
-     * @param $status
+     * @param boolean $status
      * @return void
      */
     public function setSuccess($status)
     {
-        if(! is_bool($status)) {
+        if (!is_bool($status)) {
             throw new \InvalidArgumentException('Argument must be true or false, '.$status.' given');
         }
 
@@ -153,7 +153,7 @@ class CommandResponse
      */
     public function hasFlashData()
     {
-        return ! empty($this->flash_data);
+        return !empty($this->flash_data);
     }
 
     /**
