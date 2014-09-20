@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Domain\Forums\Models;
+namespace FloatingPoint\Grapevine\Modules\Forums\Models;
 
 class Forum extends \Eloquent
 {

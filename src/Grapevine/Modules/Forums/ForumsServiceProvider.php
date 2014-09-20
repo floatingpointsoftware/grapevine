@@ -1,9 +1,9 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Domain\Forums;
+namespace FloatingPoint\Grapevine\Modules\Forums;
 
-use FloatingPoint\Grapevine\Domain\Forums\Repositories\EloquentForumRepository;
-use FloatingPoint\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\EloquentForumRepository;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 use FloatingPoint\Grapevine\Library\Support\ServiceProvider;
 
 class ForumsServiceProvider extends ServiceProvider

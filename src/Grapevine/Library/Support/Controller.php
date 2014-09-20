@@ -2,13 +2,10 @@
 
 namespace FloatingPoint\Grapevine\Library\Support;
 
+use Request;
+
 class Controller extends \Illuminate\Routing\Controller
 {
-    /**
-     * TODO set the user class
-     */
-    protected $current_user;
-
     /**
      * @var array
      */
@@ -41,7 +38,9 @@ class Controller extends \Illuminate\Routing\Controller
     protected function setupLayout()
     {
         $viewFactory = \App::make('Illuminate\View\Factory');
-        if (! is_null($this->layout)) {
+
+	    // Only render a view if the layout property is defined, and request is not after a pjax response.
+        if (!is_null($this->layout) && Request::format() != 'pjax') {
             $this->layout = $viewFactory->make($this->layout);
         }
     }
@@ -137,6 +136,7 @@ class Controller extends \Illuminate\Routing\Controller
     protected function redirectIntended($default = '/')
     {
         $intended = $this->session->get('auth.intended_redirect_url');
+
         if ($intended) {
             return $this->redirectTo($intended);
         }

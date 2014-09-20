@@ -2,7 +2,7 @@
 
 namespace FloatingPoint\Http\Controllers;
 
-use FloatingPoint\Grapevine\Domain\Forums\Services\UserService;
+use FloatingPoint\Grapevine\Modules\Forums\Services\UserService;
 use FloatingPoint\Grapevine\Http\Requests\ListUsersRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
 

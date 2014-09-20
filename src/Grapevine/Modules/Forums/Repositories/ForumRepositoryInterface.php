@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Domain\Forums\Repositories;
+namespace FloatingPoint\Grapevine\Modules\Forums\Repositories;
 
 use FloatingPoint\Grapevine\Library\Database\RepositoryInterface;
 
