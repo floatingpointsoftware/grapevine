@@ -20,7 +20,7 @@ class Translator implements TranslatorInterface
      */
     public function toCommandHandler(CommandInterface $command)
     {
-		$handler = $this->getCommandHandler($command);
+        $handler = $this->getCommandHandler($command);
 
         if (! class_exists($handler)) {
             throw new HandlerException($handler);
@@ -40,29 +40,31 @@ class Translator implements TranslatorInterface
         return $this->getValidator($command);
     }
 
-	/**
-	 * Retrieves the command handler for the command. If the command specifies a handler, then the translator
-	 * will use that, otherwise it will use the convention to find a handler in: ../Handlers/Command.
-	 *
-	 * @param CommandInterface $command
-	 * @return string
-	 */
-	private function getCommandHandler($command)
-	{
-		return $command->getCommandHandler() ?: $this->assembleNamespace(get_class($command), 'Handler');
-	}
+    /**
+     * Retrieves the command handler for the command. If the command specifies a handler, then the translator
+     * will use that, otherwise it will use the convention to find a handler in: ../Handlers/Command.
+     *
+     * @param CommandInterface $command
+     * @return string
+     */
+    private function getCommandHandler($command)
+    {
+        return $command->getCommandHandler() ?: $this->assembleNamespace(get_class($command),
+            'Handler');
+    }
 
-	/**
-	 * Returns the command's validator. If the command has specified its own validator, then we'll use that
-	 * otherwise the conventional standard will be to find a validator in: ../Validators/Command.
-	 *
-	 * @param CommandInterface $command
-	 * @return string
-	 */
-	private function getValidator($command)
-	{
-		return $command->getValidator() ?: $this->assembleNamespace(get_class($command), 'Validator');
-	}
+    /**
+     * Returns the command's validator. If the command has specified its own validator, then we'll use that
+     * otherwise the conventional standard will be to find a validator in: ../Validators/Command.
+     *
+     * @param CommandInterface $command
+     * @return string
+     */
+    private function getValidator($command)
+    {
+        return $command->getValidator() ?: $this->assembleNamespace(get_class($command),
+            'Validator');
+    }
 
     /**
      * Converts a command object class string to string for Validators and Handlers

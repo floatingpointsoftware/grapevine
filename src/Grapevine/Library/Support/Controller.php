@@ -22,6 +22,16 @@ class Controller extends \Illuminate\Routing\Controller
     protected $request;
 
     /**
+     * @var array
+     */
+    protected $data;
+
+    /**
+     * @var string
+     */
+    protected $layout;
+
+    /**
      * @param Request $request
      */
     public function __construct(Request $request)
@@ -39,8 +49,8 @@ class Controller extends \Illuminate\Routing\Controller
     {
         $viewFactory = \App::make('Illuminate\View\Factory');
 
-	    // Only render a view if the layout property is defined, and request is not after a pjax response.
-        if (!is_null($this->layout) && Request::format() != 'pjax') {
+        // Only render a view if the layout property is defined, and request is not after a pjax response.
+        if (! is_null($this->layout) && Request::format() !== 'pjax') {
             $this->layout = $viewFactory->make($this->layout);
         }
     }
@@ -60,7 +70,7 @@ class Controller extends \Illuminate\Routing\Controller
      */
     protected function setFlash($flash_data)
     {
-        if(! $this->session) {
+        if (! $this->session) {
             $this->session = \App::make('session');
         }
 

@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-namespace FloatingPoint\Domain\Forums\Commands; 
+namespace FloatingPoint\Domain\Forums\Commands;
 
 use FloatingPoint\Grapevine\Library\Commands\CommandInterface;
 

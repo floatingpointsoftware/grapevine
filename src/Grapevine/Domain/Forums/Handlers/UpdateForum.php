@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace FloatingPoint\Domain\Forums\Handlers;
 
@@ -26,6 +26,7 @@ class UpdateForum
     public function handle(Command $command)
     {
         $forum = $this->forums->getById($command->id);
+
         return $this->forums->update($forum, $command->attributes);
     }
 } 

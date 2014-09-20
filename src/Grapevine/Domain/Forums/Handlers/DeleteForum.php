@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-namespace FloatingPoint\Domain\Forums\Handlers; 
+namespace FloatingPoint\Domain\Forums\Handlers;
 
-use FloatingPoint\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface;
 use FloatingPoint\Grapevine\Library\Commands\Command;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 
 class DeleteForum
 {
@@ -29,6 +29,7 @@ class DeleteForum
     public function handle(Command $command)
     {
         $forum = $this->forums->getById($command->id);
+
         return $this->forums->delete($forum);
     }
 } 

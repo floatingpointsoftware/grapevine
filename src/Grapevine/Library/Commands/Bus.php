@@ -35,7 +35,7 @@ class Bus implements BusInterface
      * @param Application $app
      * @param Translator  $commandTranslator
      */
-    function __construct(Application $app, Translator $commandTranslator, Log $log)
+    public function __construct(Application $app, Translator $commandTranslator, Log $log)
     {
         $this->app = $app;
         $this->commandTranslator = $commandTranslator;

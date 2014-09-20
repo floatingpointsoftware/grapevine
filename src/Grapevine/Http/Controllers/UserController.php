@@ -2,50 +2,50 @@
 
 namespace FloatingPoint\Http\Controllers;
 
-use FloatingPoint\Grapevine\Modules\Forums\Services\UserService;
 use FloatingPoint\Grapevine\Http\Requests\ListUsersRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
+use FloatingPoint\Grapevine\Modules\Forums\Services\UserService;
 
 class UserController extends Controller
 {
-	/**
-	 * @var ForumService
-	 */
-	private $userService;
+    /**
+     * @var UserService
+     */
+    private $userService;
 
-	/**
-	 * @param UserService $userService
-	 */
-	public function __construct(UserService $userService)
-	{
-		$this->userService = $userService;
-	}
+    /**
+     * @param UserService $userService
+     */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
 
-	/**
-	 * Retrieve a list of users and return a view.
-	 *
-	 * @return \Illuminate\View\View
-	 */
-	public function index(ListUsersRequest $request)
-	{
-		return view('user.index', ['users' => $this->userService->getUserList($request->all())]);
-	}
+    /**
+     * Retrieve a list of users and return a view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(ListUsersRequest $request)
+    {
+        return view('user.index',
+            ['users' => $this->userService->getUserList($request->all())]);
+    }
 
-	/**
-	 * For modifying users, as an admin.
-	 *
-	 * @param CreateUserRequest $request
-	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-	 */
-	public function store(CreateUserRequest $request)
-	{
-		$this->userService->createUser($request->all());
+    /**
+     * For modifying users, as an admin.
+     *
+     * @param CreateUserRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(CreateUserRequest $request)
+    {
+        $this->userService->createUser($request->all());
 
-		return redirect('home');
-	}
+        return redirect('home');
+    }
 
-	public function register()
-	{
-
-	}
+    public function register()
+    {
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace FloatingPoint\Grapevine;
 
-use FloatingPoint\Grapevine\Modules\Forums\ForumsServiceProvider;
 use FloatingPoint\Grapevine\Library\Commands\Translator;
 use FloatingPoint\Grapevine\Library\Support\ServiceProvider;
+use FloatingPoint\Grapevine\Modules\Forums\ForumsServiceProvider;
 use Laracasts\Commander\CommanderServiceProvider;
 
 class GrapevineServiceProvider extends ServiceProvider

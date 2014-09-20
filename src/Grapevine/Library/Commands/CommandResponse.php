@@ -112,7 +112,7 @@ class CommandResponse
      */
     public function failed()
     {
-        return !$this->successful();
+        return ! $this->successful();
     }
 
     /**
@@ -123,8 +123,8 @@ class CommandResponse
      */
     public function setSuccess($status)
     {
-        if (!is_bool($status)) {
-            throw new \InvalidArgumentException('Argument must be true or false, '.$status.' given');
+        if (! is_bool($status)) {
+            throw new \InvalidArgumentException('Argument must be true or false, ' . $status . ' given');
         }
 
         $this->success = $status;
@@ -160,7 +160,7 @@ class CommandResponse
      */
     public function hasFlashData()
     {
-        return !empty($this->flash_data);
+        return ! empty($this->flash_data);
     }
 
     /**

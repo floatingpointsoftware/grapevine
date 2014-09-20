@@ -2,8 +2,8 @@
 
 namespace FloatingPoint\Grapevine\Modules\Forums\Handlers;
 
-use FloatingPointSoftware\Grapevine\Modules\Forums\ForumRepository;
-use FloatingPointSoftware\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Forums\ForumRepository;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 
 class CreateForum implements CommandHandler
 {
@@ -13,9 +13,9 @@ class CreateForum implements CommandHandler
     private $forumRepository;
 
     /**
-     * @param \FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface $forumRepository
+     * @param ForumRepositoryInterface $forumRepository
      */
-    function __construct(ForumRepositoryInterface $forumRepository)
+    public function __construct(ForumRepositoryInterface $forumRepository)
     {
         $this->forumRepository = $forumRepository;
     }
@@ -28,7 +28,8 @@ class CreateForum implements CommandHandler
      */
     public function handle($command)
     {
-        $forum = $this->forumRepository->getNew($command->name, $command->description);
+        $forum = $this->forumRepository->getNew($command->name,
+            $command->description);
 
         return $this->forumRepository->save($forum);
     }

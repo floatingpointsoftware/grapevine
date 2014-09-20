@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace FloatingPoint\Domain\Forums\Commands;
 
@@ -11,7 +11,7 @@ class UpdateForum implements CommandInterface
 
     /**
      * @param integer $id
-     * @param array $attributes
+     * @param array   $attributes
      */
     public function __construct($id, $attributes)
     {
