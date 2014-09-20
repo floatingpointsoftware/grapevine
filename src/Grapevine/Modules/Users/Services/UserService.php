@@ -4,6 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Users\Services;
 
 use FloatingPoint\Grapevine\Library\Commands\ValidationBus;
 use FloatingPoint\Grapevine\Modules\Users\Commands\RegisterUserViaEmail;
+use FloatingPoint\Grapevine\Modules\Users\Repositories\UserRepositoryInterface;
 
 class UserService
 {
@@ -13,11 +14,38 @@ class UserService
 	private $validationCommandBus;
 
 	/**
+	 * @var UserRepositoryInterface
+	 */
+	private $userRepository;
+
+	/**
 	 * @param ValidationBus $validationCommandBus
 	 */
-	public function __construct(ValidationBus $validationCommandBus)
+	public function __construct(ValidationBus $validationCommandBus, UserRepositoryInterface $userRepository)
 	{
 		$this->validationCommandBus = $validationCommandBus;
+		$this->userRepository = $userRepository;
+	}
+
+	/**
+	 * Search for a list of users, based on the search parameters.
+	 *
+	 * @param array $params
+	 */
+	public function searchUsers(array $params = [])
+	{
+
+	}
+
+	/**
+	 * Get a user based on the id provided.
+	 *
+	 * @param int $id
+	 * @return User
+	 */
+	public function getUserById(int $id)
+	{
+		return $this->userRepository->requireById($id);
 	}
 
 	/**

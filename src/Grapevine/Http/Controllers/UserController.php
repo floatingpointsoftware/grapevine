@@ -27,10 +27,20 @@ class UserController extends Controller
      */
     public function index()
     {
-	    $users = $this->userService->getUserList(Request::all());
-
+	    $users = $this->userService->searchUsers(Request::all());
+		
         return view('user.index', compact('users'));
     }
+
+	/**
+	 * Generates the form required for user creation.
+	 *
+	 * @return \Illuminate\View\View
+	 */
+	public function create()
+	{
+		return view('user.form');
+	}
 
     /**
      * For modifying users, as an admin.
@@ -46,13 +56,25 @@ class UserController extends Controller
     }
 
 	/**
+	 * Load the form necessary for editing a user.
+	 *
+	 * @param $id
+	 */
+	public function edit($id)
+	{
+		$user = $this->userService->getUserById($id);
+
+		return view('user.form', compact($user));
+	}
+
+	/**
 	 * Renders a registration form for the user.
 	 *
 	 * @return \Illuminate\View\View
 	 */
 	public function getRegister()
     {
-		return view('user.register');
+		return view('user.form');
     }
 
 	/**
