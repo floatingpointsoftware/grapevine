@@ -1,9 +1,9 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Domain\Forums\Handlers;
+namespace FloatingPoint\Grapevine\Modules\Forums\Handlers;
 
-use FloatingPointSoftware\Grapevine\Domain\Forums\ForumRepository;
-use FloatingPointSoftware\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface;
+use FloatingPointSoftware\Grapevine\Modules\Forums\ForumRepository;
+use FloatingPointSoftware\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 use Laracasts\Commander\CommandHandler;
 use Laracasts\Commander\Events\DispatchableTrait;
 
@@ -17,7 +17,7 @@ class CreateForum implements CommandHandler
     private $forumRepository;
 
     /**
-     * @param \FloatingPoint\Grapevine\Domain\Forums\Repositories\ForumRepositoryInterface $forumRepository
+     * @param \FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface $forumRepository
      */
     function __construct(ForumRepositoryInterface $forumRepository)
     {
@@ -32,8 +32,7 @@ class CreateForum implements CommandHandler
      */
     public function handle($command)
     {
-        $forum = $this->forumRepository->getNew($command->name,
-            $command->description);
+        $forum = $this->forumRepository->getNew($command->name, $command->description);
 
         return $this->forumRepository->save($forum);
     }

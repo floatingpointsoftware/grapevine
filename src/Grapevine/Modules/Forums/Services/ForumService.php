@@ -1,9 +1,9 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Domain\Forums\Services;
+namespace FloatingPoint\Grapevine\Modules\Forums\Services;
 
 use Event;
-use FloatingPoint\Grapevine\Domain\Forums\Commands\CreateForum;
+use FloatingPoint\Grapevine\Modules\Forums\Commands\CreateForum;
 use FloatingPoint\Grapevine\Library\Commands\CommandBusTrait;
 
 /**
@@ -11,7 +11,7 @@ use FloatingPoint\Grapevine\Library\Commands\CommandBusTrait;
  * Manages the functionality specific to actions relating to forums. CRUD operations,
  * as well as moving, archiving, deletions, subscriptions.etc.
  *
- * @package FloatingPoint\Grapevine\Domain\Forums\Services
+ * @package FloatingPoint\Grapevine\Modules\Forums\Services
  */
 class ForumService
 {
