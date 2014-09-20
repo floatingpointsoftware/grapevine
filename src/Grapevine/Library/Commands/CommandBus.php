@@ -3,8 +3,9 @@
 namespace FloatingPoint\Grapevine\Library\Commands;
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Logging\Log;
 
-class CommandBus
+class CommandBus implements CommandBusInterface
 {
     /**
      * @var Application
@@ -23,65 +24,36 @@ class CommandBus
      */
     protected $decorators = [];
 
-    /**
+	/**
+	 * Logger instance.
+	 *
+	 * @var Log
+	 */
+	private $log;
+
+	/**
      * @param Application $app
      * @param Translator $commandTranslator
      */
-    function __construct(Application $app, Translator $commandTranslator)
+    function __construct(Application $app, Translator $commandTranslator, Log $log)
     {
         $this->app = $app;
         $this->commandTranslator = $commandTranslator;
-    }
-
-    /**
-     * Decorate the command bus with any executable actions.
-     *
-     * @param  string $className
-     * @return mixed
-     */
-    public function decorate($className)
-    {
-        $this->decorators[] = $className;
-
-        return $this;
+	    $this->log = $log;
     }
 
     /**
      * Execute the command
      *
-     * @param $command
+     * @param CommandInterface $command
      * @return mixed
      */
-    public function execute($command)
+    public function execute(CommandInterface $command)
     {
-        $this->executeDecorators($command);
-
         $handler = $this->commandTranslator->toCommandHandler($command);
 
+	    $this->log->info($command.' executed', $command->data());
+
         return $this->app->make($handler)->handle($command);
-    }
-
-    /**
-     * Execute all registered decorators
-     *
-     * @param  object $command
-     * @throws InvalidArgumentException
-     * @return null
-     */
-    protected function executeDecorators($command)
-    {
-        foreach ($this->decorators as $className)
-        {
-            $instance = $this->app->make($className);
-
-            if ( ! $instance instanceof CommandBusInterface)
-            {
-                $message = 'The class to decorate must be an implementation of FloatingPoint\Grapevine\Library\Commands\CommandBusInterface';
-
-                throw new InvalidArgumentException($message);
-            }
-
-            $instance->execute($command);
-        }
     }
 } 

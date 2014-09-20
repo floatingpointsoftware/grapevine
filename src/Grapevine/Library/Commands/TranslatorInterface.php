@@ -2,9 +2,21 @@
 
 namespace FloatingPoint\Grapevine\Library\Commands;
 
-interface TranslatorInterface 
+interface TranslatorInterface
 {
-    public function toCommandHandler($command);
+	/**
+	 * Looks up the command handler fot the command.
+	 *
+	 * @param CommandInterface $command
+	 * @return mixed
+	 */
+	public function toCommandHandler(CommandInterface $command);
 
-    public function toValidator($command);
+	/**
+	 * Looks up the validator for a givne command.
+	 *
+	 * @param CommandInterface $command
+	 * @return mixed
+	 */
+	public function toValidator(CommandInterface $command);
 } 

@@ -4,5 +4,11 @@ namespace FloatingPoint\Grapevine\Library\Commands;
 
 interface CommandBusInterface
 {
-    public function execute();
+	/**
+	 * Executes the provided command.
+	 *
+	 * @param CommandInterface $command
+	 * @return mixed
+	 */
+	public function execute(CommandInterface $command);
 } 

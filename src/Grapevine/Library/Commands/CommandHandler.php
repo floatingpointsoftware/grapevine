@@ -11,5 +11,5 @@ abstract class CommandHandler
         $this->response = new CommandResponse();
     }
 
-    abstract function handle(Command $command);
+    abstract function handle(CommandInterface $command);
 } 
