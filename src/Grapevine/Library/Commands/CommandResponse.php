@@ -111,7 +111,7 @@ class CommandResponse
     /**
      * Sets the
      *
-     * @param $status
+     * @param boolean $status
      * @return void
      */
     public function setSuccess($status)

@@ -2,7 +2,6 @@
 
 namespace FloatingPoint\Grapevine\Library\Support;
 
-use File;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 

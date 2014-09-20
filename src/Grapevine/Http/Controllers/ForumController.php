@@ -5,7 +5,6 @@ namespace FloatingPoint\Http\Controllers;
 use FloatingPoint\Grapevine\Domain\Forums\Services\ForumService;
 use FloatingPoint\Grapevine\Http\Requests\Forums\CreateForumRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use Illuminate\Http\Request;
 
 class ForumController extends Controller
 {
@@ -25,7 +24,7 @@ class ForumController extends Controller
 	/**
 	 * Retrieve a list of forums and return a view.
 	 *
-	 * @return mixed
+	 * @return \Illuminate\View\View
 	 */
 	public function index()
 	{
