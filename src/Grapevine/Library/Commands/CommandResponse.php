@@ -2,6 +2,13 @@
 
 namespace FloatingPoint\Grapevine\Library\Commands;
 
+/**
+ * This class provides a useful way to pass information back to the calling code. It can pass arbitrary data,
+ * failure/success, and associated failure/success messages
+ *
+ * @author: Mike Dugan
+ */
+
 class CommandResponse
 {
     /**
