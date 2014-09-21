@@ -1,0 +1,30 @@
+source:
+    - src/Grapevine
+
+destination: ./docs/
+
+extensions:
+    - php
+
+title: FloatingPoint Grapevine API
+
+#baseUrl: http://oururl.com/grapevine/api
+
+autocomplete:
+    - classes
+    - functions
+    - methods
+    - properties
+
+accessLevels:
+    # default
+    - public
+    - protected
+    # other
+    - private
+
+tree: true
+
+deprecated: true
+
+todo: true
