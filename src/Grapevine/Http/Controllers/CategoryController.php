@@ -14,11 +14,11 @@ class CategoryController extends Controller
     private $categoryService;
 
     /**
-     * @param CategoryService $forumService
+     * @param CategoryService $categoryService
      */
-    public function __construct(CategoryService $forumService)
+    public function __construct(CategoryService $categoryService)
     {
-        $this->categoryService = $forumService;
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -29,6 +29,7 @@ class CategoryController extends Controller
     public function index()
     {
         $forums = $this->categoryService->getForumList($this->request->all());
+
         return view('forum.index', compact('forums'));
     }
 

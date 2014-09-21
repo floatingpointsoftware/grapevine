@@ -8,10 +8,12 @@ class CreateCategory extends Command
 {
     private $name;
     private $description;
+    private $parent_id;
 
-    public function __construct($name, $description)
+    function __construct($description, $name, $parent_id)
     {
-        $this->name = $name;
         $this->description = $description;
+        $this->name = $name;
+        $this->parent_id = $parent_id;
     }
 }

@@ -6,5 +6,4 @@ use FloatingPoint\Grapevine\Library\Database\RepositoryInterface;
 
 interface CategoryRepositoryInterface extends RepositoryInterface
 {
-
 }

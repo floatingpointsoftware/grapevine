@@ -12,9 +12,9 @@ class UpdateCategory implements CommandHandler
      */
     private $categories;
 
-    public function __construct(CategoryRepositoryInterface $forums)
+    public function __construct(CategoryRepositoryInterface $categories)
     {
-        $this->categories = $forums;
+        $this->categories = $categories;
     }
 
     /**

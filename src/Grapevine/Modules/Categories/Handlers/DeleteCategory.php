@@ -2,7 +2,7 @@
 
 namespace FloatingPoint\Grapevine\Modules\Categories\Handlers;
 
-use FloatingPoint\Grapevine\Library\Commands\Command;
+use FloatingPoint\Grapevine\Library\Commands\CommandInterface;
 use FloatingPoint\Grapevine\Modules\Categories\Repositories\CategoryRepositoryInterface;
 
 class DeleteCategory implements CommandHandler
@@ -23,10 +23,10 @@ class DeleteCategory implements CommandHandler
     /**
      * Handle the command, retrieving the forum and returning hte result of the delete operation
      *
-     * @param Command $command
+     * @param CommandInterface $command
      * @return bool
      */
-    public function handle(Command $command)
+    public function handle(CommandInterface $command)
     {
         $forum = $this->categories->getById($command->id);
 
