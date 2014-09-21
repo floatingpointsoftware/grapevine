@@ -28,10 +28,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('forum.index',
-            ['forums' => $this->categoryService->getForumList($this->request->all())]);
+        $forums = $this->categoryService->getForumList($this->request->all());
+        return view('forum.index', compact('forums'));
     }
 
+    /**
+     * Stores a new forum
+     *
+     * @param CreateForumRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(CreateForumRequest $request)
     {
         $this->categoryService->createForum($request->all());

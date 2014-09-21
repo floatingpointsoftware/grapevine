@@ -27,25 +27,25 @@ class UserController extends Controller
      */
     public function index()
     {
-	    $users = $this->userService->searchUsers(Request::all());
+        $users = $this->userService->searchUsers(Request::all());
 
         return view('user.index', compact('users'));
     }
 
-	/**
-	 * Generates the form required for user creation.
-	 *
-	 * @return \Illuminate\View\View
-	 */
-	public function create()
-	{
-		return view('user.form');
-	}
+    /**
+     * Generates the form required for user creation.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('user.form');
+    }
 
     /**
      * For modifying users, as an admin.
      *
-     * @param CreateUserRequest $request
+     * @internal param CreateUserRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store()
@@ -55,37 +55,38 @@ class UserController extends Controller
         return redirectTo('home');
     }
 
-	/**
-	 * Load the form necessary for editing a user.
-	 *
-	 * @param $id
-	 */
-	public function edit($id)
-	{
-		$user = $this->userService->getUserById($id);
-
-		return view('user.form', compact($user));
-	}
-
-	/**
-	 * Renders a registration form for the user.
-	 *
-	 * @return \Illuminate\View\View
-	 */
-	public function getRegister()
+    /**
+     * Load the form necessary for editing a user.
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
     {
-		return view('user.form');
+        $user = $this->userService->getUserById($id);
+
+        return view('user.form', compact('user'));
     }
 
-	/**
-	 * Handle the data passed in via the user for registration.
-	 *
-	 * @return Response
-	 */
-	public function postRegister()
-	{
-		$this->userService->registerUser(Request::all());
+    /**
+     * Renders a registration form for the user.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getRegister()
+    {
+        return view('user.form');
+    }
 
-		return redirectTo('home');
-	}
+    /**
+     * Handle the data passed in via the user for registration.
+     *
+     * @return Response
+     */
+    public function postRegister()
+    {
+        $this->userService->registerUser(Request::all());
+
+        return redirectTo('home');
+    }
 }
