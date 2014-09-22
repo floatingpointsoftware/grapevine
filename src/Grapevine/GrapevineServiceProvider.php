@@ -34,7 +34,6 @@ class GrapevineServiceProvider extends ServiceProvider
 	protected $serviceProviders = [
         CategoriesServiceProvider::class,
         CommanderServiceProvider::class,
-        ForumsServiceProvider::class,
         UsersServiceProvider::class,
     ];
 
