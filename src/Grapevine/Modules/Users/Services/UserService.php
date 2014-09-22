@@ -32,7 +32,7 @@ class UserService
 	 *
 	 * @param array $params
 	 */
-	public function searchUsers(array $params = [])
+	public function getUsers(array $params = [])
 	{
 
 	}

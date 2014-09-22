@@ -80,7 +80,7 @@ class UserController extends Controller
 	/**
 	 * Handle the data passed in via the user for registration.
 	 *
-	 * @return Response
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
 	public function postRegister()
 	{

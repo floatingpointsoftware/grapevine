@@ -26,11 +26,15 @@ class GrapevineServiceProvider extends ServiceProvider
         'Laracasts\CommanderCommandTranslator' => Translator::class
     ];
 
-    protected $serviceProviders = [
+	/**
+	 * Service providers Grapevine provides to the Laravel framework.
+	 *
+	 * @var array
+	 */
+	protected $serviceProviders = [
         CommanderServiceProvider::class,
         ForumsServiceProvider::class,
-        UsersServiceProvider::class,
-        //Authority\AuthorityL4\AuthorityL4ServiceProvider::class
+        UsersServiceProvider::class
     ];
 
     /**
@@ -40,7 +44,7 @@ class GrapevineServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('floatingpointsoftware/forum');
+        $this->package('floatingpoint/grapevine');
     }
 
     /**
