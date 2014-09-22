@@ -1,6 +1,6 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Modules\Forums\Services;
+namespace FloatingPoint\Grapevine\Modules\Categories\Services;
 
 class TopicService
 {

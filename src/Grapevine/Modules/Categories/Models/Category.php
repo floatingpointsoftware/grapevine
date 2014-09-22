@@ -1,8 +1,8 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Modules\Forums\Models;
+namespace FloatingPoint\Grapevine\Modules\Categories\Models;
 
-class Forum extends \Eloquent
+class Category extends \Eloquent
 {
     /**
      * @var array

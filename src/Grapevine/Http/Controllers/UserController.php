@@ -3,7 +3,7 @@
 namespace FloatingPoint\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Forums\Services\UserService;
+use FloatingPoint\Grapevine\Modules\Categories\Services\UserService;
 
 class UserController extends Controller
 {
@@ -27,25 +27,25 @@ class UserController extends Controller
      */
     public function index()
     {
-	    $users = $this->userService->searchUsers(Request::all());
+        $users = $this->userService->searchUsers(Request::all());
 
         return view('user.index', compact('users'));
     }
 
-	/**
-	 * Generates the form required for user creation.
-	 *
-	 * @return \Illuminate\View\View
-	 */
-	public function create()
-	{
-		return view('user.form');
-	}
+    /**
+     * Generates the form required for user creation.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('user.form');
+    }
 
     /**
      * For modifying users, as an admin.
      *
-     * @param CreateUserRequest $request
+     * @internal param CreateUserRequest $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store()
@@ -55,26 +55,27 @@ class UserController extends Controller
         return redirectTo('home');
     }
 
-	/**
-	 * Load the form necessary for editing a user.
-	 *
-	 * @param $id
-	 */
-	public function edit($id)
-	{
-		$user = $this->userService->getUserById($id);
-
-		return view('user.form', compact($user));
-	}
-
-	/**
-	 * Renders a registration form for the user.
-	 *
-	 * @return \Illuminate\View\View
-	 */
-	public function getRegister()
+    /**
+     * Load the form necessary for editing a user.
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
     {
-		return view('user.form');
+        $user = $this->userService->getUserById($id);
+
+        return view('user.form', compact('user'));
+    }
+
+    /**
+     * Renders a registration form for the user.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getRegister()
+    {
+        return view('user.form');
     }
 
 	/**
@@ -82,10 +83,10 @@ class UserController extends Controller
 	 *
 	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
-	public function postRegister()
-	{
-		$this->userService->registerUser(Request::all());
+    public function postRegister()
+    {
+        $this->userService->registerUser(Request::all());
 
-		return redirectTo('home');
-	}
+        return redirectTo('home');
+    }
 }

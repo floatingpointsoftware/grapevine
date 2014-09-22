@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine;
 
 use FloatingPoint\Grapevine\Library\Commands\Translator;
 use FloatingPoint\Grapevine\Library\Support\ServiceProvider;
-use FloatingPoint\Grapevine\Modules\Forums\ForumsServiceProvider;
+use FloatingPoint\Grapevine\Modules\Categories\CategoriesServiceProvider;
 use FloatingPoint\Grapevine\Modules\Users\UsersServiceProvider;
 use Laracasts\Commander\CommanderServiceProvider;
 
@@ -32,9 +32,10 @@ class GrapevineServiceProvider extends ServiceProvider
 	 * @var array
 	 */
 	protected $serviceProviders = [
+        CategoriesServiceProvider::class,
         CommanderServiceProvider::class,
         ForumsServiceProvider::class,
-        UsersServiceProvider::class
+        UsersServiceProvider::class,
     ];
 
     /**

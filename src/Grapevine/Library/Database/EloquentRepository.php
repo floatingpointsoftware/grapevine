@@ -89,7 +89,7 @@ abstract class EloquentRepository implements RepositoryInterface
     /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
-     * @param object  $resource
+     * @param Resource  $resource
      * @param boolean $permanent
      * @fires Resource.Deleted
      * @return Resource

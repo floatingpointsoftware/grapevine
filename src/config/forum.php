@@ -1,6 +1,6 @@
 <?php
 /**
- * Forum package configuration.
+ * Category package configuration.
  */
 return [
 	'routePrefix' => '/'

@@ -1,18 +1,18 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Modules\Forums\Services;
+namespace FloatingPoint\Grapevine\Modules\Categories\Services;
 
 use Event;
-use FloatingPoint\Grapevine\Modules\Forums\Commands\CreateForum;
+use FloatingPoint\Grapevine\Modules\Categories\Commands\CreateCategory;
 
 /**
- * Class ForumService
+ * Class CategoryService
  * Manages the functionality specific to actions relating to forums. CRUD operations,
  * as well as moving, archiving, deletions, subscriptions.etc.
  *
- * @package FloatingPoint\Grapevine\Modules\Forums\Services
+ * @package FloatingPoint\Grapevine\Modules\Categories\Services
  */
-class ForumService
+class CategoryService
 {
     /**
      * Execute the create forum command and return the response.
@@ -22,7 +22,7 @@ class ForumService
      */
     public function createForum(array $input = [])
     {
-        return $this->execute(CreateForum::fromInput($input));
+        return $this->execute(CreateCategory::fromInput($input));
     }
 
     public function updateForum(array $input = [])

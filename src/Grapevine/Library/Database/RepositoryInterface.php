@@ -15,7 +15,7 @@ interface RepositoryInterface
     /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
-     * @param object  $resource
+     * @param Resource  $resource
      * @param boolean $permanent
      * @return Resource
      */
