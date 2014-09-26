@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.form');
+        return view('user.create');
     }
 
     /**
@@ -65,7 +65,7 @@ class UserController extends Controller
     {
         $user = $this->userService->getUserById($id);
 
-        return view('user.form', compact('user'));
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -75,7 +75,7 @@ class UserController extends Controller
      */
     public function getRegister()
     {
-        return view('user.form');
+        return view('user.register');
     }
 
 	/**
