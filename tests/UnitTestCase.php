@@ -12,7 +12,7 @@ class UnitTestCase extends TestCase
 		m::close();
 	}
 
-	protected function getPackageProviders()
+	protected function getPackageProviders($app)
 	{
 		return [
 			'FloatingPoint\Grapevine\GrapevineServiceProvider'
@@ -23,6 +23,11 @@ class UnitTestCase extends TestCase
 	{
 		parent::setUp();
 
-		Route::disableFilters();
+		$this->init();
+	}
+
+	protected function init()
+	{
+		// Template method
 	}
 }

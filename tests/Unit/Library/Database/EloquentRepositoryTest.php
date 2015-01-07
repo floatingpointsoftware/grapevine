@@ -9,10 +9,8 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
 	private $model;
 	private $repository;
 
-	public function setUp()
+	public function init()
 	{
-		parent::setUp();
-
 		$this->model = m::mock('Model');
 		$this->repository = new EloquentRepositoryStub($this->model);
 	}

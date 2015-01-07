@@ -17,15 +17,6 @@ class GrapevineServiceProvider extends ServiceProvider
      */
     protected $defer = false;
 
-    /**
-     * Defines the aliases that this service provider will setup.
-     *
-     * @var array
-     */
-    protected $aliases = [
-        'Laracasts\CommanderCommandTranslator' => Translator::class
-    ];
-
 	/**
 	 * Service providers Grapevine provides to the Laravel framework.
 	 *
@@ -33,19 +24,8 @@ class GrapevineServiceProvider extends ServiceProvider
 	 */
 	protected $serviceProviders = [
         CategoriesServiceProvider::class,
-        CommanderServiceProvider::class,
         UsersServiceProvider::class,
     ];
-
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->package('floatingpoint/grapevine');
-    }
 
     /**
      * Sets up the routes required by the application.
