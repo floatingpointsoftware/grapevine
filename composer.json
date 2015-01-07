@@ -1,5 +1,5 @@
 {
-    "name": "floatingpointsoftware/grapevine",
+    "name": "floatingpoint/grapevine",
     "description": "Laravel 4 forum package by Floating Point Software.",
     "authors": [
         {
@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=5.5.0",
-	    "floatingpointsoftware/stylist": "dev-master",
+	    "floatingpoint/stylist": "dev-master",
         "illuminate/html": "~5.0",
         "illuminate/support": "5.0.*",
         "laracasts/commander": "~1.0"
@@ -22,7 +22,6 @@
         "mockery/mockery": "dev-master@dev",
         "orchestra/testbench": "3.0.*",
         "phpunit/phpunit": "4.2.*",
-        "apigen/apigen": "2.8.1",
         "barryvdh/laravel-ide-helper": "1.11.*"
     },
     "autoload": {
