@@ -1,5 +1,4 @@
 <?php
-
 namespace FloatingPoint\Grapevine\Library\Database;
 
 use Event;
@@ -102,9 +101,6 @@ abstract class EloquentRepository implements RepositoryInterface
             $resource->delete();
         }
 
-        Event::fire($this->eventNameFromModel('Deleted', $resource),
-            [$resource]);
-
         return $resource;
     }
 
@@ -128,30 +124,23 @@ abstract class EloquentRepository implements RepositoryInterface
      * Saves the resource provided to the database.
      *
      * @param $resource
-     * @fires Resource.Updated
-     * @fires Resource.Created
      * @return Resource
      */
     public function save($resource)
     {
         $attributes = $resource->getDirty();
-        $event = $resource->exists ? 'Updated' : 'Created';
 
-        if (! empty($attributes)) {
+        if (!empty($attributes)) {
             $resource->save();
         } else {
             $resource->touch();
         }
-
-        Event::fire($this->eventNameFromModel($event, $resource), [$resource]);
 
         return $resource;
     }
 
     /**
      * Save all resources provided to the method.
-     *
-     * @fires Resource.SavedAll
      */
     public function saveAll()
     {
@@ -160,24 +149,5 @@ abstract class EloquentRepository implements RepositoryInterface
         foreach ($resources as $resource) {
             $this->save($resource);
         }
-
-        Event::fire($this->eventNameFromModel('SavedAll', $this->model),
-            $resources);
-    }
-
-    /**
-     * Generates an event string based on the model of the repository and the required event.
-     *
-     * @param string $event
-     * @param        $model
-     * @return string
-     */
-    protected function eventNameFromModel($event, $model = null)
-    {
-        $model = $model ?: $this->model;
-
-        $eventParts = [class_basename($model), $event];
-
-        return implode('.', $eventParts);
     }
 }

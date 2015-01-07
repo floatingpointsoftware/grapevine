@@ -1,5 +1,4 @@
 <?php
-
 namespace Tests\Unit\Library\Database;
 
 use Mockery as m;

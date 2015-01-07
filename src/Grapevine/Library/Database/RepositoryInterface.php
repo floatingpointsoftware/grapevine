@@ -1,17 +1,8 @@
 <?php
-
 namespace FloatingPoint\Grapevine\Library\Database;
 
 interface RepositoryInterface
 {
-    /**
-     * Create a resource based on the data provided.
-     *
-     * @param array $data Optional
-     * @return Resource
-     */
-    public function getNew(array $data = []);
-
     /**
      * Delete a specific resource. Returns the resource that was deleted.
      *

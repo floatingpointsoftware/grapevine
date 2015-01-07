@@ -1,9 +1,8 @@
 <?php
-
 namespace FloatingPoint\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Categories\Services\UserService;
+use FloatingPoint\Grapevine\Modules\Users\Services\UserService;
 
 class UserController extends Controller
 {
@@ -33,16 +32,6 @@ class UserController extends Controller
     }
 
     /**
-     * Generates the form required for user creation.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function create()
-    {
-        return view('user.create');
-    }
-
-    /**
      * For modifying users, as an admin.
      *
      * @internal param CreateUserRequest $request
@@ -50,7 +39,7 @@ class UserController extends Controller
      */
     public function store()
     {
-        $this->userService->createUser(Request::all());
+        $this->dispatch(new CreateUserCommand);
 
         return redirectTo('home');
     }

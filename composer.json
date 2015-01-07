@@ -14,13 +14,13 @@
     "require": {
         "php": ">=5.5.0",
 	    "floatingpoint/stylist": "dev-master",
+        "hashids/hashids": "1.0.*@dev",
         "illuminate/html": "~5.0",
-        "illuminate/support": "5.0.*",
-        "laracasts/commander": "~1.0"
+        "illuminate/support": "5.0.*"
     },
     "require-dev": {
         "mockery/mockery": "dev-master@dev",
-        "orchestra/testbench": "3.0.*",
+        "orchestra/testbench": "3.0.*@dev",
         "phpunit/phpunit": "4.2.*",
         "barryvdh/laravel-ide-helper": "1.11.*"
     },
