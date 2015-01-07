@@ -38,10 +38,6 @@
         {
             "type": "vcs",
             "url": "git://github.com/orchestral/phpseclib.git"
-        },
-		{
-			"type": "vcs",
-			"url": "https://github.com/floatingpointsoftware/stylist"
-		}
+        }
     ]
 }

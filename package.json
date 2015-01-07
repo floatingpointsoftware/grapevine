@@ -1,0 +1,9 @@
+{
+  "name": "floatingpoint-grapevine",
+  "description": "This is just a dependency management package file.",
+  "devDependencies": {
+    "gulp": "^3.8.7",
+    "gulp-exec": "^2.1.0",
+    "gulp-notify": "^1.4.2"
+  }
+}
