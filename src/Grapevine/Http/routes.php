@@ -1,9 +1,15 @@
 <?php
-/**
- * Contains all the forum routes.
- */
 
-Route::resource('forum',
-    'FloatingPoint\Grapevine\Http\Controllers\ForumController');
-Route::resource('user',
-    'FloatingPoint\Grapevine\Http\Controllers\UserController');
+$routeGroupAttributes = [
+    'prefix' => Config::get('grapevine.route_prefix', ''),
+    'namespace' => 'FloatingPoint\Grapevine\Http\Controllers'
+];
+
+Route::group($routeGroupAttributes, function() {
+    Route::resource('forum', 'ForumController');
+    Route::resource('user', 'UserController');
+
+    // Registrations
+    Route::get('register', 'RegistrationController@create');
+    Route::post('register', 'RegistrationController@store');
+});

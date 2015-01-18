@@ -1,30 +1,25 @@
 <?php
-
 namespace FloatingPoint\Grapevine;
 
-use FloatingPoint\Grapevine\Library\Commands\Translator;
-use FloatingPoint\Grapevine\Library\Support\ServiceProvider;
-use FloatingPoint\Grapevine\Modules\Categories\CategoriesServiceProvider;
-use FloatingPoint\Grapevine\Modules\Users\UsersServiceProvider;
-use Laracasts\Commander\CommanderServiceProvider;
+use FloatingPoint\Grapevine\Providers\BindingsServiceProvider;
+use FloatingPoint\Grapevine\Providers\ConsoleServiceProvider;
+use FloatingPoint\Grapevine\Providers\EventServiceProvider;
+use FloatingPoint\Stylist\Facades\Stylist;
+use FloatingPoint\Stylist\StylistServiceProvider;
+use Illuminate\Support\AggregateServiceProvider;
 
-class GrapevineServiceProvider extends ServiceProvider
+class GrapevineServiceProvider extends AggregateServiceProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
 	/**
 	 * Service providers Grapevine provides to the Laravel framework.
 	 *
 	 * @var array
 	 */
-	protected $serviceProviders = [
-        CategoriesServiceProvider::class,
-        UsersServiceProvider::class,
+	protected $providers = [
+        BindingsServiceProvider::class,
+        ConsoleServiceProvider::class,
+        EventServiceProvider::class,
+        StylistServiceProvider::class,
     ];
 
     /**
@@ -33,7 +28,37 @@ class GrapevineServiceProvider extends ServiceProvider
     public function register()
     {
         parent::register();
+        $this->registerViews();
 
-        require_once __DIR__ . '/Http/routes.php';
+        require_once __DIR__.'/Http/routes.php';
+    }
+
+    /**
+     * Boot the service provider.
+     */
+    public function boot()
+    {
+        $this->setupTheme();
+    }
+
+    /**
+     * Register views
+     *
+     * @return void
+     */
+    protected function registerViews()
+    {
+        $this->app['view']->addLocation(__DIR__.'/../views');
+    }
+
+    /**
+     * Tell Stylist about our default theme path and activate it.
+     */
+    public function setupTheme()
+    {
+        $paths = Stylist::discover(__DIR__.'/../views/');
+
+        Stylist::registerPaths($paths);
+        Stylist::activate(Stylist::get('Grapevine'));
     }
 }

@@ -13,6 +13,16 @@ abstract class EloquentRepository implements RepositoryInterface
     protected $model;
 
     /**
+     * Returns a collection of eloquent models consisting of the entire database table's records.
+     *
+     * @return mixed
+     */
+    public function getAll()
+    {
+        return $this->model->get();
+    }
+
+    /**
      * Get a specific resource.
      *
      * @param integer $id

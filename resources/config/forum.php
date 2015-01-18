@@ -3,5 +3,5 @@
  * Category package configuration.
  */
 return [
-	'routePrefix' => '/'
+	'route_prefix' => '/'
 ];

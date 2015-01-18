@@ -1,5 +1,5 @@
 <?php
-namespace FloatingPoint\Http\Controllers;
+namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Http\Requests\Forums\RegisterUserRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;

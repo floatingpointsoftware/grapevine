@@ -26,7 +26,7 @@
     },
     "autoload": {
         "classmap": [
-            "src/migrations"
+            "resources/migrations"
         ],
         "psr-4": {
             "FloatingPoint\\Grapevine\\": "src/Grapevine",

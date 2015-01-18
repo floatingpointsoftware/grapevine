@@ -1,22 +1,23 @@
 <?php
-namespace FloatingPoint\Http\Controllers;
+namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Users\Services\UserService;
+use FloatingPoint\Grapevine\Modules\Users\Repositories\UserRepositoryInterface;
+use Illuminate\Foundation\Bus\DispatchesCommands;
 
 class UserController extends Controller
 {
     /**
-     * @var UserService
+     * @var UserRepositoryInterface
      */
-    private $userService;
+    private $users;
 
     /**
      * @param UserService $userService
      */
-    public function __construct(UserService $userService)
+    public function __construct(UserRepositoryInterface $users)
     {
-        $this->userService = $userService;
+        $this->users = $users;
     }
 
     /**
@@ -26,9 +27,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->userService->searchUsers(Request::all());
+        $users = $this->users->getAll();
 
-        return view('user.index', compact('users'));
+        return $this->respond('user.index', compact('users'));
     }
 
     /**

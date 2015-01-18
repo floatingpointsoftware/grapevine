@@ -4,6 +4,13 @@ namespace FloatingPoint\Grapevine\Library\Database;
 interface RepositoryInterface
 {
     /**
+     * Returns all the records within the table/collection.
+     *
+     * @return mixed
+     */
+    public function getAll();
+
+    /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
      * @param Resource  $resource
