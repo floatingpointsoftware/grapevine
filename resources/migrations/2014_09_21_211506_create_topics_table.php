@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTopicsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -16,20 +15,20 @@ class CreateTopicsTable extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 100);
             $table->integer('user_id');
             $table->integer('forum_id');
+            $table->string('title', 100);
             $table->integer('views');
             $table->integer('posts');
-            $table->boolean('is_locked');
-            $table->boolean('is_sticky');
+            $table->boolean('locked');
+            $table->boolean('pinned');
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::table('topics', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreigh('forum_id')->references('id')->on('categories');
+            $table->foreigh('forum_id')->references('id')->on('forums');
         });
     }
 

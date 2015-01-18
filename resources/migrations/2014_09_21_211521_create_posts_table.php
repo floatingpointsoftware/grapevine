@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreatePostsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -15,11 +14,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('subject', '100');
-            $table->text('content');
             $table->integer('user_id');
             $table->integer('topic_id');
-            $table->boolean('has_attachment');
+            $table->string('title', '100');
+            $table->text('content');
             $table->softDeletes();
             $table->timestamps();
         });

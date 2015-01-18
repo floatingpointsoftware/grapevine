@@ -5,7 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 
 class CreateForumsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,22 +12,19 @@ class CreateForumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('forums', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id');
-            $table->string('name', 100);
-            $table->string('description');
-
-            $table->boolean('is_locked');
-
+            $table->string('name');
+            $table->text('description');
             $table->integer('topics');
             $table->integer('posts');
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('categories', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('categories');
+        Schema::table('forums', function (Blueprint $table) {
+            $table->foreign('parent_id')->references('id')->on('forums');
         });
     }
 

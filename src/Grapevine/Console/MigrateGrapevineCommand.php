@@ -35,11 +35,7 @@ class MigrateGrapevineCommand extends Command
      */
     public function handle()
     {
-        $migrations = $this->app->make('migration.repository');
-        $migrations->createRepository();
-
         $migrator = $this->app->make('migrator');
-
         $migrator->run(__DIR__.'/../../../resources/migrations');
     }
 }

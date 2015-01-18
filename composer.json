@@ -25,9 +25,6 @@
         "barryvdh/laravel-ide-helper": "1.11.*"
     },
     "autoload": {
-        "classmap": [
-            "resources/migrations"
-        ],
         "psr-4": {
             "FloatingPoint\\Grapevine\\": "src/Grapevine",
             "Tests\\": "tests"
