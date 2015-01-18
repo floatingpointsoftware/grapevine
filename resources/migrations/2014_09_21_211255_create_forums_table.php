@@ -14,7 +14,7 @@ class CreateForumsTable extends Migration
     {
         Schema::create('forums', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('parent_id');
+            $table->integer('parent_id')->index();
             $table->string('name');
             $table->text('description');
             $table->integer('topics');
@@ -23,9 +23,9 @@ class CreateForumsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('forums', function (Blueprint $table) {
-            $table->foreign('parent_id')->references('id')->on('forums');
-        });
+//        Schema::table('forums', function (Blueprint $table) {
+//            $table->foreign('parent_id')->references('id')->on('forums');
+//        });
     }
 
     /**

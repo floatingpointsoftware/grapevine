@@ -14,18 +14,18 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('topic_id');
+            $table->integer('user_id')->index();
+            $table->integer('topic_id')->index();
             $table->string('title', '100');
             $table->text('content');
             $table->softDeletes();
             $table->timestamps();
         });
 
-        Schema::table('posts', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('topic_id')->references('id')->on('topics');
-        });
+//        Schema::table('posts', function (Blueprint $table) {
+//            $table->foreign('user_id')->references('id')->on('users');
+//            $table->foreign('topic_id')->references('id')->on('topics');
+//        });
     }
 
     /**

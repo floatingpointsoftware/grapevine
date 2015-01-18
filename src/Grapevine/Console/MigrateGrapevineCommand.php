@@ -35,7 +35,18 @@ class MigrateGrapevineCommand extends Command
      */
     public function handle()
     {
+        // First we try and setup the migrations table
+        try {
+            $migrations = $this->app->make('migration.repository');
+            $migrations->createRepository();
+
+            $this->info('Migration repository created.');
+        }
+        catch (\Exception $e) {}
+
         $migrator = $this->app->make('migrator');
         $migrator->run(__DIR__.'/../../../resources/migrations');
+
+        $this->info('Grapevine migrations completed.');
     }
 }

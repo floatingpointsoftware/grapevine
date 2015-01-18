@@ -15,8 +15,8 @@ class CreateTopicsTable extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->integer('forum_id');
+            $table->integer('user_id')->index();
+            $table->integer('forum_id')->index();
             $table->string('title', 100);
             $table->integer('views');
             $table->integer('posts');
@@ -26,10 +26,10 @@ class CreateTopicsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('topics', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreigh('forum_id')->references('id')->on('forums');
-        });
+//        Schema::table('topics', function (Blueprint $table) {
+//            $table->foreign('user_id')->references('id')->on('users');
+//            $table->foreigh('forum_id')->references('id')->on('forums');
+//        });
     }
 
     /**
