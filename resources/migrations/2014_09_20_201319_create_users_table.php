@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('posts')->index();
             $table->integer('topics')->index();
+            $table->string('slug')->index();
             $table->softDeletes();
             $table->timestamps();
         });

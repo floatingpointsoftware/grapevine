@@ -14,4 +14,15 @@ class User extends Model
 	public $table    = 'users';
     public $fillable = ['username', 'email', 'password'];
     public $guarded  = ['id', 'password'];
+
+    /**
+     * Whenever a user is created, create a new slug based on their username.
+     */
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($user) {
+            $user->slug = Slug::fromTitle($user->username);
+        });
+    }
 }

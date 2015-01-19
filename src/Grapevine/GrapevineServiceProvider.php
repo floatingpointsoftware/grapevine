@@ -4,6 +4,7 @@ namespace FloatingPoint\Grapevine;
 use FloatingPoint\Grapevine\Providers\BindingsServiceProvider;
 use FloatingPoint\Grapevine\Providers\ConsoleServiceProvider;
 use FloatingPoint\Grapevine\Providers\EventServiceProvider;
+use FloatingPoint\Grapevine\Providers\ThemingProvider;
 use FloatingPoint\Stylist\Facades\Stylist;
 use FloatingPoint\Stylist\StylistServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
@@ -20,6 +21,7 @@ class GrapevineServiceProvider extends AggregateServiceProvider
         ConsoleServiceProvider::class,
         EventServiceProvider::class,
         StylistServiceProvider::class,
+        ThemingProvider::class
     ];
 
     /**
@@ -28,37 +30,7 @@ class GrapevineServiceProvider extends AggregateServiceProvider
     public function register()
     {
         parent::register();
-        $this->registerViews();
 
         require_once __DIR__.'/Http/routes.php';
-    }
-
-    /**
-     * Boot the service provider.
-     */
-    public function boot()
-    {
-        $this->setupTheme();
-    }
-
-    /**
-     * Register views
-     *
-     * @return void
-     */
-    protected function registerViews()
-    {
-        $this->app['view']->addLocation(__DIR__.'/../views');
-    }
-
-    /**
-     * Tell Stylist about our default theme path and activate it.
-     */
-    public function setupTheme()
-    {
-        $paths = Stylist::discover(__DIR__.'/../views/');
-
-        Stylist::registerPaths($paths);
-        Stylist::activate(Stylist::get('Grapevine'));
     }
 }

@@ -16,7 +16,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index();
             $table->integer('topic_id')->index();
-            $table->string('title', '100');
+            $table->string('title', '100')->nullable();
+            $table->string('slug')->index();
             $table->text('content');
             $table->softDeletes();
             $table->timestamps();

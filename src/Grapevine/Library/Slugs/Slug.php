@@ -26,13 +26,24 @@ class Slug
      * @param integer $id
      * @return Slug
      */
-    public static function create($id)
+    public static function fromId($id)
     {
         $salt = md5($id);
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $slug = with(new Hashids($salt, $length = 8, $alphabet))->encode($id);
 
         return new Slug($slug);
+    }
+
+    /**
+     * Creates a new slug from a string title.
+     *
+     * @param string $title
+     * @return Slug
+     */
+    public static function fromTitle($title)
+    {
+        return new Slug(Str::slug($title));
     }
 
     /**

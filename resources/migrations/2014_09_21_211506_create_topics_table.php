@@ -18,6 +18,7 @@ class CreateTopicsTable extends Migration
             $table->integer('user_id')->index();
             $table->integer('forum_id')->index();
             $table->string('title', 100);
+            $table->string('slug')->index();
             $table->integer('views');
             $table->integer('posts');
             $table->boolean('locked');
