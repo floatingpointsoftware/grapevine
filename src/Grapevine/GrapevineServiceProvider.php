@@ -32,5 +32,6 @@ class GrapevineServiceProvider extends AggregateServiceProvider
         parent::register();
 
         require_once __DIR__.'/Http/routes.php';
+        require_once __DIR__.'/View/composers.php';
     }
 }

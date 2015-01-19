@@ -20,7 +20,7 @@ class EloquentTopicRepository extends EloquentRepository implements TopicReposit
     public function getRecent($forumId = null)
     {
         $query = $this->model->newInstance()->with('forum');
-        $query = $query->orderBy('updatedAt');
+        $query = $query->orderBy('updated_at');
 
         if (is_integer($forumId)) {
             $query = $query->whereForumId($forumId);

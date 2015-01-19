@@ -4,6 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Forums\Data;
 use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
+use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 
 class Forum extends Model
 {
