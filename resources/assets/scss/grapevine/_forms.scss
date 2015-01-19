@@ -170,6 +170,15 @@ span.error {
 	font-size: 0.923em;
 }
 
+.single-error {
+	background: $colour-error;
+	border-radius: $default-radius;
+	color: #fff;
+	display: block;
+	margin-bottom: 25px;
+	padding: 25px;
+}
+
 // Required fields
 span.required { color: $colour-error; }
 

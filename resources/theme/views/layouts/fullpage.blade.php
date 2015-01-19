@@ -2,7 +2,7 @@
 <html>
     <head>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-        {!! HTML::style('css/grapevine.dev.css') !!}
+        {!! Theme::style('css/grapevine.dev.css') !!}
         <title></title>
     </head>
     <body>

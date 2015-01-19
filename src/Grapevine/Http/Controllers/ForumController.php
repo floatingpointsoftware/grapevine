@@ -1,24 +1,24 @@
 <?php
-
 namespace FloatingPoint\Http\Controllers;
 
 use FloatingPoint\Grapevine\Http\Requests\Forums\CreateForumRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Categories\Services\CategoryService;
+use FloatingPoint\Grapevine\Modules\Forums\Commands\CreateForumCommand;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 
-class CategoryController extends Controller
+class ForumController extends Controller
 {
     /**
-     * @var CategoryService
+     * @var ForumRepositoryInterface
      */
-    private $categoryService;
+    private $forums;
 
     /**
-     * @param CategoryService $categoryService
+     * @param ForumRepositoryInterface $forums
      */
-    public function __construct(CategoryService $categoryService)
+    function __construct(ForumRepositoryInterface $forums)
     {
-        $this->categoryService = $categoryService;
+        $this->forums = $forums;
     }
 
     /**
@@ -28,9 +28,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $forums = $this->categoryService->getForumList($this->request->all());
+        $forums = $this->forums->getAll();
 
-        return view('forum.index', compact('forums'));
+        return $this->respond('forum.index', compact('forums'));
     }
 
     /**
@@ -41,8 +41,8 @@ class CategoryController extends Controller
      */
     public function store(CreateForumRequest $request)
     {
-        $this->categoryService->createForum($request->all());
+        $this->dispatchFrom(CreateForumCommand::class, $request);
 
-        return redirect();
+        return redirect()->route('forum.index');
     }
 }

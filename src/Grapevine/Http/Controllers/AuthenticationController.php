@@ -1,9 +1,8 @@
 <?php
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
-use FloatingPoint\Grapevine\Http\Requests\Forums\AuthenticateUserRequest;
+use FloatingPoint\Grapevine\Http\Requests\Users\AuthenticateUserRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Users\Commands\AuthenticateUserCommand;
 use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
@@ -37,7 +36,7 @@ class AuthenticationController extends Controller
             return redirect()->route('home');
         }
         else {
-            return redirect()->route('login.form');
+            return redirect()->route('login.form')->with('error', 'Incorrect credentials. Please try again.');
         }
     }
 

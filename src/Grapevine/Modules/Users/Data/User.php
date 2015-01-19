@@ -25,4 +25,16 @@ class User extends Model
             $user->slug = Slug::fromTitle($user->username);
         });
     }
+
+    /**
+     * Password attribute mutator.
+     *
+     * @param $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        if (isset($this->getDirty()['password']) or !$this->exists) {
+            $this->attributes["password"] = \Hash::make($value);
+        }
+    }
 }

@@ -19,12 +19,12 @@ class RegisterUserCommand
 	public $password;
 	public $passwordConfirmation;
 
-	public function __construct($username, $email, $emailConfirmation, $password, $passwordConfirmation)
+	public function __construct($username, $email, $email_confirmation, $password, $password_confirmation)
 	{
 		$this->email = $email;
-		$this->emailConfirmation = $emailConfirmation;
+		$this->emailConfirmation = $email_confirmation;
 		$this->password = $password;
-		$this->passwordConfirmation = $passwordConfirmation;
+		$this->passwordConfirmation = $password_confirmation;
 		$this->username = $username;
 	}
 }

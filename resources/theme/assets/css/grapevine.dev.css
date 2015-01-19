@@ -599,6 +599,14 @@ span.error {
   margin-top: 5px;
   font-size: 0.923em; }
 
+.single-error {
+  background: #cc0000;
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  margin-bottom: 25px;
+  padding: 25px; }
+
 span.required {
   color: #cc0000; }
 

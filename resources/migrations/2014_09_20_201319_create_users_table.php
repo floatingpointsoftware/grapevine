@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->integer('posts')->index();
             $table->integer('topics')->index();
             $table->string('slug')->index();
+            $table->string('remember_token')->index();
             $table->softDeletes();
             $table->timestamps();
         });

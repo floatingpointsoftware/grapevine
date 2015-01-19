@@ -1,5 +1,4 @@
 <?php
-
 namespace FloatingPoint\Grapevine\Http\Requests\Forums;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -14,7 +13,7 @@ class CreateForumRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'title' => 'required',
         ];
     }
 
