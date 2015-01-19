@@ -21,10 +21,14 @@ class InstallGrapevineCommand extends Command
     protected $description = 'Install grapevine.';
 
     /**
-     * Handle the command functionality.
+     * Handle the command functionality, installing grapevine.
+     *
+     * 1. Migrate required grapevine files
+     * 2. Publish the grapevine theme for use
      */
     public function handle()
     {
         $this->call('grapevine:migrate');
+        $this->call('stylist:publish');
     }
 }
