@@ -1,10 +1,10 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Users\Data;
 
+use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Users\Events\UserHasRegistered;
-use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {

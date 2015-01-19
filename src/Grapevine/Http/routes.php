@@ -6,6 +6,8 @@ $routeGroupAttributes = [
 ];
 
 Route::group($routeGroupAttributes, function() {
+    Route::get('/', 'HomeController@index');
+
     Route::resource('forum', 'ForumController');
     Route::resource('user', 'UserController');
 

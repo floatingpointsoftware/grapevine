@@ -1,0 +1,17 @@
+section.header {
+	background: $colour-secondary;
+
+	.logo {
+		background: url("/themes/grapevine/img/logo.png") no-repeat;
+		height: 27px;
+		margin: 25px 0;
+		width: 196px;
+
+		a {
+			display: block;
+			height: 100%;
+			text-indent: -10000em;
+			width: 100%;
+		}
+	}
+}

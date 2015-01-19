@@ -11,7 +11,7 @@ var gulp   = require('gulp'),
 	watch  = require('gulp-watch');
 
 var input  = 'resources/assets/',
-	output = 'resources/public/';
+	output = 'resources/theme/assets/';
 
 var scripts = [
 

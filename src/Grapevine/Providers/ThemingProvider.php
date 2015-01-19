@@ -11,7 +11,7 @@ class ThemingProvider extends ServiceProvider
      *
      * @var array
      */
-    private $themePaths = [];
+    private $themePath = null;
 
     /**
      * Register the service provider.
@@ -28,7 +28,7 @@ class ThemingProvider extends ServiceProvider
         $this->setupTheme();
 
         $this->app['events']->listen('stylist.publishing', function() {
-            return $this->themePaths;
+            return [$this->themePath];
         });
     }
 
@@ -37,9 +37,7 @@ class ThemingProvider extends ServiceProvider
      */
     public function setupTheme()
     {
-        $this->themePaths = $this->app['stylist']->discover(__DIR__.'/../views/');
-
-        $this->app['stylist']->registerPaths($this->themePaths);
-        $this->app['stylist']->activate($this->app['stylist']->get('Grapevine'));
+        $this->themePath = __DIR__.'/../../../resources/theme/';
+        $this->app['stylist']->registerPath($this->themePath, true);
     }
 }

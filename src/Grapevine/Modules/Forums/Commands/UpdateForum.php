@@ -1,10 +1,10 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Modules\Categories\Commands;
+namespace FloatingPoint\Grapevine\Modules\Forums\Commands;
 
 use FloatingPoint\Grapevine\Library\Commands\Command;
 
-class UpdateCategory extends Command
+class UpdateForum extends Command
 {
     public $id;
     public $attributes;

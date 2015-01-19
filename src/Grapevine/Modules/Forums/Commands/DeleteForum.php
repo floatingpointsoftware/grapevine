@@ -1,10 +1,10 @@
 <?php
 
-namespace FloatingPoint\Grapevine\Modules\Categories\Commands;
+namespace FloatingPoint\Grapevine\Modules\Forums\Commands;
 
 use FloatingPoint\Grapevine\Library\Commands\Command;
 
-class DeleteCategory extends Command
+class DeleteForum extends Command
 {
     public $id;
 

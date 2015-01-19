@@ -3,3 +3,9 @@ body {
 	font-family: $font-primary;
 	margin: 0;
 }
+
+.container {
+	@include outer-container();
+
+	overflow: hidden;
+}
