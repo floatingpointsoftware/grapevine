@@ -1,23 +1,22 @@
 <?php
+namespace FloatingPoint\Grapevine\Modules\Forums\Handlers\Commands;
 
-namespace FloatingPoint\Grapevine\Modules\Forums\Handlers;
-
-use FloatingPoint\Grapevine\Library\Commands\CommandInterface;
+use FloatingPoint\Grapevine\Modules\Forums\Commands\DeleteForumCommand;
 use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 
-class DeleteForum implements CommandHandler
+class DeleteForumCommandHandler
 {
     /**
      * @var
      */
-    private $Forums;
+    private $forums;
 
     /**
      * @param ForumRepositoryInterface $forums
      */
     public function __construct(ForumRepositoryInterface $forums)
     {
-        $this->Forums = $forums;
+        $this->forums = $forums;
     }
 
     /**
@@ -26,10 +25,10 @@ class DeleteForum implements CommandHandler
      * @param CommandInterface $command
      * @return bool
      */
-    public function handle(CommandInterface $command)
+    public function handle(DeleteForumCommand $command)
     {
-        $forum = $this->Forums->getById($command->id);
+        $forum = $this->forums->requireById($command->id);
 
-        return $this->Forums->delete($forum);
+        return $this->forums->delete($forum);
     }
 } 

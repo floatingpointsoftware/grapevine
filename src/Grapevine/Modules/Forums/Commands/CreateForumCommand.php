@@ -1,10 +1,7 @@
 <?php
-
 namespace FloatingPoint\Grapevine\Modules\Forums\Commands;
 
-use FloatingPoint\Grapevine\Library\Commands\Command;
-
-class CreateForum extends Command
+class CreateForumCommand
 {
     private $name;
     private $description;

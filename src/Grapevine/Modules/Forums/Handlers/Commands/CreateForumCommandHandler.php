@@ -1,11 +1,12 @@
 <?php
-namespace FloatingPoint\Grapevine\Modules\Forums\Handlers;
+namespace FloatingPoint\Grapevine\Modules\Forums\Handlers\Commands;
 
 use FloatingPoint\Grapevine\Library\Events\Dispatcher;
+use FloatingPoint\Grapevine\Modules\Forums\Commands\CreateForumCommand;
 use FloatingPoint\Grapevine\Modules\Forums\Data\ForumFactory;
 use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 
-class CreateForum implements CommandHandler
+class CreateForumCommandHandler
 {
     use Dispatcher;
 
@@ -34,7 +35,7 @@ class CreateForum implements CommandHandler
      * @param CommandInterface $command
      * @return Forum
      */
-    public function handle(CommandInterface $command)
+    public function handle(CreateForumCommand $command)
     {
         $forum = $this->factory->create($command->title, $command->description);
 

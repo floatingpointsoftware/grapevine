@@ -46,7 +46,10 @@ abstract class EloquentRepository implements RepositoryInterface
         $model = $this->getById($id);
 
         if (! $model) {
-            throw with(new ModelNotFoundException)->setModel(get_class($this->model));
+            $exception = new ModelNotFoundException;
+            $exception->setModel(get_class($this->model));
+
+            throw $exception;
         }
 
         return $model;

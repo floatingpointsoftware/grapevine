@@ -3,7 +3,7 @@
 namespace FloatingPoint\Grapevine\Modules\Forums\Services;
 
 use Event;
-use FloatingPoint\Grapevine\Modules\Forums\Commands\CreateForum;
+use FloatingPoint\Grapevine\Modules\Forums\Commands\CreateForumCommand;
 
 /**
  * Class ForumService
@@ -22,7 +22,7 @@ class ForumService
      */
     public function createForum(array $input = [])
     {
-        return $this->execute(CreateForum::fromInput($input));
+        return $this->execute(CreateForumCommand::fromInput($input));
     }
 
     public function updateForum(array $input = [])
