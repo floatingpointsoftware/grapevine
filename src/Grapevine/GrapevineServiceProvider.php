@@ -1,11 +1,14 @@
 <?php
 namespace FloatingPoint\Grapevine;
 
+use FloatingPoint\Grapevine\Providers\AliasesServiceProvider;
 use FloatingPoint\Grapevine\Providers\BindingsServiceProvider;
+use FloatingPoint\Grapevine\Providers\BusServiceProvider;
 use FloatingPoint\Grapevine\Providers\ConsoleServiceProvider;
 use FloatingPoint\Grapevine\Providers\EventServiceProvider;
 use FloatingPoint\Grapevine\Providers\ThemingProvider;
 use FloatingPoint\Stylist\Facades\Stylist;
+use FloatingPoint\Stylist\Html\HtmlServiceProvider;
 use FloatingPoint\Stylist\StylistServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
 
@@ -17,11 +20,14 @@ class GrapevineServiceProvider extends AggregateServiceProvider
 	 * @var array
 	 */
 	protected $providers = [
+        AliasesServiceProvider::class,
+        BusServiceProvider::class,
         BindingsServiceProvider::class,
         ConsoleServiceProvider::class,
         EventServiceProvider::class,
+        HtmlServiceProvider::class,
         StylistServiceProvider::class,
-        ThemingProvider::class
+        ThemingProvider::class,
     ];
 
     /**

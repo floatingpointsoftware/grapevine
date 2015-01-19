@@ -1,7 +1,6 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Users\Commands;
 
-use FloatingPoint\Grapevine\Library\Commands\Command;
 use Illuminate\Contracts\Bus\SelfHandling;
 
 /**
@@ -12,7 +11,7 @@ use Illuminate\Contracts\Bus\SelfHandling;
  *
  * @package FloatingPoint\Grapevine\Modules\Users\Commands
  */
-class RegisterUserCommand extends Command
+class RegisterUserCommand
 {
 	public $username;
 	public $email;

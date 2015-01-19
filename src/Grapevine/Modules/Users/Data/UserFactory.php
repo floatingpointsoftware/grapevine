@@ -2,6 +2,7 @@
 namespace FloatingPoint\Grapevine\Modules\Users\Data;
 
 use FloatingPoint\Grapevine\Library\Events\Dispatcher;
+use FloatingPoint\Grapevine\Modules\Users\Events\UserHasRegistered;
 
 class UserFactory
 {

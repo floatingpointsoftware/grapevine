@@ -13,9 +13,19 @@ class RegisterUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|size:3',
+            'username' => 'required|min:3|alpha_num',
             'email'    => 'required|email|confirmed|unique:users,email',
-            'password' => 'required|size:8|confirmed'
+            'password' => 'required|min:6|confirmed'
         ];
+    }
+
+    /**
+     * Registrations are allowed by all users.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
     }
 }

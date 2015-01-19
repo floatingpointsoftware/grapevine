@@ -3,6 +3,7 @@ namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Http\Requests\Forums\RegisterUserRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
+use FloatingPoint\Grapevine\Modules\Users\Commands\RegisterUserCommand;
 
 class RegistrationController extends Controller
 {
@@ -13,7 +14,7 @@ class RegistrationController extends Controller
      */
     public function create()
     {
-        return view('registrations.create');
+        return $this->respond('registration.create');
     }
 
     /**
@@ -24,7 +25,15 @@ class RegistrationController extends Controller
      */
     public function store(RegisterUserRequest $request)
     {
-        $this->dispatchFrom(RegisterUserCommand::class, $request);
+        $this->dispatch(
+            new RegisterUserCommand(
+                $request->get('username'),
+                $request->get('email'),
+                $request->get('email_confirmation'),
+                $request->get('password'),
+                $request->get('password_confirmation')
+            )
+        );
 
         return redirect()->route('home');
     }

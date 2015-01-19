@@ -2,6 +2,7 @@
 namespace FloatingPoint\Grapevine\Library\Slugs;
 
 use Hashids\Hashids;
+use Illuminate\Support\Str;
 
 class Slug
 {

@@ -1,11 +1,41 @@
 body {
 	color: $colour-primary;
-	font-family: $font-primary;
 	margin: 0;
 }
 
+// Main grid styles.
 .container {
-	@include outer-container();
-
+	@include outer-container;
+	position: relative;
+}
+.row {
 	overflow: hidden;
+	position: relative;
+
+	&.panel {
+		border-top: 1px solid #d5d5d5;
+		padding-top: 15px;
+	}
+}
+.omega { @include omega; }
+
+.column-half           { @include span-columns( 6 of 12 ); }
+.column-third          { @include span-columns( 4 of 12 ); }
+.column-two-thirds     { @include span-columns( 8 of 12 ); }
+.column-quarter        { @include span-columns( 3 of 12 ); }
+.column-three-quarters { @include span-columns( 9 of 12 ); }
+.column-full           { @include span-columns( 12 of 12 ); }
+.column-sixth          { @include span-columns( 2 of 12 ); }
+
+.column-nest-half      { @include span-columns( 3 of 6 ); }
+
+// Fixes for IE 8.
+.lt-ie9 {
+	.column-half + .column-half,
+	.column-nested-half + .column-nested-half,
+	.column-quarter + .column-three-quarters,
+	.column-three-quarters + .column-quarter,
+	.column-third + .column-third + .column-third {
+		margin-right: 0;
+	}
 }

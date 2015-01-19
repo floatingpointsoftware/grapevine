@@ -1,0 +1,18 @@
+input[type=submit],
+input[type=button],
+button,
+.button {
+	@include transition(background, 0.15s);
+
+	background: $colour-tertiary;
+	border: none;
+	color: #fff;
+	display: inline-block;
+	padding: 8px 20px;
+	width: auto;
+
+	&:hover {
+		background: lighten($colour-tertiary, 5%);
+	}
+}
+

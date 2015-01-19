@@ -1,0 +1,19 @@
+body {
+	font-family: $font-primary;
+	font-size: em(14);
+}
+
+h1, h2, h3, h4 {
+	font-weight: 300;
+}
+
+a {
+	@include transition(color, 0.25s);
+
+	color: $colour-tertiary;
+	text-decoration: none;
+
+	&:hover {
+		color: darken($colour-tertiary, 25%);
+	}
+}

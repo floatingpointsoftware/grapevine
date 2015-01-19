@@ -6,12 +6,15 @@ $routeGroupAttributes = [
 ];
 
 Route::group($routeGroupAttributes, function() {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
     Route::resource('forum', 'ForumController');
     Route::resource('user', 'UserController');
 
     // Registrations
-    Route::get('register', 'RegistrationController@create');
-    Route::post('register', 'RegistrationController@store');
+    Route::get('register', ['as' => 'register.form', 'uses' => 'RegistrationController@create']);
+    Route::post('register', ['as' => 'register.submit', 'uses' => 'RegistrationController@store']);
+
+    Route::get('login', ['as' => 'login.form', 'uses' => 'AuthenticationController@form']);
+    Route::post('login', ['as' => 'login.submit', 'uses' => 'AuthenticationController@login']);
 });

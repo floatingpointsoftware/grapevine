@@ -337,7 +337,6 @@ table {
 
 body {
   color: #7a7a7a;
-  font-family: "Open Sans", sans-serif;
   margin: 0; }
 
 .container {
@@ -345,12 +344,297 @@ body {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
-  overflow: hidden; }
+  position: relative; }
   .container:before, .container:after {
     content: " ";
     display: table; }
   .container:after {
     clear: both; }
+
+.row {
+  overflow: hidden;
+  position: relative; }
+  .row.panel {
+    border-top: 1px solid #d5d5d5;
+    padding-top: 15px; }
+
+.omega {
+  margin-right: 0; }
+
+.column-half {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%; }
+  .column-half:last-child {
+    margin-right: 0; }
+
+.column-third {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%; }
+  .column-third:last-child {
+    margin-right: 0; }
+
+.column-two-thirds {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 65.88078%; }
+  .column-two-thirds:last-child {
+    margin-right: 0; }
+
+.column-quarter {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  .column-quarter:last-child {
+    margin-right: 0; }
+
+.column-three-quarters {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%; }
+  .column-three-quarters:last-child {
+    margin-right: 0; }
+
+.column-full {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .column-full:last-child {
+    margin-right: 0; }
+
+.column-sixth {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 14.70196%; }
+  .column-sixth:last-child {
+    margin-right: 0; }
+
+.column-nest-half {
+  float: left;
+  display: block;
+  margin-right: 4.82916%;
+  width: 47.58542%; }
+  .column-nest-half:last-child {
+    margin-right: 0; }
+
+.lt-ie9 .column-half + .column-half,
+.lt-ie9 .column-nested-half + .column-nested-half,
+.lt-ie9 .column-quarter + .column-three-quarters,
+.lt-ie9 .column-three-quarters + .column-quarter,
+.lt-ie9 .column-third + .column-third + .column-third {
+  margin-right: 0; }
+
+input[type=submit],
+input[type=button],
+button,
+.button {
+  -webkit-transition: background, 0.15s;
+  -moz-transition: background, 0.15s;
+  transition: background, 0.15s;
+  background: #73a7d3;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  padding: 8px 20px;
+  width: auto; }
+  input[type=submit]:hover,
+  input[type=button]:hover,
+  button:hover,
+  .button:hover {
+    background: #86b3d9; }
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.875em; }
+
+h1, h2, h3, h4 {
+  font-weight: 300; }
+
+a {
+  -webkit-transition: color, 0.25s;
+  -moz-transition: color, 0.25s;
+  transition: color, 0.25s;
+  color: #73a7d3;
+  text-decoration: none; }
+  a:hover {
+    color: #2f6897; }
+
+input,
+textarea,
+select {
+  border-radius: 2px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  padding: 8px;
+  width: 100%; }
+  input.invalid,
+  textarea.invalid,
+  select.invalid {
+    border-color: #cc0000; }
+    input.invalid:focus,
+    textarea.invalid:focus,
+    select.invalid:focus {
+      border-color: maroon; }
+
+select {
+  padding-left: 4px; }
+
+textarea {
+  min-height: 60px;
+  resize: none;
+  word-wrap: break-word; }
+  textarea.short {
+    min-height: 37px; }
+
+input[type=checkbox],
+input[type=radio] {
+  background-color: transparent;
+  border: 0;
+  margin-right: 6px;
+  padding: 0;
+  width: 20px; }
+
+input[type=radio] {
+  margin-right: 3px; }
+
+input[type=checkbox] + label,
+input[type=radio] + label {
+  position: relative;
+  top: -2px; }
+
+input[type=file] {
+  cursor: pointer; }
+
+.control {
+  overflow: hidden;
+  margin-top: 15px; }
+  .control:first-child {
+    margin-top: 0; }
+
+.control-heading {
+  border-bottom: 1px solid #d5d5d5;
+  margin: 45px 0 25px;
+  padding-bottom: 15px; }
+  .control-heading:first-child {
+    margin-top: 0; }
+
+.control-label,
+.horizontal .control-label {
+  float: left;
+  text-align: right;
+  display: table;
+  min-height: 35px; }
+  .control-label label,
+  .horizontal .control-label label {
+    display: table-cell;
+    padding-right: 20px;
+    vertical-align: middle; }
+  form.vertical .control-label, form.vertical
+  .horizontal .control-label {
+    min-height: 0; }
+
+.control-field,
+.horizontal .control-field {
+  float: right; }
+  .control-field .vertical, .control-field .horizontal,
+  .horizontal .control-field .vertical,
+  .horizontal .control-field .horizontal {
+    margin: 13px 0 11px; }
+  .control-field .vertical li,
+  .horizontal .control-field .vertical li {
+    margin-bottom: 5px; }
+  .control-field .horizontal li,
+  .horizontal .control-field .horizontal li {
+    margin-top: -2px; }
+
+.horizontal.control-group li + li label {
+  margin-right: 20px;
+  position: relative;
+  top: 1px; }
+
+.vertical .control {
+  overflow: hidden; }
+.vertical .control-label, .vertical .control-field {
+  float: none;
+  padding-right: 0;
+  text-align: left;
+  width: 100%; }
+.vertical .control-label {
+  margin-bottom: 4px; }
+.vertical .checkbox,
+.vertical .radio {
+  float: left; }
+
+.horizontal.spacious li {
+  margin-top: 5px; }
+.horizontal.spacious li.checkbox {
+  margin-top: 7px; }
+
+/* Actions styles */
+.form-actions {
+  margin-top: 45px; }
+  .form-actions.centered {
+    text-align: center; }
+  .form-actions input, .form-actions a {
+    margin-bottom: 10px; }
+
+/* Change the default focus colours */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #999;
+  outline: none; }
+
+span.error {
+  color: #cc0000;
+  display: block;
+  margin-top: 5px;
+  font-size: 0.923em; }
+
+span.required {
+  color: #cc0000; }
+
+div.disabled,
+label.disabled {
+  background-color: transparent !important; }
+
+::-webkit-input-placeholder {
+  color: #999999; }
+
+:-moz-placeholder {
+  color: #999999; }
+
+::-moz-placeholder {
+  color: #999999; }
+
+:-ms-input-placeholder {
+  color: #999999; }
+
+.ie-placeholder-container {
+  position: relative; }
+  .ie-placeholder-container .ie-placeholder {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #999999; }
+
+div.field-errors {
+  margin-top: 10px; }
+  div.field-errors .field-error {
+    color: #cc0000;
+    font-size: 80%; }
+
+section.main {
+  margin-top: 50px;
+  margin-bottom: 50px; }
 
 section.header {
   background: #353638; }
@@ -364,3 +648,7 @@ section.header {
       height: 100%;
       text-indent: -10000em;
       width: 100%; }
+
+.login-link {
+  display: inline-block;
+  margin-left: 20px; }
