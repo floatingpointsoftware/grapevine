@@ -5,7 +5,16 @@ use FloatingPoint\Grapevine\Modules\Forums\Events\TopicWasStarted;
 
 class TopicFactory
 {
-	public function start($forumId, $userId, $title, $description)
+    /**
+     * Create a new topic instance based on the required data.
+     *
+     * @param integer $forumId
+     * @param integer $userId
+     * @param string $title
+     * @param string $description
+     * @return Topic
+     */
+    public function start($forumId, $userId, $title, $description)
     {
         $topic = new Topic;
         $topic->forumId = $forumId;

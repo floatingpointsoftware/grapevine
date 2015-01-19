@@ -3,7 +3,14 @@ namespace FloatingPoint\Grapevine\Modules\Forums\Data;
 
 class ForumFactory
 {
-	public function create($title, $description)
+    /**
+     * Create a new forum object with the required data.
+     *
+     * @param string $title
+     * @param string $description
+     * @return Forum
+     */
+    public function create($title, $description)
     {
         $forum = new Forum;
         $forum->title = $title;
