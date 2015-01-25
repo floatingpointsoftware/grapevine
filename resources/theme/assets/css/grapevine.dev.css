@@ -441,6 +441,7 @@ button,
   transition: background, 0.15s;
   background: #73a7d3;
   border: none;
+  border-radius: 2px;
   color: #fff;
   display: inline-block;
   padding: 8px 20px;
@@ -451,12 +452,30 @@ button,
   .button:hover {
     background: #86b3d9; }
 
+header .buttons {
+  display: inline-block;
+  margin-left: 25px;
+  position: relative;
+  top: -2px; }
+  header .buttons .button {
+    font-size: 80%;
+    padding: 2px 10px; }
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 0.875em; }
 
 h1, h2, h3, h4 {
+  color: #000;
   font-weight: 300; }
+
+h1 {
+  font-size: 1.875em; }
+
+h2 {
+  font-size: 1.25em;
+  font-weight: bold;
+  letter-spacing: -1px; }
 
 a {
   -webkit-transition: color, 0.25s;
@@ -485,7 +504,8 @@ select {
       border-color: maroon; }
 
 select {
-  padding-left: 4px; }
+  padding-left: 4px;
+  -webkit-appearance: none; }
 
 textarea {
   min-height: 60px;
@@ -640,6 +660,9 @@ div.field-errors {
     color: #cc0000;
     font-size: 80%; }
 
+ul {
+  list-style: none; }
+
 section.main {
   margin-top: 50px;
   margin-bottom: 50px; }
@@ -657,6 +680,21 @@ section.header {
       text-indent: -10000em;
       width: 100%; }
 
+.menu.forums {
+  font-size: 1.25em;
+  letter-spacing: -1px; }
+  .menu.forums a {
+    font-weight: bold; }
+
 .login-link {
   display: inline-block;
   margin-left: 20px; }
+
+.forum {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 15px; }
+  .forum h2 {
+    display: inline-block;
+    margin: 0; }
+  .forum + .forum {
+    padding-top: 25px; }

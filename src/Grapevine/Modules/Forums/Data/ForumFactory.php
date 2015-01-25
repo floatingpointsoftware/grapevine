@@ -1,6 +1,8 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Forums\Data;
 
+use FloatingPoint\Grapevine\Modules\Forums\Events\ForumWasCreated;
+
 class ForumFactory
 {
     /**

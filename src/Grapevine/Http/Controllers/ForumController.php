@@ -1,9 +1,10 @@
 <?php
-namespace FloatingPoint\Http\Controllers;
+namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Http\Requests\Forums\CreateForumRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Forums\Commands\CreateForumCommand;
+use FloatingPoint\Grapevine\Modules\Forums\Data\Forum;
 use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 
 class ForumController extends Controller
@@ -34,6 +35,18 @@ class ForumController extends Controller
     }
 
     /**
+     * Render the forum creation form.
+     *
+     * @return mixed
+     */
+    public function create()
+    {
+        $forum = new Forum;
+
+        return $this->respond('forum.create', compact('forum'));
+    }
+
+    /**
      * Stores a new forum
      *
      * @param CreateForumRequest $request
@@ -41,8 +54,25 @@ class ForumController extends Controller
      */
     public function store(CreateForumRequest $request)
     {
-        $this->dispatchFrom(CreateForumCommand::class, $request);
+        $this->dispatch(new CreateForumCommand(
+            $request->get('parent_id', null),
+            $request->get('title'),
+            $request->get('description')
+        ));
 
         return redirect()->route('forum.index');
+    }
+
+    /**
+     * Edit a specific forum based on its slug.
+     *
+     * @param string $slug
+     * @return mixed
+     */
+    public function edit($slug)
+    {
+        $forum = $this->forums->requireBySlug($slug);
+
+        return $this->respond('forum.edit', compact('forum'));
     }
 }

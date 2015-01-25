@@ -3,14 +3,14 @@ namespace FloatingPoint\Grapevine\Modules\Forums\Commands;
 
 class CreateForumCommand
 {
+    public $parentId;
     public $title;
     public $description;
-    public $parentId;
 
-    function __construct($title, $description, $parent_id)
+    function __construct($parent_id, $title, $description)
     {
-        $this->description = $description;
-        $this->title = $title;
         $this->parentId = $parent_id;
+        $this->title = $title;
+        $this->description = $description;
     }
 }

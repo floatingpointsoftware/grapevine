@@ -18,7 +18,10 @@ select {
 }
 
 // Minor adjustment on the padding on dropdown menus.
-select { padding-left: 4px; }
+select {
+	padding-left: 4px;
+	-webkit-appearance:none;
+}
 
 
 // Restrict textarea resizing.

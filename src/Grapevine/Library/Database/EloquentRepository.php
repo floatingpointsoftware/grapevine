@@ -2,6 +2,7 @@
 namespace FloatingPoint\Grapevine\Library\Database;
 
 use Event;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 abstract class EloquentRepository implements RepositoryInterface
 {
@@ -43,9 +44,34 @@ abstract class EloquentRepository implements RepositoryInterface
      */
     public function requireById($id)
     {
-        $model = $this->getById($id);
+        return $this->requireBy('id', $id);
+    }
 
-        if (! $model) {
+    /**
+     * Retrieve a model based on the field and value.
+     *
+     * @param string $field
+     * @param mixed $value
+     * @return mixed
+     */
+    public function getBy($field, $value)
+    {
+        return $this->model->where($field, '=', $value)->first();
+    }
+
+    /**
+     * Almost identical to getBy, but instead of returning null or empty collections, instead throws an exception.
+     *
+     * @param string $field
+     * @param string $value
+     * @return mixed
+     * @throws ModelNotFoundException
+     */
+    public function requireBy($field, $value)
+    {
+        $model = $this->getBy($field, $value);
+
+        if (!$model) {
             $exception = new ModelNotFoundException;
             $exception->setModel(get_class($this->model));
 
@@ -53,18 +79,6 @@ abstract class EloquentRepository implements RepositoryInterface
         }
 
         return $model;
-    }
-
-    /**
-     * Retrieve a model based on the field and value.
-     *
-     * @param $field
-     * @param $value
-     * @return mixed
-     */
-    public function getBy($field, $value)
-    {
-        return $this->model->where($field, '=', $value)->first();
     }
 
     /**
@@ -162,5 +176,16 @@ abstract class EloquentRepository implements RepositoryInterface
         foreach ($resources as $resource) {
             $this->save($resource);
         }
+    }
+
+    /**
+     * Require a specific record by its slug.
+     *
+     * @param string $slug
+     * @return mixed
+     */
+    public function requireBySlug($slug)
+    {
+        return $this->requireBy('slug', $slug);
     }
 }

@@ -6,6 +6,7 @@ button,
 
 	background: $colour-tertiary;
 	border: none;
+	border-radius: $default-radius;
 	color: #fff;
 	display: inline-block;
 	padding: 8px 20px;
@@ -16,3 +17,16 @@ button,
 	}
 }
 
+header {
+	.buttons {
+		display: inline-block;
+		margin-left: 25px;
+		position: relative;
+		top: -2px;
+
+		.button {
+			font-size: 80%;
+			padding: 2px 10px;
+		}
+	}
+}

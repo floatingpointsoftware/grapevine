@@ -1,8 +1,6 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Events;
 
-use App\Events\Event;
-
 trait Raiseable
 {
     /**
@@ -15,9 +13,9 @@ trait Raiseable
     /**
      * Raise a new event that will be released and fired later.
      *
-     * @param Event $event
+     * @param object $event
      */
-    public function raise(Event $event)
+    public function raise($event)
     {
         $this->events[] = $event;
     }

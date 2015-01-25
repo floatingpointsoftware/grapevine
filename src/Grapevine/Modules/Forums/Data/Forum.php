@@ -21,4 +21,16 @@ class Forum extends Model
             $forum->slug = Slug::fromTitle($forum->title);
         });
     }
+
+    /**
+     * Forums have some interesting requirements that we can bundle in a custom
+     * collection class for managing that functionality.
+     *
+     * @param array $models
+     * @return ForumCollection
+     */
+    public function newCollection(array $models = array())
+    {
+        return new ForumCollection($models);
+    }
 }

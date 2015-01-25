@@ -1,0 +1,13 @@
+.forum {
+	border-bottom: 1px solid lighten($colour-primary, 40%);
+	padding-bottom: 15px;
+
+	h2 {
+		display: inline-block;
+		margin: 0;
+	}
+
+	& + .forum {
+		padding-top: 25px;
+	}
+}
