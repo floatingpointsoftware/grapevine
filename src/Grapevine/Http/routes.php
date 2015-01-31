@@ -10,8 +10,9 @@ Route::group($routeGroupAttributes, function() {
 
     Route::resource('forum', 'ForumController');
     Route::resource('forum.topics', 'TopicController');
+    Route::resource('forum.topics.posts', 'PostController');
     Route::resource('user', 'UserController');
-
+    
     // Registrations
     Route::get('register', ['as' => 'register.form', 'uses' => 'RegistrationController@create']);
     Route::post('register', ['as' => 'register.submit', 'uses' => 'RegistrationController@store']);
