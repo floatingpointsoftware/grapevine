@@ -18,8 +18,8 @@ class CreateForumsTable extends Migration
             $table->string('title');
             $table->string('slug')->index();
             $table->text('description');
-            $table->integer('topics');
-            $table->integer('posts');
+            $table->integer('topics')->default(0);
+            $table->integer('posts')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

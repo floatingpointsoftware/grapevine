@@ -19,8 +19,8 @@ class CreateTopicsTable extends Migration
             $table->integer('forum_id')->index();
             $table->string('title', 100);
             $table->string('slug')->index();
-            $table->integer('views');
-            $table->integer('posts');
+            $table->integer('views')->default(0);
+            $table->integer('posts')->default(0);
             $table->boolean('locked');
             $table->boolean('pinned');
             $table->softDeletes();
