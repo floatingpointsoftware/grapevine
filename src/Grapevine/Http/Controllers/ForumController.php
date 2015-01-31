@@ -17,7 +17,7 @@ class ForumController extends Controller
     /**
      * @param ForumRepositoryInterface $forums
      */
-    function __construct(ForumRepositoryInterface $forums)
+    public function __construct(ForumRepositoryInterface $forums)
     {
         $this->forums = $forums;
     }
