@@ -1,41 +1,41 @@
 {
-    "name": "floatingpoint/grapevine",
-    "description": "Laravel 4 forum package by Floating Point Software.",
-    "authors": [
-        {
-            "name": "Kirk Bushell",
-            "email": "torm3nt@gmail.com"
-        },
-        {
-            "name": "Mike Dugan",
-            "email": "mike@mjdugan.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.5.0",
-	    "floatingpoint/stylist": "dev-master",
-        "hashids/hashids": "1.0.*@dev",
-        "kirkbushell/eloquence": "dev-L5",
-        "illuminate/html": "~5.0",
-        "illuminate/support": "5.0.*"
+  "name": "floatingpoint/grapevine",
+  "description": "Laravel 4 forum package by Floating Point Software.",
+  "authors": [
+    {
+      "name": "Kirk Bushell",
+      "email": "torm3nt@gmail.com"
     },
-    "require-dev": {
-        "mockery/mockery": "dev-master@dev",
-        "orchestra/testbench": "3.0.*@dev",
-        "phpunit/phpunit": "4.2.*",
-        "barryvdh/laravel-ide-helper": "1.11.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "FloatingPoint\\Grapevine\\": "src/Grapevine",
-            "Tests\\": "tests"
-        }
-    },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git://github.com/orchestral/phpseclib.git"
-        }
-    ]
+    {
+      "name": "Mike Dugan",
+      "email": "mike@mjdugan.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "floatingpoint/stylist": "dev-master",
+    "hashids/hashids": "1.0.*@dev",
+    "kirkbushell/eloquence": "dev-L5",
+    "illuminate/html": "~5.0",
+    "illuminate/support": "5.0.*"
+  },
+  "require-dev": {
+    "mockery/mockery": "dev-master@dev",
+    "orchestra/testbench": "3.0.*@dev",
+    "phpunit/phpunit": "4.2.*",
+    "barryvdh/laravel-ide-helper": "1.11.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "FloatingPoint\\Grapevine\\": "src/Grapevine",
+      "Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git://github.com/orchestral/phpseclib.git"
+    }
+  ]
 }
