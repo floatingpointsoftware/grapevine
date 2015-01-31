@@ -10,9 +10,14 @@ class EloquentForumRepository extends EloquentRepository implements ForumReposit
     /**
      * @param Forum $forum
      */
-    function __construct(Forum $forum)
+    public function __construct(Forum $forum)
     {
         $this->setModel($forum);
+    }
+
+    public function getBySlug($slug)
+    {
+        return $this->model->where('slug', $slug)->firstOrFail();
     }
 
     /**

@@ -46,6 +46,13 @@ class ForumController extends Controller
         return $this->respond('forum.create', compact('forum'));
     }
 
+    public function show($slug)
+    {
+        $forum = $this->forums->getBySlug($slug);
+
+        return $this->respond('forum.view', compact('forum'));
+    }
+
     /**
      * Stores a new forum
      *
