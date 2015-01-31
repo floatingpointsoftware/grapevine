@@ -5,12 +5,16 @@ use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Topic extends Model
 {
     use Sluggable;
     use Raiseable;
 
+    /**
+     * @return BelongsTo
+     */
     public function forum()
     {
         return $this->belongsTo(Forum::class);

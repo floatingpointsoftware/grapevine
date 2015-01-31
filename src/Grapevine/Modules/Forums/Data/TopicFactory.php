@@ -11,16 +11,14 @@ class TopicFactory
      * @param integer $forumId
      * @param integer $userId
      * @param string $title
-     * @param string $description
      * @return Topic
      */
-    public function start($forumId, $userId, $title, $description)
+    public function start($forumId, $userId, $title)
     {
         $topic = new Topic;
         $topic->forumId = $forumId;
         $topic->userId = $userId;
         $topic->title = $title;
-        $topic->description = $description;
 
         $topic->raise(new TopicWasStarted($topic));
 

@@ -21,8 +21,8 @@ class CreateTopicsTable extends Migration
             $table->string('slug')->index();
             $table->integer('views')->default(0);
             $table->integer('posts')->default(0);
-            $table->boolean('locked');
-            $table->boolean('pinned');
+            $table->boolean('locked')->default(0);
+            $table->boolean('pinned')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

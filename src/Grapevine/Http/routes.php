@@ -9,6 +9,7 @@ Route::group($routeGroupAttributes, function() {
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
     Route::resource('forum', 'ForumController');
+    Route::resource('forum.topics', 'TopicController');
     Route::resource('user', 'UserController');
 
     // Registrations

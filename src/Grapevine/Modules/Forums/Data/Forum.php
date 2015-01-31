@@ -33,4 +33,9 @@ class Forum extends Model
     {
         return new ForumCollection($models);
     }
+
+    public function children()
+    {
+        return $this->hasMany(Topic::class);
+    }
 }

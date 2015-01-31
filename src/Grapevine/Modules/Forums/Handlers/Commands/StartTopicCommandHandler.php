@@ -35,7 +35,7 @@ class StartTopicCommandHandler
      */
     public function handle(StartTopicCommand $command)
     {
-        $topic = $this->factory->start($command->forumId, $command->userId, $command->title, $command->description);
+        $topic = $this->factory->start($command->forumId, $command->userId, $command->title);
 
         $this->topics->save($topic);
 
