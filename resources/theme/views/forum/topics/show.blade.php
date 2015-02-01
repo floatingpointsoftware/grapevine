@@ -15,6 +15,7 @@
                     {!! Form::open(['method' => 'DELETE', 'route' => ['forum.topics.replies.destroy', $topic->forum->slug, $topic->slug, $reply->id]]) !!}
                     {!! Form::submit('Delete') !!}
                     {!! Form::close() !!}
+                    {!! HTML::linkRoute('forum.topics.replies.edit', 'Edit', [$topic->forum->slug, $topic->slug, $reply->id]) !!}
                 </div>
             </div>
             <hr/>

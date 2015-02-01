@@ -3,18 +3,19 @@ namespace FloatingPoint\Grapevine\Modules\Forums\Handlers\Commands;
 
 use FloatingPoint\Grapevine\Modules\Forums\Commands\UpdateReplyCommand;
 use FloatingPoint\Grapevine\Library\Support\Command;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\ReplyRepositoryInterface;
 
-class UpdateReplyCommandHandler extends Command
+class UpdateReplyCommandHandler
 {
-    public function __construct(PostRepositoryInterface $posts)
+    public function __construct(ReplyRepositoryInterface $replies)
     {
-        $this->posts = $posts;
+        $this->replies = $replies;
     }
 
     public function handle(UpdateReplyCommand $command)
     {
-        $post = $this->posts->getById($command->id);
+        $replies = $this->replies->getById($command->id);
 
-        return $this->posts->update($post, $command->toArray());
+        $this->replies->update($replies, $command->toArray());
     }
 }

@@ -12,6 +12,8 @@ class Reply extends Model
     use Raiseable;
     use Sluggable;
 
+    protected $guarded = ['id'];
+
     public static function boot()
     {
         parent::boot();
