@@ -1,12 +1,31 @@
 <?php 
 namespace FloatingPoint\Grapevine\Modules\Forums\Data;
 
+use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Users\Data\User;
 use FloatingPoint\Grapevine\Library\Database\Model;
+use FloatingPoint\Grapevine\Library\Events\Raiseable;
+use FloatingPoint\Grapevine\Library\Slugs\Slug;
 
-class Post extends Model
+class Reply extends Model
 {
     use Raiseable;
+    use Sluggable;
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($reply)
+        {
+            $reply->slug = Slug::fromId($reply->id);
+            $reply->topic->incrementReplies();
+        });
+
+        static::deleting(function($reply)
+        {
+            $reply->topic->decrementReplies();
+        });
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -33,7 +52,7 @@ class Post extends Model
     }
 
     /**
-     * A Post is acceptable and it can be published
+     * A Reply is acceptable and it can be published
      *
      * @TODO: implement
      * @return void
@@ -44,7 +63,7 @@ class Post extends Model
     }
 
     /**
-     * A Post is for whatever reason not acceptable
+     * A Reply is for whatever reason not acceptable
      *
      * @return void
      */
@@ -54,7 +73,7 @@ class Post extends Model
     }
 
     /**
-     * A User thinks this Post is inappropriate
+     * A User thinks this Reply is inappropriate
      *
      * @param $userId
      * @return void

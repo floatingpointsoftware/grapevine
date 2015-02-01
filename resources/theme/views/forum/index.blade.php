@@ -12,6 +12,7 @@
                 @if ($forum->description)
                     <footer>
                         <p>{!! $forum->description !!}</p>
+                        <p>{{ $forum->topics_count . ' topics, ' . $forum->replies_count . ' replies' }}</p>
                     </footer>
                 @endif
             </div>

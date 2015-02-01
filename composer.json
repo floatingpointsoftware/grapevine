@@ -1,6 +1,6 @@
 {
   "name": "floatingpoint/grapevine",
-  "description": "Laravel 4 forum package by Floating Point Software.",
+  "description": "Laravel 5 forum package by Floating Point Software.",
   "authors": [
     {
       "name": "Kirk Bushell",
@@ -22,8 +22,7 @@
   "require-dev": {
     "mockery/mockery": "dev-master@dev",
     "orchestra/testbench": "3.0.*@dev",
-    "phpunit/phpunit": "4.2.*",
-    "barryvdh/laravel-ide-helper": "1.11.*"
+    "phpunit/phpunit": "4.2.*"
   },
   "autoload": {
     "psr-4": {

@@ -28,4 +28,9 @@ class EloquentTopicRepository extends EloquentRepository implements TopicReposit
 
         return $query->paginate();
     }
+
+    public function getBySlug($topicSlug)
+    {
+        return $this->model->whereSlug($topicSlug)->firstOrFail();
+    }
 }

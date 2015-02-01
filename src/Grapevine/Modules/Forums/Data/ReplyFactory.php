@@ -1,20 +1,21 @@
 <?php 
 namespace FloatingPoint\Grapevine\Modules\Forums\Data;
 
-use FloatingPoint\Grapevine\Modules\Forums\Events\PostWasAdded;
+use FloatingPoint\Grapevine\Library\Slugs\Slug;
+use FloatingPoint\Grapevine\Modules\Forums\Events\TopicWasRepliedTo;
 
-class PostFactory 
+class ReplyFactory
 {
     /**
      * Blindly creates new post from Arrayable object
      *
      * @param Arrayable $command
-     * @return Post
+     * @return Reply
      */
     public function fromArray(Arrayable $command)
     {
-        $post = new Post($command->toArray());
-        $post->raise(new PostWasAdded($post));
+        $post = new Reply($command->toArray());
+        $post->raise(new TopicWasRepliedTo($post));
 
         return $post;
     }
@@ -26,18 +27,18 @@ class PostFactory
      * @param $userId
      * @param $title
      * @param $content
-     * @return Post
+     * @return Reply
      */
     public function create($topicId, $userId, $title, $content)
     {
-        $post = new Post;
-        $post->topicId = $topicId;
-        $post->userId = $userId;
-        $post->title = $title;
-        $post->content = $content;
+        $reply = new Reply;
+        $reply->topicId = $topicId;
+        $reply->userId = $userId;
+        $reply->title = $title;
+        $reply->content = $content;
 
-        $post->raise(new PostWasAdded($post));
+        $reply->raise(new TopicWasRepliedTo($reply));
 
-        return $post;
+        return $reply;
     }
 }

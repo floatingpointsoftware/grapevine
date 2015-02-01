@@ -3,7 +3,7 @@ namespace FloatingPoint\Grapevine\Modules\Forums\Commands;
 
 use FloatingPoint\Grapevine\Library\Support\Command;
 
-class DeletePostCommand extends Command
+class DeleteReplyCommand extends Command
 {
     public $id;
 

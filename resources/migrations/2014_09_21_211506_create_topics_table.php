@@ -20,7 +20,7 @@ class CreateTopicsTable extends Migration
             $table->string('title', 100);
             $table->string('slug')->index();
             $table->integer('views')->default(0);
-            $table->integer('posts')->default(0);
+            $table->integer('replies_count')->default(0);
             $table->boolean('locked')->default(0);
             $table->boolean('pinned')->default(0);
             $table->softDeletes();

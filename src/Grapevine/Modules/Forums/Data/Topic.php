@@ -20,6 +20,11 @@ class Topic extends Model
         return $this->belongsTo(Forum::class);
     }
 
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     /**
      * Whenever a user is created, create a new slug based on their username.
      */
@@ -28,6 +33,39 @@ class Topic extends Model
         parent::boot();
         static::creating(function($topic) {
             $topic->slug = Slug::fromTitle($topic->title);
+            $topic->forum->incrementTopics();
         });
+
+        static::deleting(function($topic)
+        {
+            $topic->forum->decrementTopics();
+        });
+
+    }
+
+    public function incrementReplies()
+    {
+        $this->replies_count++;
+        $this->forum->incrementReplies();
+        $this->save();
+    }
+
+    public function decrementReplies()
+    {
+        $this->replies_count--;
+        $this->forum->decrementReplies();
+        $this->save();
+    }
+
+    public function incrementViews()
+    {
+        $this->views++;
+        $this->save();
+    }
+
+    public function decrementViews()
+    {
+        $this->views--;
+        $this->save();
     }
 }

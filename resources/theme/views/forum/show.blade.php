@@ -7,8 +7,11 @@
     @else
         @foreach($forum->children as $topic)
             <div class="row">
-                <div class="col-md-12">{{ $topic->title }}</div>
+                <div class="col-md-3">{!! HTML::linkRoute('forum.topics.show', $topic->title, [$topic->forum->slug, $topic->slug]) !!}</div>
+                <div class="col-md-3">{{ $topic->replies_count }} replies, {{ $topic->views }} views</div>
+                <div class="col-md-3">Created {{ $topic->createdAt->toDayDateTimeString() }}</div>
             </div>
+            <hr/>
         @endforeach
     @endif
     {!! HTML::linkRoute('forum.topics.create', 'New Topic', [$forum->slug]) !!}

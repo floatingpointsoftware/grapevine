@@ -1,16 +1,16 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Forums\Events;
 
-use FloatingPoint\Grapevine\Modules\Forums\Data\Post;
+use FloatingPoint\Grapevine\Modules\Forums\Data\Reply;
 
-class PostWasAdded 
+class TopicWasRepliedTo
 {
     /**
-     * @var Post
+     * @var Reply
      */
     private $post;
 
-    public function __construct(Post $post)
+    public function __construct(Reply $post)
     {
         $this->post = $post;
     }

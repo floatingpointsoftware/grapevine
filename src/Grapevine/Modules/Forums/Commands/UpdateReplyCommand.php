@@ -3,24 +3,25 @@ namespace FloatingPoint\Grapevine\Modules\Forums\Commands;
 
 use FloatingPoint\Grapevine\Library\Support\Command;
 
-class CreatePostCommand extends Command
+class UpdateReplyCommand extends Command
 {
-    public $userId;
+    public $id;
     public $topicId;
     public $subject;
-    public $content;
+    public $comment;
 
     /**
-     * @param $userId
+     * @param $id
      * @param $topicId
      * @param $subject
-     * @param $content
+     * @param $comment
      */
-    public function __construct($userId, $topicId, $subject, $content)
+    public function __construct($id, $topicId, $subject, $comment)
     {
-        $this->userId = $userId;
+        $this->id = $id;
         $this->topicId = $topicId;
         $this->subject = $subject;
-        $this->content = $content;
+        $this->comment = $comment;
     }
+
 }

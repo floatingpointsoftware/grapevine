@@ -10,7 +10,7 @@ Route::group($routeGroupAttributes, function() {
 
     Route::resource('forum', 'ForumController');
     Route::resource('forum.topics', 'TopicController');
-    Route::resource('forum.topics.posts', 'PostController');
+    Route::resource('forum.topics.replies', 'ReplyController');
     Route::resource('user', 'UserController');
     
     // Registrations

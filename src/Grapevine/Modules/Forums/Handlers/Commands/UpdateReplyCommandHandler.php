@@ -1,17 +1,17 @@
 <?php 
 namespace FloatingPoint\Grapevine\Modules\Forums\Handlers\Commands;
 
-use FloatingPoint\Grapevine\Modules\Forums\Commands\UpdatePostCommand;
+use FloatingPoint\Grapevine\Modules\Forums\Commands\UpdateReplyCommand;
 use FloatingPoint\Grapevine\Library\Support\Command;
 
-class UpdatePostCommandHandler extends Command
+class UpdateReplyCommandHandler extends Command
 {
     public function __construct(PostRepositoryInterface $posts)
     {
         $this->posts = $posts;
     }
 
-    public function handle(UpdatePostCommand $command)
+    public function handle(UpdateReplyCommand $command)
     {
         $post = $this->posts->getById($command->id);
 

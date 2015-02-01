@@ -38,4 +38,28 @@ class Forum extends Model
     {
         return $this->hasMany(Topic::class);
     }
+
+    public function incrementReplies()
+    {
+        $this->replies_count++;
+        $this->save();
+    }
+
+    public function decrementReplies()
+    {
+        $this->replies_count--;
+        $this->save();
+    }
+
+    public function incrementTopics()
+    {
+        $this->topics_count++;
+        $this->save();
+    }
+
+    public function decrementTopics()
+    {
+        $this->topics_count--;
+        $this->save();
+    }
 }

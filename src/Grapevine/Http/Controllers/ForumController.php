@@ -50,7 +50,7 @@ class ForumController extends Controller
     {
         $forum = $this->forums->getBySlug($slug);
 
-        return $this->respond('forum.view', compact('forum'));
+        return $this->respond('forum.show', compact('forum'));
     }
 
     /**
