@@ -15,6 +15,7 @@
 
                         {!! Form::submit('Delete') !!}
                     {!! Form::close() !!}
+                    {!! HTML::linkRoute('forum.topics.edit', 'Edit', [$topic->forum->slug, $topic->slug]) !!}
                 </div>
             </div>
             <hr/>

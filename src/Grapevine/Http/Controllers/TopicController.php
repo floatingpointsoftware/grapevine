@@ -6,6 +6,8 @@ use FloatingPoint\Grapevine\Modules\Forums\Data\Topic;
 use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
 use FloatingPoint\Grapevine\Http\Requests\Forums\StartTopicRequest;
 use FloatingPoint\Grapevine\Modules\Forums\Repositories\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Http\Requests\Forums\UpdateTopicRequest;
+use FloatingPoint\Grapevine\Modules\Forums\Commands\UpdateTopicCommand;
 
 class TopicController extends Controller
 {
@@ -51,18 +53,18 @@ class TopicController extends Controller
         return redirect()->route('forum.show', [$forumSlug]);
     }
 
-    public function edit($topicSlug)
+    public function edit($forumSlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
         return $this->respond('forum.topics.edit', compact('topic'));
     }
 
-    public function update(UpdateTopicRequest $request, $topicSlug)
+    public function update(UpdateTopicRequest $request, $forumSlug, $topicSlug)
     {
-        $this->dispatchFrom(UpdateTopicCommand::class, $request);
+        $this->dispatch(new UpdateTopicCommand($request->get('title'), $topicSlug));
 
-        return redirect()->back();
+        return redirect()->route('forum.show', [$forumSlug]);
     }
 
     public function show($forumSlug, $topicSlug)
