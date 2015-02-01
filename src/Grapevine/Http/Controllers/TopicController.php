@@ -74,8 +74,11 @@ class TopicController extends Controller
         return $this->respond('forum.topics.show', compact('topic'));
     }
 
-    public function destroy($topicSlug)
+    public function destroy($forumSlug, $topicSlug)
     {
+        $topic = $this->topics->getBySlug($topicSlug);
+        $this->topics->delete($topic);
 
+        return redirect()->route('forum.show', [$forumSlug]);
     }
 }

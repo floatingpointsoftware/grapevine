@@ -20,6 +20,14 @@ class Forum extends Model
         static::creating(function($forum) {
             $forum->slug = Slug::fromTitle($forum->title);
         });
+
+        static::deleting(function($forum)
+        {
+            $forum->topics->each(function($topic)
+            {
+                $topic->delete();
+            });
+        });
     }
 
     /**
@@ -29,7 +37,7 @@ class Forum extends Model
      * @param array $models
      * @return ForumCollection
      */
-    public function newCollection(array $models = array())
+    public function newCollection(array $models = [])
     {
         return new ForumCollection($models);
     }

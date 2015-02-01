@@ -8,8 +8,13 @@
         <p>{{ $topic->replies_count }} replies, {{ $topic->views }} views</p>
         @foreach($topic->replies as $reply)
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     {{ $reply->content }}
+                </div>
+                <div class="col-md-4">
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['forum.topics.replies.destroy', $topic->forum->slug, $topic->slug, $reply->id]]) !!}
+                    {!! Form::submit('Delete') !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
             <hr/>

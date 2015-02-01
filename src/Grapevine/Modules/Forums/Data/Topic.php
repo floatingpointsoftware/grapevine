@@ -39,6 +39,10 @@ class Topic extends Model
         static::deleting(function($topic)
         {
             $topic->forum->decrementTopics();
+            $topic->replies->each(function($reply)
+            {
+                $reply->delete();
+            });
         });
 
     }

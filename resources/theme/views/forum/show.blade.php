@@ -10,6 +10,12 @@
                 <div class="col-md-3">{!! HTML::linkRoute('forum.topics.show', $topic->title, [$topic->forum->slug, $topic->slug]) !!}</div>
                 <div class="col-md-3">{{ $topic->replies_count }} replies, {{ $topic->views }} views</div>
                 <div class="col-md-3">Created {{ $topic->createdAt->toDayDateTimeString() }}</div>
+                <div class="col-md-3">
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['forum.topics.destroy', $forum->slug, $topic->slug]]) !!}
+
+                        {!! Form::submit('Delete') !!}
+                    {!! Form::close() !!}
+                </div>
             </div>
             <hr/>
         @endforeach

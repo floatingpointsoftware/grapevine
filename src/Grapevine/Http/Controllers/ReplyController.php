@@ -5,15 +5,17 @@ use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Http\Requests\Forums\ReplyToTopicRequest;
 use FloatingPoint\Grapevine\Modules\Forums\Commands\ReplyToTopicCommand;
 use FloatingPoint\Grapevine\Modules\Forums\Data\Reply;
+use FloatingPoint\Grapevine\Modules\Forums\Repositories\ReplyRepositoryInterface;
 use FloatingPoint\Grapevine\Modules\Forums\Repositories\TopicRepositoryInterface;
 
 class ReplyController extends Controller
 {
     private $topics;
 
-    public function __construct(TopicRepositoryInterface $topics)
+    public function __construct(TopicRepositoryInterface $topics, ReplyRepositoryInterface $replies)
     {
         $this->topics = $topics;
+        $this->replies = $replies;
     }
 
     public function create($forumSlug, $topicSlug)
@@ -35,5 +37,13 @@ class ReplyController extends Controller
             $request->get('title'),
             $request->get('content')
         ));
+    }
+
+    public function destroy($forumSlug, $topicSlug, $id)
+    {
+        $reply = $this->replies->getById($id);
+        $this->replies->delete($reply);
+
+        return redirect()->route('forum.topics.show', [$forumSlug, $topicSlug]);
     }
 }
