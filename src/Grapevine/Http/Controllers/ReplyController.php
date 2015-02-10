@@ -2,8 +2,8 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Http\Requests\Categories\ReplyToTopicRequest;
-use FloatingPoint\Grapevine\Http\Requests\Categories\UpdateReplyRequest;
+use FloatingPoint\Grapevine\Http\Requests\Topics\ReplyToTopicRequest;
+use FloatingPoint\Grapevine\Http\Requests\Topics\UpdateReplyRequest;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\ReplyToTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateReplyCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;

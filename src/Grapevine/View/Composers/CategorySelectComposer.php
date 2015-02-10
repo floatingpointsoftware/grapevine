@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\View\Composers;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
 use Illuminate\Contracts\View\View;
 
-class Categ§orySelectComposer
+class CategorySelectComposer
 {
     /**
      * @var CategoryRepositoryInterface

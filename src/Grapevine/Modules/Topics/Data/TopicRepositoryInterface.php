@@ -12,4 +12,12 @@ interface TopicRepositoryInterface
      * @return mixed
      */
     public function getRecent($categoryId = null);
+
+    /**
+     * Retrieve all topics by the category id, paginated.
+     *
+     * @param integer $categoryId
+     * @return mixed
+     */
+    public function getByCategoryId($categoryId);
 }

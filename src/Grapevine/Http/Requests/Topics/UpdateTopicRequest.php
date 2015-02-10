@@ -1,15 +1,14 @@
 <?php
-namespace FloatingPoint\Grapevine\Http\Requests\Categories;
+namespace FloatingPoint\Grapevine\Http\Requests\Topics;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StartTopicRequest extends FormRequest
+class UpdateTopicRequest extends FormRequest
 {
     public function rules()
     {
         return [
-            'title' => 'required',
-            'body' => 'required'
+            'title' => 'required'
         ];
     }
 

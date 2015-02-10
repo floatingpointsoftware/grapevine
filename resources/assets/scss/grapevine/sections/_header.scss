@@ -3,16 +3,18 @@ section.header {
 	padding-top: 25px;
 	padding-bottom: 25px;
 
-	.logo {
-		background: url("/themes/grapevine/img/logo.png") no-repeat;
-		height: 27px;
-		width: 196px;
+	.navbar {
+		min-height: inherit;
+		margin-bottom: 0;
+	}
 
-		a {
-			display: block;
-			height: 100%;
-			text-indent: -10000em;
-			width: 100%;
-		}
+	.navbar-brand {
+		height: auto;
+		width: auto;
+		padding: 0;
+	}
+
+	.navbar-nav {
+		float: right;
 	}
 }

@@ -30,8 +30,25 @@ class EloquentTopicRepository extends EloquentRepository implements TopicReposit
         return $query->paginate();
     }
 
+    /**
+     * Retrieve a topic by its slug string.
+     *
+     * @param string $topicSlug
+     * @return mixed
+     */
     public function getBySlug($topicSlug)
     {
         return $this->model->whereSlug($topicSlug)->firstOrFail();
+    }
+
+    /**
+     * Retrieve all topics by the category id, paginated.
+     *
+     * @param integer $categoryId
+     * @return Paginator
+     */
+    public function getByCategoryId($categoryId)
+    {
+        $this->model->whereCategoryId($categoryId)->paginate();
     }
 }

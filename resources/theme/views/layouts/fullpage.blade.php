@@ -9,8 +9,20 @@
         <section class="header">
             <div class="container">
                 <div class="row">
-                    <div class="logo">{!! HTML::link('/', 'Grapevine discussion category') !!}</div>
-                    <div class="account"></div>
+                    <nav class="navbar">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/">{!! Theme::image('img/logo.png') !!}</a>
+                        </div>
+
+                        <nav class="nav navbar-nav">
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="{!! route('category.create') !!}">Setup category</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </nav>
                 </div>
             </div>
         </section>

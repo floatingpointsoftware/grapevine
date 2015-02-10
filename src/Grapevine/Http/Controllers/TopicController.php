@@ -1,8 +1,8 @@
 <?php
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
-use FloatingPoint\Grapevine\Http\Requests\Categories\StartTopicRequest;
-use FloatingPoint\Grapevine\Http\Requests\Categories\UpdateTopicRequest;
+use FloatingPoint\Grapevine\Http\Requests\Topics\StartTopicRequest;
+use FloatingPoint\Grapevine\Http\Requests\Topics\UpdateTopicRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\StartTopicCommand;
@@ -24,6 +24,20 @@ class TopicController extends Controller
     public function __construct(TopicRepositoryInterface $topics)
     {
         $this->topics = $topics;
+    }
+
+    /**
+     * Method supporting the ability to browse a category's topics.
+     *
+     * @param string $categorySlug
+     * @return mixed
+     */
+    public function browse(CategoryRepositoryInterface $categories, $categorySlug)
+    {
+        $category = $categories->getBySlug($categorySlug);
+        $topics = $this->topics->getByCategoryId($category->id);
+
+        return $this->respond('topic.browse', compact('category', 'topics'));
     }
 
     /**

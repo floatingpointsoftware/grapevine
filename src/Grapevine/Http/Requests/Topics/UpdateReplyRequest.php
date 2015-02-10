@@ -1,5 +1,5 @@
 <?php 
-namespace FloatingPoint\Grapevine\Http\Requests\Categories;
+namespace FloatingPoint\Grapevine\Http\Requests\Topics;
 
 use Illuminate\Foundation\Http\FormRequest;
 
