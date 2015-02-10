@@ -1,7 +1,7 @@
-@if (count($forums))
-    <ul class="menu forums">
-        @foreach ($forums as $forum)
-            <li><a href="{!! route('forum.show', [$forum->slug]) !!}">{!! $forum->title !!}</a></li>
+@if (count($categories))
+    <ul class="menu categories">
+        @foreach ($categories as $category)
+            <li><a href="{!! route('category.show', [$category->slug]) !!}">{!! $category->title !!}</a></li>
         @endforeach
     </ul>
 @endif

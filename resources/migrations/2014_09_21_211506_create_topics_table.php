@@ -16,7 +16,7 @@ class CreateTopicsTable extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index();
-            $table->integer('forum_id')->index();
+            $table->integer('category_id')->index();
             $table->string('title', 100);
             $table->string('slug')->index();
             $table->integer('views')->default(0);

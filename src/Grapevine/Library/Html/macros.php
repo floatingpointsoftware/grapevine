@@ -1,10 +1,10 @@
 <?php
 /**
- * Forum select dropdown. Formats the
+ * Category select dropdown. Formats the
  */
-HTML::macro('forumSelect', function($name, $forums) {
-    $options = $forums->lists('title', 'id');
+HTML::macro('categorySelect', function($name, $categories) {
+    $options = $categories->lists('title', 'id');
     dd($options);
 
-    return view('partials.html.forum-dropdown');
+    return view('partials.html.category-dropdown');
 });

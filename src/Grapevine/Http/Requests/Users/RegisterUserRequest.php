@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class RegisterUserRequest extends FormRequest
 {
     /**
-     * Setup the rules required for the create forum request.
+     * Setup the rules required for the create category request.
      *
      * @return array
      */

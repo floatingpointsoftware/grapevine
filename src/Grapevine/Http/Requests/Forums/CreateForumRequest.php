@@ -1,24 +1,24 @@
 <?php
-namespace FloatingPoint\Grapevine\Http\Requests\Forums;
+namespace FloatingPoint\Grapevine\Http\Requests\Categories;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateForumRequest extends FormRequest
+class CreateCategoryRequest extends FormRequest
 {
     /**
-     * Setup the rules required for the create forum request.
+     * Setup the rules required for the create category request.
      *
      * @return array
      */
     public function rules()
     {
         return [
-            'title' => ['required', 'unique:forums,title'],
+            'title' => ['required', 'unique:categories,title'],
         ];
     }
 
     /**
-     * @todo implement authority check for who can create forums
+     * @todo implement authority check for who can create categories
      * @return bool
      */
     public function authorize()

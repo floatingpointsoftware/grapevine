@@ -1,14 +1,14 @@
 <?php
 namespace FloatingPoint\Grapevine\Providers;
 
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\EloquentForumRepository;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\EloquentTopicRepository;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\TopicRepositoryInterface;
-use FloatingPoint\Grapevine\Modules\Users\Repositories\EloquentUserRepository;
-use FloatingPoint\Grapevine\Modules\Users\Repositories\UserRepositoryInterface;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\ReplyRepositoryInterface;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\EloquentReplyRepository;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\EloquentCategoryRepository;
+use FloatingPoint\Grapevine\Modules\Topics\Data\EloquentReplyRepository;
+use FloatingPoint\Grapevine\Modules\Topics\Data\EloquentTopicRepository;
+use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Users\Data\EloquentUserRepository;
+use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -23,7 +23,7 @@ class BindingsServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(ForumRepositoryInterface::class, EloquentForumRepository::class);
+        $this->app->singleton(CategoryRepositoryInterface::class, EloquentCategoryRepository::class);
         $this->app->singleton(UserRepositoryInterface::class, EloquentUserRepository::class);
         $this->app->singleton(TopicRepositoryInterface::class, EloquentTopicRepository::class);
         $this->app->singleton(ReplyRepositoryInterface::class, EloquentReplyRepository::class);

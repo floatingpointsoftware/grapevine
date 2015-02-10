@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Users\Handlers\Commands;
 use FloatingPoint\Grapevine\Library\Events\Dispatcher;
 use FloatingPoint\Grapevine\Modules\Users\Commands\RegisterUserCommand;
 use FloatingPoint\Grapevine\Modules\Users\Data\UserFactory;
-use FloatingPoint\Grapevine\Modules\Users\Repositories\UserRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
 
 class RegisterUserCommandHandler
 {

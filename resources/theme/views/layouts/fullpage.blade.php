@@ -8,17 +8,19 @@
     <body>
         <section class="header">
             <div class="container">
-                <div class="logo">{!! HTML::link('/', 'Grapevine discussion forum') !!}</div>
-                <div class="account"></div>
+                <div class="row">
+                    <div class="logo">{!! HTML::link('/', 'Grapevine discussion category') !!}</div>
+                    <div class="account"></div>
+                </div>
             </div>
         </section>
 
         <section class="main container">
-            <div id="pjaxContainer" class="column-three-quarters">
+            <div id="pjaxContainer" class="col-md-9">
                 @yield('main')
             </div>
 
-            <div class="left-menu column-one-quarter">
+            <div class="left-menu col-md-3">
                 @include('menus.right')
             </div>
         </section>

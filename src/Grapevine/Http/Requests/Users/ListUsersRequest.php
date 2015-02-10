@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class ListUsersRequest extends FormRequest
 {
     /**
-     * @todo implement authority check for who can create forums
+     * @todo implement authority check for who can create categories
      * @return bool
      */
     public function authorize()

@@ -2,13 +2,13 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Http\Requests\Forums\ReplyToTopicRequest;
-use FloatingPoint\Grapevine\Modules\Forums\Commands\ReplyToTopicCommand;
-use FloatingPoint\Grapevine\Modules\Forums\Commands\UpdateReplyCommand;
-use FloatingPoint\Grapevine\Modules\Forums\Data\Reply;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\ReplyRepositoryInterface;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\TopicRepositoryInterface;
-use FloatingPoint\Grapevine\Http\Requests\Forums\UpdateReplyRequest;
+use FloatingPoint\Grapevine\Http\Requests\Categories\ReplyToTopicRequest;
+use FloatingPoint\Grapevine\Http\Requests\Categories\UpdateReplyRequest;
+use FloatingPoint\Grapevine\Modules\Topics\Commands\ReplyToTopicCommand;
+use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateReplyCommand;
+use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
+use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
 
 class ReplyController extends Controller
 {
@@ -20,16 +20,16 @@ class ReplyController extends Controller
         $this->replies = $replies;
     }
 
-    public function create($forumSlug, $topicSlug)
+    public function create($categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
         $reply = new Reply;
         $reply->topic()->associate($topic);
 
-        return $this->respond('forum.topics.replies.create', compact('reply', 'topic'));
+        return $this->respond('category.topics.replies.create', compact('reply', 'topic'));
     }
 
-    public function store(ReplyToTopicRequest $request, $forumSlug, $topicSlug)
+    public function store(ReplyToTopicRequest $request, $categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
@@ -41,27 +41,27 @@ class ReplyController extends Controller
         ));
     }
 
-    public function edit($forumSlug, $topicSlug, $id)
+    public function edit($categorySlug, $topicSlug, $id)
     {
         $reply = $this->replies->getById($id);
         $topic = $this->topics->getBySlug($topicSlug);
 
-        return $this->respond('forum.topics.replies.edit', compact('reply', 'topic'));
+        return $this->respond('category.topics.replies.edit', compact('reply', 'topic'));
     }
 
-    public function update(UpdateReplyRequest $request, $forumSlug, $topicSlug, $id)
+    public function update(UpdateReplyRequest $request, $categorySlug, $topicSlug, $id)
     {
         $topic = $this->topics->getBySlug($topicSlug);
         $this->dispatch(new UpdateReplyCommand($id, $topic->id, $request->get('title'), $request->get('content')));
 
-        return redirect()->route('forum.topics.show', [$forumSlug, $topicSlug]);
+        return redirect()->route('category.topics.show', [$categorySlug, $topicSlug]);
     }
 
-    public function destroy($forumSlug, $topicSlug, $id)
+    public function destroy($categorySlug, $topicSlug, $id)
     {
         $reply = $this->replies->getById($id);
         $this->replies->delete($reply);
 
-        return redirect()->route('forum.topics.show', [$forumSlug, $topicSlug]);
+        return redirect()->route('category.topics.show', [$categorySlug, $topicSlug]);
     }
 }

@@ -2,7 +2,7 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Users\Repositories\UserRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
 use Illuminate\Foundation\Bus\DispatchesCommands;
 
 class UserController extends Controller

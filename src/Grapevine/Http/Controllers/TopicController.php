@@ -1,13 +1,14 @@
-<?php namespace FloatingPoint\Grapevine\Http\Controllers;
+<?php
+namespace FloatingPoint\Grapevine\Http\Controllers;
 
+use FloatingPoint\Grapevine\Http\Requests\Categories\StartTopicRequest;
+use FloatingPoint\Grapevine\Http\Requests\Categories\UpdateTopicRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Forums\Commands\StartTopicCommand;
-use FloatingPoint\Grapevine\Modules\Forums\Data\Topic;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\ForumRepositoryInterface;
-use FloatingPoint\Grapevine\Http\Requests\Forums\StartTopicRequest;
-use FloatingPoint\Grapevine\Modules\Forums\Repositories\TopicRepositoryInterface;
-use FloatingPoint\Grapevine\Http\Requests\Forums\UpdateTopicRequest;
-use FloatingPoint\Grapevine\Modules\Forums\Commands\UpdateTopicCommand;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Commands\StartTopicCommand;
+use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateTopicCommand;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\Topic;
 
 class TopicController extends Controller
 {
@@ -18,7 +19,7 @@ class TopicController extends Controller
 
     /**
      * @param TopicRepositoryInterface $topics
-     * @internal param ForumRepositoryInterface $forums
+     * @internal param CategoryRepositoryInterface $categories
      */
     public function __construct(TopicRepositoryInterface $topics)
     {
@@ -26,61 +27,61 @@ class TopicController extends Controller
     }
 
     /**
-     * @param string                   $forumSlug
-     * @param ForumRepositoryInterface $forums
+     * @param string                   $categorySlug
+     * @param CategoryRepositoryInterface $categories
      * @return \Illuminate\View\View
      */
-    public function create($forumSlug, ForumRepositoryInterface $forums)
+    public function create($categorySlug, CategoryRepositoryInterface $categories)
     {
-        $forum = $forums->getBySlug($forumSlug);
+        $category = $categories->getBySlug($categorySlug);
         $topic = new Topic;
-        $topic->forum()->associate($forum);
+        $topic->category()->associate($category);
 
-        return $this->respond('forum.topics.create', compact('topic'));
+        return $this->respond('category.topics.create', compact('topic'));
     }
 
-    public function store(StartTopicRequest $request, ForumRepositoryInterface $forums, $forumSlug)
+    public function store(StartTopicRequest $request, CategoryRepositoryInterface $categories, $categorySlug)
     {
-        $forum = $forums->getBySlug($forumSlug);
+        $category = $categories->getBySlug($categorySlug);
 
         $this->dispatch(new StartTopicCommand(
-            $forum->id,
+            $category->id,
             1,
             $request->get('title'),
             $request->get('body')
         ));
 
-        return redirect()->route('forum.show', [$forumSlug]);
+        return redirect()->route('category.show', [$categorySlug]);
     }
 
-    public function edit($forumSlug, $topicSlug)
+    public function edit($categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
-        return $this->respond('forum.topics.edit', compact('topic'));
+        return $this->respond('category.topics.edit', compact('topic'));
     }
 
-    public function update(UpdateTopicRequest $request, $forumSlug, $topicSlug)
+    public function update(UpdateTopicRequest $request, $categorySlug, $topicSlug)
     {
         $this->dispatch(new UpdateTopicCommand($request->get('title'), $topicSlug));
 
-        return redirect()->route('forum.show', [$forumSlug]);
+        return redirect()->route('category.show', [$categorySlug]);
     }
 
-    public function show($forumSlug, $topicSlug)
+    public function show($categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
         $topic->incrementViews();
 
-        return $this->respond('forum.topics.show', compact('topic'));
+        return $this->respond('category.topics.show', compact('topic'));
     }
 
-    public function destroy($forumSlug, $topicSlug)
+    public function destroy($categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
         $this->topics->delete($topic);
 
-        return redirect()->route('forum.show', [$forumSlug]);
+        return redirect()->route('category.show', [$categorySlug]);
     }
 }

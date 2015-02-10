@@ -8,9 +8,9 @@ $routeGroupAttributes = [
 Route::group($routeGroupAttributes, function() {
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-    Route::resource('forum', 'ForumController');
-    Route::resource('forum.topics', 'TopicController');
-    Route::resource('forum.topics.replies', 'ReplyController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('category.topics', 'TopicController');
+    Route::resource('category.topics.replies', 'ReplyController');
     Route::resource('user', 'UserController');
     
     // Registrations
