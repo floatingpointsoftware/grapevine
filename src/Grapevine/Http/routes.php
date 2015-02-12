@@ -8,6 +8,8 @@ $routeGroupAttributes = [
 Route::group($routeGroupAttributes, function() {
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+    Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
+
     Route::resource('category', 'CategoryController');
     Route::resource('topics', 'TopicController');
     Route::resource('topics.replies', 'ReplyController');
