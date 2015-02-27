@@ -15,7 +15,7 @@
     "php": ">=5.5.0",
     "floatingpoint/stylist": "dev-master",
     "hashids/hashids": "1.0.*@dev",
-    "kirkbushell/eloquence": "dev-L5",
+    "kirkbushell/eloquence": "~1.2",
     "illuminate/html": "5.0.*",
     "illuminate/support": "5.0.*"
   },
