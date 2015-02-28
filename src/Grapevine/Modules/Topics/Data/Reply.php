@@ -17,14 +17,14 @@ class Reply extends Model
     public static function boot()
     {
         parent::boot();
-        static::creating(function($reply)
+        static::created(function($reply)
         {
             $reply->slug = Slug::fromId($reply->id);
             $reply->topic->increment('replies_count');
             $reply->category()->increment('replies_count');
         });
 
-        static::deleting(function($reply)
+        static::deleted(function($reply)
         {
             $reply->topic->decrement('replies_count');
             $reply->category()->decrement('replies_count');

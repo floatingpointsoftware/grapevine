@@ -20,11 +20,11 @@ class Category extends Model
     public static function boot()
     {
         parent::boot();
-        static::creating(function($category) {
+        static::created(function($category) {
             $category->slug = Slug::fromTitle($category->title);
         });
 
-        static::deleting(function($category)
+        static::deleted(function($category)
         {
             if(! empty($category->topics)) {
                 $category->topics->each(function($topic)
