@@ -11,8 +11,8 @@
                 <div class="col-md-3">{{ $topic->replies_count }} replies, {{ $topic->views }} views</div>
                 <div class="col-md-3">Created {{ $topic->createdAt->toDayDateTimeString() }}</div>
                 <div class="col-md-3">
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['topics.destroy', $category->slug, $topic->slug]]) !!}
-
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['topics.destroy', $topic->slug]]) !!}
+                        {!! Form::hidden('slug', $category->slug) !!}
                         {!! Form::submit('Delete') !!}
                     {!! Form::close() !!}
                     {!! HTML::linkRoute('topics.edit', 'Edit', [$topic->category->slug, $topic->slug]) !!}

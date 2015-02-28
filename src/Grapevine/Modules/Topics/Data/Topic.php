@@ -40,7 +40,8 @@ class Topic extends Model
         static::deleting(function($topic)
         {
             $topic->category->decrementTopics();
-            if(! empty($topic->replies)) {
+            if(count($topic->replies) > 0) {
+                $topic->category->decrementReplies($topic->replies->count());
                 $topic->replies->each(function($reply)
                 {
                     $reply->delete();

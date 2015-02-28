@@ -58,9 +58,9 @@ class Category extends Model
         $this->save();
     }
 
-    public function decrementReplies()
+    public function decrementReplies($count = 1)
     {
-        $this->replies_count--;
+        $this->replies_count -= $count;
         $this->save();
     }
 

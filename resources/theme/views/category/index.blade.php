@@ -11,12 +11,12 @@
                         {!! Form::close() !!}
                     </div>
                 </header>
-                @if ($category->description)
                     <footer>
+                        @if ($category->description)
                         <p>{!! $category->description !!}</p>
+                        @endif
                         <p>{{ $category->topics_count . ' topics, ' . $category->replies_count . ' replies' }}</p>
                     </footer>
-                @endif
             </div>
         @empty
             There are currently no categories configured. {!! HTML::linkRoute('category.create', 'Create your first category') !!}

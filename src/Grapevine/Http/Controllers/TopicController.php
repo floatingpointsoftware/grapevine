@@ -112,11 +112,12 @@ class TopicController extends Controller
      * @param $topicSlug
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($categorySlug, $topicSlug)
+    public function destroy($topicSlug)
     {
+        $slug = \Input::get('category');
         $topic = $this->topics->getBySlug($topicSlug);
         $this->topics->delete($topic);
 
-        return redirect()->route('category.show', [$categorySlug]);
+        return redirect()->route('category.index', [$slug]);
     }
 }
