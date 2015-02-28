@@ -92,4 +92,12 @@ class CategoryController extends Controller
 
         return redirect()->route('category.show', [Slug::fromTitle($request->get('title'))]);
     }
+
+    public function destroy($slug)
+    {
+        $category = $this->categories->getBySlug($slug);
+        $this->categories->delete($category);
+
+        return redirect()->route('category.index');
+    }
 }

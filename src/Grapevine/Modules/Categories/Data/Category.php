@@ -26,10 +26,12 @@ class Category extends Model
 
         static::deleting(function($category)
         {
-            $category->topics->each(function($topic)
-            {
-                $topic->delete();
-            });
+            if(! empty($category->topics)) {
+                $category->topics->each(function($topic)
+                {
+                    $topic->delete();
+                });
+            }
         });
     }
 

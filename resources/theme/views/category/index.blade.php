@@ -6,7 +6,9 @@
                     <h2>{!! HTML::linkRoute('category.show', $category->title, [$category->slug]) !!}</h2>
                     <div class="buttons">
                         {!! HTML::linkRoute('category.edit', 'Edit', [$category->slug], ['class' => 'button']) !!}
-                        {!! HTML::linkRoute('category.destroy', 'Delete', [$category->slug], ['class' => 'button']) !!}
+                        {!! Form::open(['method' => 'DELETE', 'route' => ['category.destroy', $category->slug]]) !!}
+                            {!! Form::submit('Delete', ['class' => 'button']) !!}
+                        {!! Form::close() !!}
                     </div>
                 </header>
                 @if ($category->description)
