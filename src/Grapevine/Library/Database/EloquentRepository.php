@@ -16,6 +16,7 @@ abstract class EloquentRepository implements RepositoryInterface
     /**
      * Returns a collection of eloquent models consisting of the entire database table's records.
      *
+     * @deprecated
      * @return mixed
      */
     public function getAll()
@@ -26,6 +27,7 @@ abstract class EloquentRepository implements RepositoryInterface
     /**
      * Get a specific resource.
      *
+     * @deprecated
      * @param integer $id
      * @return Resource
      */
@@ -104,6 +106,7 @@ abstract class EloquentRepository implements RepositoryInterface
     /**
      * Create a resource based on the data provided.
      *
+     * @deprecated
      * @param array $data
      * @return Resource
      */
@@ -115,6 +118,7 @@ abstract class EloquentRepository implements RepositoryInterface
     /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
+     * @deprecated
      * @param Resource  $resource
      * @param boolean $permanent
      * @fires Resource.Deleted
@@ -134,6 +138,7 @@ abstract class EloquentRepository implements RepositoryInterface
     /**
      * Update a resource based on the id and data provided.
      *
+     * @deprecated
      * @param object $resource
      * @param array  $data
      * @return Resource
