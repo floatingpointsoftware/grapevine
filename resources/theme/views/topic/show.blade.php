@@ -12,10 +12,10 @@
                     {{ $reply->content }}
                 </div>
                 <div class="col-md-4">
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['topics.replies.destroy', $topic->category->slug, $topic->slug, $reply->id]]) !!}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['topics.replies.destroy', $topic->slug, $reply->id]]) !!}
                     {!! Form::submit('Delete') !!}
                     {!! Form::close() !!}
-                    {!! HTML::linkRoute('topics.replies.edit', 'Edit', [$topic->category->slug, $topic->slug, $reply->id]) !!}
+                    {!! HTML::linkRoute('topics.replies.edit', 'Edit', [$topic->slug, $reply->id]) !!}
                 </div>
             </div>
             <hr/>

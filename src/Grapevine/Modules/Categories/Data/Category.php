@@ -12,6 +12,8 @@ class Category extends Model
     use Sluggable;
     use Raiseable;
 
+    protected $fillable = ['title', 'description'];
+
     /**
      * Whenever a user is created, create a new slug based on their username.
      */

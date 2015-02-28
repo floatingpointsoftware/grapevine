@@ -2,8 +2,11 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Http\Requests\Categories\CreateCategoryRequest;
+use FloatingPoint\Grapevine\Http\Requests\Categories\UpdateCategoryRequest;
+use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Categories\Commands\CreateCategoryCommand;
+use FloatingPoint\Grapevine\Modules\Categories\Commands\UpdateCategoryCommand;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
 
@@ -81,5 +84,12 @@ class CategoryController extends Controller
         $category = $this->categories->requireBySlug($slug);
 
         return $this->respond('category.edit', compact('category'));
+    }
+
+    public function update(UpdateCategoryRequest $request)
+    {
+        $this->dispatch(new UpdateCategoryCommand($request->get('id'), $request->only(['title','description'])));
+
+        return redirect()->route('category.show', [Slug::fromTitle($request->get('title'))]);
     }
 }
