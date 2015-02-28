@@ -1,7 +1,7 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Topics\Data;
 
-interface TopicRepositoryInterface
+interface TopicRepository
 {
     /**
      * Returns a collection of recent topics.

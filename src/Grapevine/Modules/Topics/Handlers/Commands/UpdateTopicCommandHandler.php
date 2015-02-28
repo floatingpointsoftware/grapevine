@@ -3,13 +3,13 @@ namespace FloatingPoint\Grapevine\Modules\Topics\Handlers\Commands;
 
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateTopicCommand;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 
 class UpdateTopicCommandHandler
 {
     private $topics;
 
-    public function __construct(TopicRepositoryInterface $topics)
+    public function __construct(TopicRepository $topics)
     {
         $this->topics = $topics;
     }

@@ -8,14 +8,14 @@ use FloatingPoint\Grapevine\Modules\Topics\Commands\ReplyToTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateReplyCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
 use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 
 class ReplyController extends Controller
 {
     private $topics;
     private $replies;
 
-    public function __construct(TopicRepositoryInterface $topics, ReplyRepositoryInterface $replies)
+    public function __construct(TopicRepository $topics, ReplyRepositoryInterface $replies)
     {
         $this->topics = $topics;
         $this->replies = $replies;

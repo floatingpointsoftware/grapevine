@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Categories\Handlers\Commands;
 use FloatingPoint\Grapevine\Library\Events\Dispatcher;
 use FloatingPoint\Grapevine\Modules\Categories\Commands\CreateCategoryCommand;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryFactory;
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 
 class CreateCategoryCommandHandler
 {
@@ -21,9 +21,9 @@ class CreateCategoryCommandHandler
     private $factory;
 
     /**
-     * @param CategoryRepositoryInterface $categories
+     * @param CategoryRepository $categories
      */
-    public function __construct(CategoryRepositoryInterface $categories, CategoryFactory $factory)
+    public function __construct(CategoryRepository $categories, CategoryFactory $factory)
     {
         $this->categories = $categories;
         $this->factory = $factory;

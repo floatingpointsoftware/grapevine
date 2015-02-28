@@ -3,16 +3,16 @@ namespace FloatingPoint\Grapevine\Modules\Categories\Handlers\Commands;
 
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Modules\Categories\Commands\UpdateCategoryCommand;
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 
 class UpdateCategoryCommandHandler
 {
     /**
-     * @var CategoryRepositoryInterface
+     * @var CategoryRepository
      */
     private $categories;
 
-    public function __construct(CategoryRepositoryInterface $categories)
+    public function __construct(CategoryRepository $categories)
     {
         $this->categories = $categories;
     }

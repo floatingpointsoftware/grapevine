@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Topics\Data;
 use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
 
-class EloquentTopicRepository extends EloquentRepository implements TopicRepositoryInterface
+class EloquentTopicRepository extends EloquentRepository implements TopicRepository
 {
     function __construct(Topic $topic)
     {

@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Categories\Data;
 use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
 use Illuminate\Support\Facades\DB;
 
-class EloquentCategoryRepository extends EloquentRepository implements CategoryRepositoryInterface
+class EloquentCategoryRepository extends EloquentRepository implements CategoryRepository
 {
     /**
      * @param Category $category

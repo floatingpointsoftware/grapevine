@@ -41,29 +41,6 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
         $this->assertEquals($resource, $this->repository->delete($resource, true));
     }
 
-    public function testGetNewShouldMakeAndReturnANewRecord()
-    {
-        $record = 'record';
-
-        $this->model->shouldReceive('newInstance')->andReturn($record);
-
-        $this->assertEquals($record, $this->repository->getNew());
-    }
-
-    public function testUpdateShouldSaveAndReturnExistingDirtyRecord()
-    {
-        $params = ['testParam' => 1];
-
-        $foundRecord = m::mock('FoundRecord');
-
-        $foundRecord->shouldReceive('fill')->once()->with($params);
-        $foundRecord->shouldReceive('getDirty')->andReturn(true);
-        $foundRecord->exists = true;
-        $foundRecord->shouldReceive('save')->once();
-
-        $this->assertEquals($foundRecord, $this->repository->update($foundRecord, $params));
-    }
-
     public function testCleanModelsShouldNotSave()
     {
         $mockRecord = m::mock('resource');
@@ -72,18 +49,5 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
         $mockRecord->exists = true;
 
         $this->assertEquals($mockRecord, $this->repository->save($mockRecord));
-    }
-
-    public function testUpdateShouldTouchAndReturnExistingCleanRecord()
-    {
-        $params = ['testParam' => 1];
-
-        $foundRecord = m::mock('FoundRecord');
-        $foundRecord->shouldReceive('fill')->with($params);
-        $foundRecord->shouldReceive('touch');
-        $foundRecord->shouldReceive('getDirty')->andReturn(false);
-        $foundRecord->exists = true;
-
-        $this->assertEquals($foundRecord, $this->repository->update($foundRecord, $params));
     }
 }

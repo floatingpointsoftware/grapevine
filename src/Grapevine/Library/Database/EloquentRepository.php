@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Library\Database;
 use Event;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-abstract class EloquentRepository implements RepositoryInterface
+abstract class EloquentRepository implements Repository
 {
     /**
      * Stores the model object for querying.
@@ -14,20 +14,8 @@ abstract class EloquentRepository implements RepositoryInterface
     protected $model;
 
     /**
-     * Returns a collection of eloquent models consisting of the entire database table's records.
-     *
-     * @deprecated
-     * @return mixed
-     */
-    public function getAll()
-    {
-        return $this->model->get();
-    }
-
-    /**
      * Get a specific resource.
      *
-     * @deprecated
      * @param integer $id
      * @return Resource
      */
@@ -104,18 +92,6 @@ abstract class EloquentRepository implements RepositoryInterface
     }
 
     /**
-     * Create a resource based on the data provided.
-     *
-     * @deprecated
-     * @param array $data
-     * @return Resource
-     */
-    public function getNew(array $data = [])
-    {
-        return $this->model->newInstance($data);
-    }
-
-    /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
      * @deprecated
@@ -133,23 +109,6 @@ abstract class EloquentRepository implements RepositoryInterface
         }
 
         return $resource;
-    }
-
-    /**
-     * Update a resource based on the id and data provided.
-     *
-     * @deprecated
-     * @param object $resource
-     * @param array  $data
-     * @return Resource
-     */
-    public function update($resource, $data = [])
-    {
-        if (is_array($data) && count($data) > 0) {
-            $resource->fill($data);
-        }
-
-        return $this->save($resource);
     }
 
     /**
@@ -195,17 +154,5 @@ abstract class EloquentRepository implements RepositoryInterface
     public function requireBySlug($slug)
     {
         return $this->requireBy('slug', $slug);
-    }
-
-    /**
-     * Defers call to the underlying eloquent model
-     *
-     * @param string $method
-     * @param array $args
-     * @return mixed
-     */
-    public function __call($method, $args)
-    {
-        return $this->model->{$method}($args);
     }
 }

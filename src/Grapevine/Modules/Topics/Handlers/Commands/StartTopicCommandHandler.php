@@ -4,14 +4,14 @@ namespace FloatingPoint\Grapevine\Modules\Topics\Handlers\Commands;
 use FloatingPoint\Grapevine\Library\Events\Dispatcher;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\StartTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Data\TopicFactory;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 
 class StartTopicCommandHandler
 {
     use Dispatcher;
 
     /**
-     * @var TopicRepositoryInterface
+     * @var TopicRepository
      */
     private $topics;
     /**
@@ -20,9 +20,9 @@ class StartTopicCommandHandler
     private $factory;
 
     /**
-     * @param TopicRepositoryInterface $topics
+     * @param TopicRepository $topics
      */
-    function __construct(TopicRepositoryInterface $topics, TopicFactory $factory)
+    function __construct(TopicRepository $topics, TopicFactory $factory)
     {
         $this->topics = $topics;
         $this->factory = $factory;

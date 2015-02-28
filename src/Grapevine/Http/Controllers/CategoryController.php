@@ -8,19 +8,19 @@ use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Categories\Commands\CreateCategoryCommand;
 use FloatingPoint\Grapevine\Modules\Categories\Commands\UpdateCategoryCommand;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 
 class CategoryController extends Controller
 {
     /**
-     * @var CategoryRepositoryInterface
+     * @var CategoryRepository
      */
     private $categories;
 
     /**
-     * @param CategoryRepositoryInterface $categories
+     * @param CategoryRepository $categories
      */
-    public function __construct(CategoryRepositoryInterface $categories)
+    public function __construct(CategoryRepository $categories)
     {
         $this->categories = $categories;
     }

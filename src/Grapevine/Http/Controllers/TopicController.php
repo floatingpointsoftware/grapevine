@@ -5,23 +5,23 @@ use FloatingPoint\Grapevine\Http\Requests\Topics\StartTopicRequest;
 use FloatingPoint\Grapevine\Http\Requests\Topics\UpdateTopicRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\StartTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateTopicCommand;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Topic;
 
 class TopicController extends Controller
 {
     /**
-     * @var TopicRepositoryInterface
+     * @var TopicRepository
      */
     private $topics;
 
     /**
-     * @param TopicRepositoryInterface $topics
+     * @param TopicRepository $topics
      */
-    public function __construct(TopicRepositoryInterface $topics)
+    public function __construct(TopicRepository $topics)
     {
         $this->topics = $topics;
     }
@@ -39,10 +39,10 @@ class TopicController extends Controller
     }
 
     /**
-     * @param CategoryRepositoryInterface $categories
+     * @param CategoryRepository $categories
      * @return \Illuminate\View\View
      */
-    public function create(CategoryRepositoryInterface $categories)
+    public function create(CategoryRepository $categories)
     {
         $topic = new Topic;
         $topic->category = $categories->getBySlug(\Input::get('category'));

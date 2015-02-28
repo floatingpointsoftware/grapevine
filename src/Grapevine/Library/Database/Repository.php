@@ -1,15 +1,8 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Database;
 
-interface RepositoryInterface
+interface Repository
 {
-    /**
-     * Returns all the records within the table/collection.
-     *
-     * @return mixed
-     */
-    public function getAll();
-
     /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
@@ -30,8 +23,8 @@ interface RepositoryInterface
     /**
      * Acts as a generic method for retrieving a record by a given field/value pair.
      *
-     * @param $field
-     * @param $value
+     * @param string $field
+     * @param string $value
      * @return mixed
      */
     public function getBy($field, $value);
@@ -51,13 +44,6 @@ interface RepositoryInterface
      * @return mixed
      */
     public function requireBySlug($slug);
-
-    /**
-     * @param       $resource
-     * @param array $data
-     * @return Resource
-     */
-    public function update($resource, $data = []);
 
     /**
      * Saves the provided resource.
