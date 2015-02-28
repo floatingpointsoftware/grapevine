@@ -6,3 +6,4 @@
 /.gitignore     export-ignore
 /tests          export-ignore
 /docs           export-ignore
+/readme.md

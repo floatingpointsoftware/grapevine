@@ -14,7 +14,7 @@ class CategoryListComposer
     /**
      * @param CategoryRepository $categories
      */
-    function __construct(CategoryRepository $categories)
+    public function __construct(CategoryRepository $categories)
     {
         $this->categories = $categories;
     }

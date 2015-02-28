@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 abstract class EloquentRepository implements Repository
 {
+    public function getAll()
+    {
+        return $this->model->all();
+    }
+
     /**
      * Stores the model object for querying.
      *

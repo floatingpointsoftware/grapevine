@@ -4,6 +4,7 @@
             <div class="category">
                 <header>
                     <h2>{!! HTML::linkRoute('category.show', $category->title, [$category->slug]) !!}</h2>
+                    <h2>{{ route('category/show', [$category]) }}</h2>
                     <div class="buttons">
                         {!! HTML::linkRoute('category.edit', 'Edit', [$category->slug], ['class' => 'button']) !!}
                         {!! Form::open(['method' => 'DELETE', 'route' => ['category.destroy', $category->slug]]) !!}
