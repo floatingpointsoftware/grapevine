@@ -4,6 +4,7 @@ namespace FloatingPoint\Grapevine\Http\Controllers;
 use FloatingPoint\Grapevine\Http\Requests\Topics\StartTopicRequest;
 use FloatingPoint\Grapevine\Http\Requests\Topics\UpdateTopicRequest;
 use FloatingPoint\Grapevine\Library\Support\Controller;
+use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\StartTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateTopicCommand;
@@ -19,7 +20,6 @@ class TopicController extends Controller
 
     /**
      * @param TopicRepositoryInterface $topics
-     * @internal param CategoryRepositoryInterface $categories
      */
     public function __construct(TopicRepositoryInterface $topics)
     {
@@ -29,37 +29,36 @@ class TopicController extends Controller
     /**
      * Method supporting the ability to browse a category's topics.
      *
-     * @param string $categorySlug
      * @return mixed
      */
-    public function browse(CategoryRepositoryInterface $categories, $categorySlug)
+    public function browse($categorySlug)
     {
-        $category = $categories->getBySlug($categorySlug);
-        $topics = $this->topics->getByCategoryId($category->id);
+        $topics = $this->topics->getByCategorySlug($categorySlug);
 
-        return $this->respond('topic.browse', compact('category', 'topics'));
+        return $this->respond('topic.browse', compact('topics'));
     }
 
     /**
-     * @param string                   $categorySlug
      * @param CategoryRepositoryInterface $categories
      * @return \Illuminate\View\View
      */
-    public function create($categorySlug, CategoryRepositoryInterface $categories)
+    public function create(CategoryRepositoryInterface $categories)
     {
-        $category = $categories->getBySlug($categorySlug);
         $topic = new Topic;
-        $topic->category()->associate($category);
 
-        return $this->respond('category.topics.create', compact('topic'));
+        return $this->respond('topic.create', compact('topic'));
     }
 
-    public function store(StartTopicRequest $request, CategoryRepositoryInterface $categories, $categorySlug)
+    /**
+     * @param StartTopicRequest           $request
+     * @param                             $categorySlug
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(StartTopicRequest $request, $categorySlug)
     {
-        $category = $categories->getBySlug($categorySlug);
-
+        $categoryId = Category::slugToId($categorySlug);
         $this->dispatch(new StartTopicCommand(
-            $category->id,
+            $categoryId,
             1,
             $request->get('title'),
             $request->get('body')
@@ -68,13 +67,24 @@ class TopicController extends Controller
         return redirect()->route('category.show', [$categorySlug]);
     }
 
+    /**
+     * @param $categorySlug
+     * @param $topicSlug
+     * @return mixed
+     */
     public function edit($categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
-        return $this->respond('category.topics.edit', compact('topic'));
+        return $this->respond('topic.edit', compact('topic'));
     }
 
+    /**
+     * @param UpdateTopicRequest $request
+     * @param                    $categorySlug
+     * @param                    $topicSlug
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(UpdateTopicRequest $request, $categorySlug, $topicSlug)
     {
         $this->dispatch(new UpdateTopicCommand($request->get('title'), $topicSlug));
@@ -82,15 +92,25 @@ class TopicController extends Controller
         return redirect()->route('category.show', [$categorySlug]);
     }
 
+    /**
+     * @param $categorySlug
+     * @param $topicSlug
+     * @return mixed
+     */
     public function show($categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
         $topic->incrementViews();
 
-        return $this->respond('category.topics.show', compact('topic'));
+        return $this->respond('topic.show', compact('topic'));
     }
 
+    /**
+     * @param $categorySlug
+     * @param $topicSlug
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($categorySlug, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);

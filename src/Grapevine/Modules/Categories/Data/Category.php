@@ -71,4 +71,9 @@ class Category extends Model
         $this->topics_count--;
         $this->save();
     }
+
+    public static function slugToId($slug)
+    {
+        return self::whereSlug($slug)->first();
+    }
 }

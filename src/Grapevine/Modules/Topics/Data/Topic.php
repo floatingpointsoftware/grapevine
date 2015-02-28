@@ -46,7 +46,6 @@ class Topic extends Model
                 $reply->delete();
             });
         });
-
     }
 
     public function incrementReplies()

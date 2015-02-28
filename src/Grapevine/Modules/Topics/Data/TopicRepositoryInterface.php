@@ -20,4 +20,12 @@ interface TopicRepositoryInterface
      * @return mixed
      */
     public function getByCategoryId($categoryId);
+
+    /**
+     * Retrieve all topics by the category slug, paginated.
+     *
+     * @param string $categorySlug
+     * @return mixed
+     */
+    public function getByCategorySlug($categorySlug);
 }

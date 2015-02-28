@@ -2,6 +2,7 @@
 namespace FloatingPoint\Grapevine\Modules\Topics\Data;
 
 use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
+use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Topic;
 use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
 
@@ -50,5 +51,16 @@ class EloquentTopicRepository extends EloquentRepository implements TopicReposit
     public function getByCategoryId($categoryId)
     {
         $this->model->whereCategoryId($categoryId)->paginate();
+    }
+
+    /**
+     * Retrieve all topics by the category slug, paginated.
+     *
+     * @param string $categorySlug
+     * @return mixed
+     */
+    public function getByCategorySlug($categorySlug)
+    {
+        return $this->model->whereCategoryId(Category::slugToId($categorySlug));
     }
 }
