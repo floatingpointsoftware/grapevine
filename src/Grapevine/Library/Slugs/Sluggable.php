@@ -18,7 +18,7 @@ trait Sluggable
      */
     public function setSlugAttribute(Slug $slug)
     {
-        $this->attributes['slug'] = $slug;
+        $this->attributes['slug'] = (string) $slug;
     }
 
     /**

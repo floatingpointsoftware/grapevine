@@ -173,10 +173,13 @@ abstract class EloquentRepository implements RepositoryInterface
 
     /**
      * Save all resources provided to the method.
+     *
+     * @param $resources
+     * @return mixed|void
      */
-    public function saveAll()
+    public function saveAll($resources)
     {
-        $resources = func_get_args();
+        $resources = is_array($resources) ? $resources : func_get_args();
 
         foreach ($resources as $resource) {
             $this->save($resource);
@@ -192,5 +195,17 @@ abstract class EloquentRepository implements RepositoryInterface
     public function requireBySlug($slug)
     {
         return $this->requireBy('slug', $slug);
+    }
+
+    /**
+     * Defers call to the underlying eloquent model
+     *
+     * @param string $method
+     * @param array $args
+     * @return mixed
+     */
+    public function __call($method, $args)
+    {
+        return $this->model->{$method}($args);
     }
 }

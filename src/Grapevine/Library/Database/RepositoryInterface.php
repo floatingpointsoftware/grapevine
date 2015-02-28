@@ -13,8 +13,8 @@ interface RepositoryInterface
     /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
-     * @param Resource  $resource
-     * @param boolean $permanent
+     * @param Resource $resource
+     * @param boolean  $permanent
      * @return Resource
      */
     public function delete($resource, $permanent = false);
@@ -73,5 +73,5 @@ interface RepositoryInterface
      * @param $resources
      * @return mixed
      */
-    public function saveAll();
+    public function saveAll($resources);
 }
