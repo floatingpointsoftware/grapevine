@@ -7,7 +7,7 @@
     @else
         @foreach($category->children as $topic)
             <div class="row">
-                <div class="col-md-3">{!! HTML::linkRoute('topics.show', $topic->title, [$topic->category->slug, $topic->slug]) !!}</div>
+                <div class="col-md-3">{!! HTML::linkRoute('topics.show', $topic->title, [$topic->slug]) !!}</div>
                 <div class="col-md-3">{{ $topic->replies_count }} replies, {{ $topic->views }} views</div>
                 <div class="col-md-3">Created {{ $topic->createdAt->toDayDateTimeString() }}</div>
                 <div class="col-md-3">
@@ -21,5 +21,5 @@
             <hr/>
         @endforeach
     @endif
-    {!! HTML::linkRoute('topics.create', 'New Topic', [$category->slug]) !!}
+    {!! HTML::linkRoute('topics.create', 'New Topic', 'category='.$category->slug) !!}
 @stop

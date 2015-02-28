@@ -33,7 +33,7 @@ class StartTopicCommandHandler
      *
      * @param StartTopicCommand $command
      */
-    public function handle(\FloatingPoint\Grapevine\Modules\Topics\Commands\StartTopicCommand $command)
+    public function handle(StartTopicCommand $command)
     {
         $topic = $this->factory->start($command->categoryId, $command->userId, $command->title);
 

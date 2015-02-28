@@ -6,7 +6,6 @@ use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Topic extends Model

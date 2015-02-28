@@ -2,8 +2,6 @@
 namespace FloatingPoint\Grapevine\Modules\Categories\Data;
 
 use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
-use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
 use Illuminate\Support\Facades\DB;
 
 class EloquentCategoryRepository extends EloquentRepository implements CategoryRepositoryInterface

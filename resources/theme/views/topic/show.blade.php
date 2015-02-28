@@ -12,10 +12,10 @@
                     {{ $reply->content }}
                 </div>
                 <div class="col-md-4">
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['category.topics.replies.destroy', $topic->category->slug, $topic->slug, $reply->id]]) !!}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['topics.replies.destroy', $topic->category->slug, $topic->slug, $reply->id]]) !!}
                     {!! Form::submit('Delete') !!}
                     {!! Form::close() !!}
-                    {!! HTML::linkRoute('category.topics.replies.edit', 'Edit', [$topic->category->slug, $topic->slug, $reply->id]) !!}
+                    {!! HTML::linkRoute('topics.replies.edit', 'Edit', [$topic->category->slug, $topic->slug, $reply->id]) !!}
                 </div>
             </div>
             <hr/>
@@ -23,7 +23,7 @@
     @endif
     <div class="row">
         <div class="col-md-12">
-            {!! HTML::linkRoute('category.topics.replies.create', 'Reply', [$topic->category->slug, $topic->slug]) !!}
+            {!! HTML::linkRoute('topics.replies.create', 'Reply', [$topic->slug]) !!}
         </div>
     </div>
 @stop

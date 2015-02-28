@@ -45,6 +45,7 @@ class TopicController extends Controller
     public function create(CategoryRepositoryInterface $categories)
     {
         $topic = new Topic;
+        $topic->category = $categories->getBySlug(\Input::get('category'));
 
         return $this->respond('topic.create', compact('topic'));
     }
@@ -54,9 +55,10 @@ class TopicController extends Controller
      * @param                             $categorySlug
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StartTopicRequest $request, $categorySlug)
+    public function store(StartTopicRequest $request)
     {
-        $categoryId = Category::slugToId($categorySlug);
+        $slug = \Input::get('category');
+        $categoryId = Category::slugToId($slug);
         $this->dispatch(new StartTopicCommand(
             $categoryId,
             1,
@@ -64,7 +66,7 @@ class TopicController extends Controller
             $request->get('body')
         ));
 
-        return redirect()->route('category.show', [$categorySlug]);
+        return redirect()->route('category.show', [$slug]);
     }
 
     /**
@@ -93,11 +95,10 @@ class TopicController extends Controller
     }
 
     /**
-     * @param $categorySlug
      * @param $topicSlug
      * @return mixed
      */
-    public function show($categorySlug, $topicSlug)
+    public function show($topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
