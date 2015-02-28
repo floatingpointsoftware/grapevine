@@ -13,6 +13,7 @@ use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
 class ReplyController extends Controller
 {
     private $topics;
+    private $replies;
 
     public function __construct(TopicRepositoryInterface $topics, ReplyRepositoryInterface $replies)
     {

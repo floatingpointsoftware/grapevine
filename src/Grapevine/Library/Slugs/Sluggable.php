@@ -11,6 +11,8 @@ namespace FloatingPoint\Grapevine\Library\Slugs;
  */
 trait Sluggable
 {
+    protected $attributes = [];
+
     /**
      * Sets the slug attribute with the Slug value object.
      *

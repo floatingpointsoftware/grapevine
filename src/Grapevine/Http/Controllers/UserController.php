@@ -3,7 +3,6 @@ namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
-use Illuminate\Foundation\Bus\DispatchesCommands;
 
 class UserController extends Controller
 {
@@ -13,7 +12,7 @@ class UserController extends Controller
     private $users;
 
     /**
-     * @param UserService $userService
+     * @param UserRepositoryInterface $users
      */
     public function __construct(UserRepositoryInterface $users)
     {
@@ -53,7 +52,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->userService->getUserById($id);
+        $user = $this->users->getUserById($id);
 
         return view('user.edit', compact('user'));
     }
@@ -68,14 +67,14 @@ class UserController extends Controller
         return view('user.register');
     }
 
-	/**
-	 * Handle the data passed in via the user for registration.
-	 *
-	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-	 */
+    /**
+     * Handle the data passed in via the user for registration.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function postRegister()
     {
-        $this->userService->registerUser(Request::all());
+        $this->users->registerUser(Request::all());
 
         return redirectTo('home');
     }

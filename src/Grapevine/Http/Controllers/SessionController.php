@@ -4,6 +4,9 @@ use FloatingPoint\Grapevine\Library\Support\Controller;
 
 class SessionController extends Controller
 {
+    private $auth;
+    private $socialite;
+
     public function __construct(Authenticator $auth)
     {
         $this->auth = $auth;

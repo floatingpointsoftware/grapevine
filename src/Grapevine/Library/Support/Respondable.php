@@ -5,6 +5,7 @@ use Request;
 
 trait Respondable
 {
+    protected $layout;
     /**
      * Respond with the the $data array for JSON, a partial of the view for PJAX requests,
      * or the full layout render if it's a full page request.
