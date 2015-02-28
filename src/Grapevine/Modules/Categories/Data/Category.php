@@ -52,30 +52,6 @@ class Category extends Model
         return $this->hasMany(Topic::class);
     }
 
-    public function incrementReplies()
-    {
-        $this->replies_count++;
-        $this->save();
-    }
-
-    public function decrementReplies($count = 1)
-    {
-        $this->replies_count -= $count;
-        $this->save();
-    }
-
-    public function incrementTopics()
-    {
-        $this->topics_count++;
-        $this->save();
-    }
-
-    public function decrementTopics()
-    {
-        $this->topics_count--;
-        $this->save();
-    }
-
     public static function slugToId($slug)
     {
         return self::whereSlug($slug)->first();

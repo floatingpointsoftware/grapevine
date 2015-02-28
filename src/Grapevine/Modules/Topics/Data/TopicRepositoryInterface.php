@@ -1,8 +1,6 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Topics\Data;
 
-use FloatingPoint\Grapevine\Library\Database\RepositoryInterface;
-
 interface TopicRepositoryInterface
 {
     /**

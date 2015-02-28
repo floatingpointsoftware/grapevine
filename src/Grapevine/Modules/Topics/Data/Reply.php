@@ -2,7 +2,6 @@
 namespace FloatingPoint\Grapevine\Modules\Topics\Data;
 
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
-use FloatingPoint\Grapevine\Modules\Topics\Data\Topic;
 use FloatingPoint\Grapevine\Modules\Users\Data\User;
 use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
@@ -21,12 +20,14 @@ class Reply extends Model
         static::creating(function($reply)
         {
             $reply->slug = Slug::fromId($reply->id);
-            $reply->topic->incrementReplies();
+            $reply->topic->increment('replies_count');
+            $reply->category()->increment('replies_count');
         });
 
         static::deleting(function($reply)
         {
-            $reply->topic->decrementReplies();
+            $reply->topic->decrement('replies_count');
+            $reply->category()->decrement('replies_count');
         });
     }
 

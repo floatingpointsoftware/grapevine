@@ -34,14 +34,14 @@ class Topic extends Model
         parent::boot();
         static::creating(function($topic) {
             $topic->slug = Slug::fromTitle($topic->title);
-            $topic->category->incrementTopics();
+            $topic->category->increment('topics_count');
         });
 
         static::deleting(function($topic)
         {
-            $topic->category->decrementTopics();
+            $topic->category->decrement('topics_count');
             if(count($topic->replies) > 0) {
-                $topic->category->decrementReplies($topic->replies->count());
+                $topic->category->decrement('replies_count', $topic->replies->count());
                 $topic->replies->each(function($reply)
                 {
                     $reply->delete();
@@ -50,29 +50,8 @@ class Topic extends Model
         });
     }
 
-    public function incrementReplies()
-    {
-        $this->replies_count++;
-        $this->category->incrementReplies();
-        $this->save();
-    }
-
-    public function decrementReplies()
-    {
-        $this->replies_count--;
-        $this->category->decrementReplies();
-        $this->save();
-    }
-
     public function incrementViews()
     {
-        $this->views++;
-        $this->save();
-    }
-
-    public function decrementViews()
-    {
-        $this->views--;
-        $this->save();
+        $this->increment('views');
     }
 }
