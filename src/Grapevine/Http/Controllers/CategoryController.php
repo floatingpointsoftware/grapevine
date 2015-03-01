@@ -60,7 +60,7 @@ class CategoryController extends Controller
      * Stores a new category
      *
      * @param CreateCategoryRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateCategoryRequest $request)
     {

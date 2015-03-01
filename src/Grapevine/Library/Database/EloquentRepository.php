@@ -1,7 +1,6 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Database;
 
-use Event;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 abstract class EloquentRepository implements Repository

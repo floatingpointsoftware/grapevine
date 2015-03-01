@@ -5,6 +5,11 @@ use FloatingPoint\Grapevine\Modules\Topics\Events\TopicWasStarted;
 
 class TopicFactory
 {
+    /**
+     * @param          $class
+     * @param callable $callback
+     * @return mixed
+     */
     public function executeUnguarded($class, \Closure $callback)
     {
         $class::unguard();
@@ -14,11 +19,12 @@ class TopicFactory
     }
 
     /**
+     *
      * Create a new topic instance based on the required data.
      *
-     * @param integer $categoryId
+     * @param         $category
      * @param integer $userId
-     * @param string $title
+     * @param string  $title
      * @return Topic
      */
     public function start($category, $userId, $title)

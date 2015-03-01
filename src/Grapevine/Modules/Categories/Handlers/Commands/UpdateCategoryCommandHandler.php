@@ -20,7 +20,7 @@ class UpdateCategoryCommandHandler
     /**
      * Handle the command, retrieving the category and returning the result of the update operation
      *
-     * @param Command $command
+     * @param UpdateCategoryCommand $command
      * @return Resource
      */
     public function handle(UpdateCategoryCommand $command)

@@ -7,7 +7,13 @@ class StartTopicCommand
     public $userId;
     public $title;
 
-    function __construct($categoryId, $userId, $title, $description)
+    /**
+     * @param integer $categoryId
+     * @param integer $userId
+     * @param string $title
+     * @param string $description
+     */
+    public function __construct($categoryId, $userId, $title, $description)
     {
         $this->categoryId = $categoryId;
         $this->userId = $userId;

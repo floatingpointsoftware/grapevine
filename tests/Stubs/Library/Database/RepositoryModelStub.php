@@ -40,7 +40,7 @@ class RepositoryModelStub
     }
 
     public function delete()
-    {
+    ategory
         return true;
     }
 
