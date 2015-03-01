@@ -20,8 +20,10 @@ class Category extends Model
     public static function boot()
     {
         parent::boot();
-        static::created(function ($category) {
-            $category->setSlugFromTitle();
+
+        static::creating(function ($category) {
+            dd('hi');
+            $category->updateSlug();
         });
 
         static::deleted(function ($category) {
@@ -60,7 +62,7 @@ class Category extends Model
         }
     }
 
-    public function setSlugFromTitle()
+    public function updateSlug()
     {
         $this->slug = Slug::fromTitle($this->title);
     }

@@ -31,7 +31,7 @@ class CategoryTest extends UnitTestCase
     */
     public function categoryGeneratesSlugFromTitle()
     {
-        $this->resource->setSlugFromTitle();
+        $this->resource->updateSlug();
         $this->assertEquals('my-category', $this->resource->slug->__toString());
     }
     

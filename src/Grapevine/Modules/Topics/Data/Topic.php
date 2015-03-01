@@ -32,18 +32,19 @@ class Topic extends Model
     public static function boot()
     {
         parent::boot();
-        static::created(function($topic) {
+        static::creating(function ($topic) {
             $topic->slug = Slug::fromTitle($topic->title);
+        });
+
+        static::created(function ($topic) {
             $topic->category->increment('topics_count');
         });
 
-        static::deleted(function($topic)
-        {
+        static::deleted(function ($topic) {
             $topic->category->decrement('topics_count');
-            if(count($topic->replies) > 0) {
+            if (count($topic->replies) > 0) {
                 $topic->category->decrement('replies_count', $topic->replies->count());
-                $topic->replies->each(function($reply)
-                {
+                $topic->replies->each(function ($reply) {
                     $reply->delete();
                 });
             }
