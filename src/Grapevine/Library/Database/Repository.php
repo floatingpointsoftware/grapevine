@@ -38,14 +38,6 @@ interface Repository
     public function requireById($id);
 
     /**
-     * Require a specific record by its slug.
-     *
-     * @param string $slug
-     * @return mixed
-     */
-    public function requireBySlug($slug);
-
-    /**
      * Saves the provided resource.
      *
      * @param $resource

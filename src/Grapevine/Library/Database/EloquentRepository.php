@@ -46,7 +46,7 @@ abstract class EloquentRepository implements Repository
      * Retrieve a model based on the field and value.
      *
      * @param string $field
-     * @param mixed $value
+     * @param mixed  $value
      * @return mixed
      */
     public function getBy($field, $value)
@@ -66,7 +66,7 @@ abstract class EloquentRepository implements Repository
     {
         $model = $this->getBy($field, $value);
 
-        if (!$model) {
+        if (! $model) {
             $exception = new ModelNotFoundException;
             $exception->setModel(get_class($this->model));
 
@@ -100,8 +100,8 @@ abstract class EloquentRepository implements Repository
      * Delete a specific resource. Returns the resource that was deleted.
      *
      * @deprecated
-     * @param Resource  $resource
-     * @param boolean $permanent
+     * @param Resource $resource
+     * @param boolean  $permanent
      * @fires Resource.Deleted
      * @return Resource
      */
@@ -126,7 +126,7 @@ abstract class EloquentRepository implements Repository
     {
         $attributes = $resource->getDirty();
 
-        if (!empty($attributes)) {
+        if (! empty($attributes)) {
             $resource->save();
         } else {
             $resource->touch();
@@ -148,16 +148,5 @@ abstract class EloquentRepository implements Repository
         foreach ($resources as $resource) {
             $this->save($resource);
         }
-    }
-
-    /**
-     * Require a specific record by its slug.
-     *
-     * @param string $slug
-     * @return mixed
-     */
-    public function requireBySlug($slug)
-    {
-        return $this->requireBy('slug', $slug);
     }
 }
