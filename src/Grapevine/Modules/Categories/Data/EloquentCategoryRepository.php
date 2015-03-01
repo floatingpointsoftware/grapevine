@@ -3,7 +3,7 @@ namespace FloatingPoint\Grapevine\Modules\Categories\Data;
 
 use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
 use Illuminate\Support\Facades\DB;
-use src\Grapevine\Library\Slugs\SluggableRepository;
+use FloatingPoint\Grapevine\Library\Slugs\SluggableRepository;
 
 class EloquentCategoryRepository extends EloquentRepository implements CategoryRepository
 {

@@ -1,5 +1,5 @@
 <?php
-namespace src\Grapevine\Library\Slugs;
+namespace FloatingPoint\Grapevine\Library\Slugs;
 
 trait SluggableRepository 
 {
