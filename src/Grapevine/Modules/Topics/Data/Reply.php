@@ -54,36 +54,4 @@ class Reply extends Model
     {
         return $this->topic->category;
     }
-
-    /**
-     * A Reply is acceptable and it can be published
-     *
-     * @TODO: implement
-     * @return void
-     */
-    public function approve()
-    {
-
-    }
-
-    /**
-     * A Reply is for whatever reason not acceptable
-     *
-     * @return void
-     */
-    public function deny()
-    {
-
-    }
-
-    /**
-     * A User thinks this Reply is inappropriate
-     *
-     * @param $userId
-     * @return void
-     */
-    public function report($userId)
-    {
-
-    }
 }

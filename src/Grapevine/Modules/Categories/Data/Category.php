@@ -20,18 +20,12 @@ class Category extends Model
     public static function boot()
     {
         parent::boot();
-        static::created(function($category) {
-            $category->slug = Slug::fromTitle($category->title);
+        static::created(function ($category) {
+            $category->setSlugFromTitle();
         });
 
-        static::deleted(function($category)
-        {
-            if(! empty($category->topics)) {
-                $category->topics->each(function($topic)
-                {
-                    $topic->delete();
-                });
-            }
+        static::deleted(function ($category) {
+            $category->deleteTopics();
         });
     }
 
@@ -55,5 +49,19 @@ class Category extends Model
     public static function slugToId($slug)
     {
         return self::whereSlug($slug)->first();
+    }
+
+    public function deleteTopics()
+    {
+        if (! empty($this->topics)) {
+            $this->topics->each(function ($topic) {
+                $topic->delete();
+            });
+        }
+    }
+
+    public function setSlugFromTitle()
+    {
+        $this->slug = Slug::fromTitle($this->title);
     }
 }
