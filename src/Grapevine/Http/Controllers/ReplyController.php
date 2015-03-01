@@ -7,7 +7,7 @@ use FloatingPoint\Grapevine\Http\Requests\Topics\UpdateReplyRequest;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\ReplyToTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateReplyCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
-use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepository;
 use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 
 class ReplyController extends Controller
@@ -15,7 +15,7 @@ class ReplyController extends Controller
     private $topics;
     private $replies;
 
-    public function __construct(TopicRepository $topics, ReplyRepositoryInterface $replies)
+    public function __construct(TopicRepository $topics, ReplyRepository $replies)
     {
         $this->topics = $topics;
         $this->replies = $replies;

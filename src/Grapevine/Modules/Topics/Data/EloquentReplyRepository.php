@@ -3,7 +3,7 @@ namespace FloatingPoint\Grapevine\Modules\Topics\Data;
 
 use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
 
-class EloquentReplyRepository extends EloquentRepository implements ReplyRepositoryInterface
+class EloquentReplyRepository extends EloquentRepository implements ReplyRepository
 {
     public function __construct(Reply $reply)
     {

@@ -5,7 +5,7 @@ use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 use FloatingPoint\Grapevine\Modules\Categories\Data\EloquentCategoryRepository;
 use FloatingPoint\Grapevine\Modules\Topics\Data\EloquentReplyRepository;
 use FloatingPoint\Grapevine\Modules\Topics\Data\EloquentTopicRepository;
-use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepository;
 use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 use FloatingPoint\Grapevine\Modules\Users\Data\EloquentUserRepository;
 use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
@@ -26,6 +26,6 @@ class BindingsServiceProvider extends ServiceProvider
         $this->app->singleton(CategoryRepository::class, EloquentCategoryRepository::class);
         $this->app->singleton(UserRepositoryInterface::class, EloquentUserRepository::class);
         $this->app->singleton(TopicRepository::class, EloquentTopicRepository::class);
-        $this->app->singleton(ReplyRepositoryInterface::class, EloquentReplyRepository::class);
+        $this->app->singleton(ReplyRepository::class, EloquentReplyRepository::class);
     }
 }

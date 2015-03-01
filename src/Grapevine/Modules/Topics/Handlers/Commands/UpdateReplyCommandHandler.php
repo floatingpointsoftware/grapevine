@@ -2,11 +2,11 @@
 namespace FloatingPoint\Grapevine\Modules\Topics\Handlers\Commands;
 
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateReplyCommand;
-use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepository;
 
 class UpdateReplyCommandHandler
 {
-    public function __construct(ReplyRepositoryInterface $replies)
+    public function __construct(ReplyRepository $replies)
     {
         $this->replies = $replies;
     }
