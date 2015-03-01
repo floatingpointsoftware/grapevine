@@ -32,4 +32,13 @@ class SluggableModelTest extends UnitTestCase
         $this->assertEquals('My Title', $this->resource->attributes['slug']);
         $this->assertEquals('My Title', $this->resource->getSlugAttribute()->__toString());
     }
+
+    /**
+    * @test
+    */
+    public function updatesSlug()
+    {
+        $this->resource->updateSlug();
+        $this->assertEquals('my-model', $this->resource->slug->__toString());
+    }
 }

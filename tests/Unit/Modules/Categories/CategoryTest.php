@@ -29,15 +29,6 @@ class CategoryTest extends UnitTestCase
     /**
     * @test
     */
-    public function categoryGeneratesSlugFromTitle()
-    {
-        $this->resource->updateSlug();
-        $this->assertEquals('my-category', $this->resource->slug->__toString());
-    }
-    
-    /**
-    * @test
-    */
     public function categoryDeletesChildTopics()
     {
         $topic = new TopicStub();

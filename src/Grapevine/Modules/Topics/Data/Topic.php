@@ -33,7 +33,7 @@ class Topic extends Model
     {
         parent::boot();
         static::creating(function ($topic) {
-            $topic->slug = Slug::fromTitle($topic->title);
+            $topic->updateSlug();
         });
 
         static::created(function ($topic) {

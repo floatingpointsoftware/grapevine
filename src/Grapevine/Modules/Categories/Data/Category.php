@@ -3,7 +3,6 @@ namespace FloatingPoint\Grapevine\Modules\Categories\Data;
 
 use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
-use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Topic;
 
@@ -59,10 +58,5 @@ class Category extends Model
                 $topic->delete();
             });
         }
-    }
-
-    public function updateSlug()
-    {
-        $this->slug = Slug::fromTitle($this->title);
     }
 }
