@@ -22,7 +22,6 @@ class Category extends Model
         parent::boot();
 
         static::creating(function ($category) {
-            dd('hi');
             $category->updateSlug();
         });
 
