@@ -6,7 +6,6 @@ use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Topic extends Model
@@ -33,45 +32,27 @@ class Topic extends Model
     public static function boot()
     {
         parent::boot();
-        static::creating(function($topic) {
-            $topic->slug = Slug::fromTitle($topic->title);
-            $topic->category->incrementTopics();
+        static::creating(function ($topic) {
+            $topic->updateSlug();
         });
 
-        static::deleting(function($topic)
-        {
-            $topic->category->decrementTopics();
-            $topic->replies->each(function($reply)
-            {
-                $reply->delete();
-            });
+        static::created(function ($topic) {
+            $topic->category->increment('topics_count');
         });
 
-    }
-
-    public function incrementReplies()
-    {
-        $this->replies_count++;
-        $this->category->incrementReplies();
-        $this->save();
-    }
-
-    public function decrementReplies()
-    {
-        $this->replies_count--;
-        $this->category->decrementReplies();
-        $this->save();
+        static::deleted(function ($topic) {
+            $topic->category->decrement('topics_count');
+            if (count($topic->replies) > 0) {
+                $topic->category->decrement('replies_count', $topic->replies->count());
+                $topic->replies->each(function ($reply) {
+                    $reply->delete();
+                });
+            }
+        });
     }
 
     public function incrementViews()
     {
-        $this->views++;
-        $this->save();
-    }
-
-    public function decrementViews()
-    {
-        $this->views--;
-        $this->save();
+        $this->increment('views');
     }
 }

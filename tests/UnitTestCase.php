@@ -7,27 +7,29 @@ use Route;
 
 class UnitTestCase extends TestCase
 {
-	public function tearDown()
-	{
-		m::close();
-	}
+    use TestAssertionsTrait;
 
-	protected function getPackageProviders($app)
-	{
-		return [
-			'FloatingPoint\Grapevine\GrapevineServiceProvider'
-		];
-	}
+    public function tearDown()
+    {
+        m::close();
+    }
 
-	public function setUp()
-	{
-		parent::setUp();
+    protected function getPackageProviders($app)
+    {
+        return [
+            'FloatingPoint\Grapevine\GrapevineServiceProvider'
+        ];
+    }
 
-		$this->init();
-	}
+    public function setUp()
+    {
+        parent::setUp();
 
-	protected function init()
-	{
-		// Template method
-	}
+        $this->init();
+    }
+
+    protected function init()
+    {
+        // Template method
+    }
 }

@@ -2,19 +2,19 @@
 namespace FloatingPoint\Grapevine\Modules\Categories\Handlers\Events;
 
 use FloatingPoint\Grapevine\Modules\Topics\Events\TopicWasStarted;
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 
 class IncreaseCategoryTopicCount
 {
 	/**
-	 * @var CategoryRepositoryInterface
+	 * @var CategoryRepository
 	 */
 	private $categories;
 
 	/**
-	 * @param CategoryRepositoryInterface $categories
+	 * @param CategoryRepository $categories
      */
-	function __construct(CategoryRepositoryInterface $categories)
+	function __construct(CategoryRepository $categories)
 	{
 		$this->categories = $categories;
 	}

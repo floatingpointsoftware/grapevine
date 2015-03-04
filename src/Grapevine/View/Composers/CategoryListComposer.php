@@ -1,20 +1,20 @@
 <?php
 namespace FloatingPoint\Grapevine\View\Composers;
 
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 use Illuminate\Contracts\View\View;
 
 class CategoryListComposer
 {
     /**
-     * @var CategoryRepositoryInterface
+     * @var CategoryRepository
      */
     private $categories;
 
     /**
-     * @param CategoryRepositoryInterface $categories
+     * @param CategoryRepository $categories
      */
-    function __construct(CategoryRepositoryInterface $categories)
+    public function __construct(CategoryRepository $categories)
     {
         $this->categories = $categories;
     }

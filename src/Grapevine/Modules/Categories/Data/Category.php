@@ -3,7 +3,6 @@ namespace FloatingPoint\Grapevine\Modules\Categories\Data;
 
 use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
-use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Topic;
 
@@ -12,22 +11,21 @@ class Category extends Model
     use Sluggable;
     use Raiseable;
 
+    protected $fillable = ['title', 'description'];
+
     /**
      * Whenever a user is created, create a new slug based on their username.
      */
     public static function boot()
     {
         parent::boot();
-        static::creating(function($category) {
-            $category->slug = Slug::fromTitle($category->title);
+
+        static::creating(function ($category) {
+            $category->updateSlug();
         });
 
-        static::deleting(function($category)
-        {
-            $category->topics->each(function($topic)
-            {
-                $topic->delete();
-            });
+        static::deleted(function ($category) {
+            $category->deleteTopics();
         });
     }
 
@@ -48,27 +46,17 @@ class Category extends Model
         return $this->hasMany(Topic::class);
     }
 
-    public function incrementReplies()
+    public static function slugToId($slug)
     {
-        $this->replies_count++;
-        $this->save();
+        return self::whereSlug($slug)->first();
     }
 
-    public function decrementReplies()
+    public function deleteTopics()
     {
-        $this->replies_count--;
-        $this->save();
-    }
-
-    public function incrementTopics()
-    {
-        $this->topics_count++;
-        $this->save();
-    }
-
-    public function decrementTopics()
-    {
-        $this->topics_count--;
-        $this->save();
+        if (! empty($this->topics)) {
+            $this->topics->each(function ($topic) {
+                $topic->delete();
+            });
+        }
     }
 }

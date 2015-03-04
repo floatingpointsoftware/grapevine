@@ -7,29 +7,30 @@ use FloatingPoint\Grapevine\Http\Requests\Topics\UpdateReplyRequest;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\ReplyToTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\UpdateReplyCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
-use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepository;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 
 class ReplyController extends Controller
 {
     private $topics;
+    private $replies;
 
-    public function __construct(TopicRepositoryInterface $topics, ReplyRepositoryInterface $replies)
+    public function __construct(TopicRepository $topics, ReplyRepository $replies)
     {
         $this->topics = $topics;
         $this->replies = $replies;
     }
 
-    public function create($categorySlug, $topicSlug)
+    public function create($topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
         $reply = new Reply;
         $reply->topic()->associate($topic);
 
-        return $this->respond('category.topics.replies.create', compact('reply', 'topic'));
+        return $this->respond('replies.create', compact('reply', 'topic'));
     }
 
-    public function store(ReplyToTopicRequest $request, $categorySlug, $topicSlug)
+    public function store(ReplyToTopicRequest $request, $topicSlug)
     {
         $topic = $this->topics->getBySlug($topicSlug);
 
@@ -39,29 +40,31 @@ class ReplyController extends Controller
             $request->get('title'),
             $request->get('content')
         ));
+
+        return redirect()->route('topics.show', [$topicSlug]);
     }
 
-    public function edit($categorySlug, $topicSlug, $id)
+    public function edit($topicSlug, $id)
     {
         $reply = $this->replies->getById($id);
         $topic = $this->topics->getBySlug($topicSlug);
 
-        return $this->respond('category.topics.replies.edit', compact('reply', 'topic'));
+        return $this->respond('replies.edit', compact('reply', 'topic'));
     }
 
-    public function update(UpdateReplyRequest $request, $categorySlug, $topicSlug, $id)
+    public function update(UpdateReplyRequest $request, $topicSlug, $id)
     {
         $topic = $this->topics->getBySlug($topicSlug);
         $this->dispatch(new UpdateReplyCommand($id, $topic->id, $request->get('title'), $request->get('content')));
 
-        return redirect()->route('category.topics.show', [$categorySlug, $topicSlug]);
+        return redirect()->route('topics.show', [$topicSlug]);
     }
 
-    public function destroy($categorySlug, $topicSlug, $id)
+    public function destroy($topicSlug, $id)
     {
         $reply = $this->replies->getById($id);
         $this->replies->delete($reply);
 
-        return redirect()->route('category.topics.show', [$categorySlug, $topicSlug]);
+        return redirect()->route('topics.show', [$topicSlug]);
     }
 }

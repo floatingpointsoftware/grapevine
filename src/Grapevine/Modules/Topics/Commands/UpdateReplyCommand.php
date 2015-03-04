@@ -10,12 +10,6 @@ class UpdateReplyCommand
     public $title;
     public $content;
 
-    /**
-     * @param $id
-     * @param $topicId
-     * @param $title
-     * @param $comment
-     */
     public function __construct($id, $topicId, $title, $content)
     {
         $this->id = $id;

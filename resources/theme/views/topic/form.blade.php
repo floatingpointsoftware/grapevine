@@ -17,3 +17,4 @@
         @include('partials.field-error', ['field' => 'description'])
     </div>
 </div>
+{!! Form::hidden('category', $topic->category->slug) !!}

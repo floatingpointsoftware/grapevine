@@ -2,22 +2,25 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Http\Requests\Categories\CreateCategoryRequest;
+use FloatingPoint\Grapevine\Http\Requests\Categories\UpdateCategoryRequest;
+use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Support\Controller;
 use FloatingPoint\Grapevine\Modules\Categories\Commands\CreateCategoryCommand;
+use FloatingPoint\Grapevine\Modules\Categories\Commands\UpdateCategoryCommand;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 
 class CategoryController extends Controller
 {
     /**
-     * @var CategoryRepositoryInterface
+     * @var CategoryRepository
      */
     private $categories;
 
     /**
-     * @param CategoryRepositoryInterface $categories
+     * @param CategoryRepository $categories
      */
-    public function __construct(CategoryRepositoryInterface $categories)
+    public function __construct(CategoryRepository $categories)
     {
         $this->categories = $categories;
     }
@@ -57,7 +60,7 @@ class CategoryController extends Controller
      * Stores a new category
      *
      * @param CreateCategoryRequest $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateCategoryRequest $request)
     {
@@ -81,5 +84,20 @@ class CategoryController extends Controller
         $category = $this->categories->requireBySlug($slug);
 
         return $this->respond('category.edit', compact('category'));
+    }
+
+    public function update(UpdateCategoryRequest $request)
+    {
+        $this->dispatch(new UpdateCategoryCommand($request->get('id'), $request->only(['title','description'])));
+
+        return redirect()->route('category.show', [Slug::fromTitle($request->get('title'))]);
+    }
+
+    public function destroy($slug)
+    {
+        $category = $this->categories->getBySlug($slug);
+        $this->categories->delete($category);
+
+        return redirect()->route('category.index');
     }
 }

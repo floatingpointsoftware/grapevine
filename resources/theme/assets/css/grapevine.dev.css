@@ -6538,12 +6538,3 @@ section.header {
   margin-left: 15px;
   position: relative;
   top: 2px; }
-
-.forum {
-  border-bottom: 1px solid #9a9c9f;
-  padding-bottom: 15px; }
-  .forum h2 {
-    display: inline-block;
-    margin: 0; }
-  .forum + .forum {
-    padding-top: 25px; }

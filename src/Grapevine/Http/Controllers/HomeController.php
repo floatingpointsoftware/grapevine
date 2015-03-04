@@ -2,19 +2,19 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
 
 class HomeController extends Controller
 {
     /**
-     * @var TopicRepositoryInterface
+     * @var TopicRepository
      */
     private $topics;
 
     /**
-     * @param TopicRepositoryInterface $topics
+     * @param TopicRepository $topics
      */
-    function __construct(TopicRepositoryInterface $topics)
+    function __construct(TopicRepository $topics)
     {
         $this->topics = $topics;
     }

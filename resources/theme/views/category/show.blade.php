@@ -7,19 +7,19 @@
     @else
         @foreach($category->children as $topic)
             <div class="row">
-                <div class="col-md-3">{!! HTML::linkRoute('category.topics.show', $topic->title, [$topic->category->slug, $topic->slug]) !!}</div>
+                <div class="col-md-3">{!! HTML::linkRoute('topics.show', $topic->title, [$topic->slug]) !!}</div>
                 <div class="col-md-3">{{ $topic->replies_count }} replies, {{ $topic->views }} views</div>
                 <div class="col-md-3">Created {{ $topic->createdAt->toDayDateTimeString() }}</div>
                 <div class="col-md-3">
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['category.topics.destroy', $category->slug, $topic->slug]]) !!}
-
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['topics.destroy', $topic->slug]]) !!}
+                        {!! Form::hidden('slug', $category->slug) !!}
                         {!! Form::submit('Delete') !!}
                     {!! Form::close() !!}
-                    {!! HTML::linkRoute('category.topics.edit', 'Edit', [$topic->category->slug, $topic->slug]) !!}
+                    {!! HTML::linkRoute('topics.edit', 'Edit', [$topic->category->slug, $topic->slug]) !!}
                 </div>
             </div>
             <hr/>
         @endforeach
     @endif
-    {!! HTML::linkRoute('category.topics.create', 'New Topic', [$category->slug]) !!}
+    {!! HTML::linkRoute('topics.create', 'New Topic', 'category='.$category->slug) !!}
 @stop

@@ -1,8 +1,6 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Users\Data;
 
-use FloatingPoint\Grapevine\Library\Database\RepositoryInterface;
-
 interface UserRepositoryInterface
 {
     /**

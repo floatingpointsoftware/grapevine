@@ -18,7 +18,7 @@ trait Sluggable
      */
     public function setSlugAttribute(Slug $slug)
     {
-        $this->attributes['slug'] = $slug;
+        $this->attributes['slug'] = (string) $slug;
     }
 
     /**
@@ -29,5 +29,14 @@ trait Sluggable
     public function getSlugAttribute()
     {
         return new Slug($this->attributes['slug']);
+    }
+
+    public function updateSlug($attr = 'title')
+    {
+        if($attr == 'title') {
+            $this->slug = Slug::fromTitle($this->title);
+        } else {
+            $this->slug = Slug::fromId($this->id);
+        }
     }
 }

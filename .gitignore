@@ -8,3 +8,5 @@ composer.lock
 docs/
 node_modules
 gulp-sync.js
+output
+assets/scss/bourbon

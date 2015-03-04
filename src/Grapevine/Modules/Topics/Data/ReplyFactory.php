@@ -1,10 +1,8 @@
 <?php 
 namespace FloatingPoint\Grapevine\Modules\Topics\Data;
 
-use FloatingPoint\Grapevine\Library\Slugs\Slug;
-use FloatingPoint\Grapevine\Modules\Categories\Data\Arrayable;
-use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
 use FloatingPoint\Grapevine\Modules\Topics\Events\TopicWasRepliedTo;
+use Illuminate\Contracts\Support\Arrayable;
 
 class ReplyFactory
 {

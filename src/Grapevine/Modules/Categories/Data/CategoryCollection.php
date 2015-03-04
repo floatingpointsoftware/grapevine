@@ -12,14 +12,14 @@ class CategoryCollection extends Collection
      *
      * @param integer|null $categoryId If provided, will remove this category from the select
      *     dropdown. Categories should not be able to reference themselves in a dropdown.
-     * @param boolean $empty Set to false if you do not want an empty option value.
+     * @param boolean      $empty Set to false if you do not want an empty option value.
      * @return array
      */
     public function forSelect($categoryId = null, $empty = true)
     {
         $categories = $this->lists('title', 'id');
 
-        if (!is_null($categoryId) && isset($categories[$categoryId])) {
+        if (! is_null($categoryId) && isset($categories[$categoryId])) {
             unset($categories[$categoryId]);
         }
 

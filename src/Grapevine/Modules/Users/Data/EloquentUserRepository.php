@@ -2,8 +2,6 @@
 namespace FloatingPoint\Grapevine\Modules\Users\Data;
 
 use FloatingPoint\Grapevine\Library\Database\EloquentRepository;
-use FloatingPoint\Grapevine\Modules\Users\Data\User;
-use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
 
 class EloquentUserRepository extends EloquentRepository implements UserRepositoryInterface
 {

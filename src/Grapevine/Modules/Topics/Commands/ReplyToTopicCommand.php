@@ -8,12 +8,6 @@ class ReplyToTopicCommand
     public $title;
     public $content;
 
-    /**
-     * @param $userId
-     * @param $topicId
-     * @param $title
-     * @param $content
-     */
     public function __construct($userId, $topicId, $title, $content)
     {
         $this->userId = $userId;

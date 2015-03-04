@@ -21,7 +21,14 @@ class MigrateGrapevineCommand extends Command
     protected $description = 'Migrate all required grapevine migration files.';
 
     /**
+     * @var Container instance
+     */
+    protected $app;
+
+    /**
      * Setup the application container as we'll need this for running migrations.
+     *
+     * @param Container $app
      */
     public function __construct(Container $app)
     {

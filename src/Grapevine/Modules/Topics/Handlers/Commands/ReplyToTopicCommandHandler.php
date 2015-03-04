@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Topics\Handlers\Commands;
 use FloatingPoint\Grapevine\Library\Events\Dispatcher;
 use FloatingPoint\Grapevine\Modules\Topics\Commands\ReplyToTopicCommand;
 use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyFactory;
-use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyRepository;
 
 class ReplyToTopicCommandHandler
 {
@@ -13,7 +13,7 @@ class ReplyToTopicCommandHandler
     private $replies;
     private $factory;
 
-    public function __construct(ReplyFactory $factory, ReplyRepositoryInterface $replies)
+    public function __construct(ReplyFactory $factory, ReplyRepository $replies)
     {
         $this->factory = $factory;
         $this->replies = $replies;

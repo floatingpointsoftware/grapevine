@@ -2,88 +2,93 @@
 namespace Tests\Unit\Library\Database;
 
 use Mockery as m;
-use Tests\Stubs\EloquentRepositoryStub;
+use Tests\Stubs\Library\Database\EloquentRepositoryStub;
+use Tests\Stubs\Library\Database\RepositoryModelStub;
 
 class EloquentRepositoryTest extends \Tests\UnitTestCase
 {
     private $model;
-    private $repository;
+    private $resource;
 
     public function init()
     {
-        $this->model = m::mock('Model');
-        $this->repository = new EloquentRepositoryStub($this->model);
+        $this->model = new RepositoryModelStub();
+        $this->resource= new EloquentRepositoryStub($this->model);
     }
 
-    public function testGetByIdShouldReturnASpecificRecord()
+    /**
+    * @test
+    */
+    public function repositoryRetrievesAllEntries()
     {
-        $mockRecord = m::mock('somemodel');
-
-        $this->model->shouldReceive('where')->once()->with('id', '=', 1)->andReturn($this->model);
-        $this->model->shouldReceive('first')->once()->andReturn($mockRecord);
-
-        $this->assertEquals($mockRecord, $this->repository->getById(1));
+        $this->assertCount(3, $this->resource->getAll());
     }
 
-    public function testDeleteShouldRemoveAndReturnDeletedRecord()
+    /**
+    * @test
+    */
+    public function repositorySetsAndGetsModel()
     {
-        $resource = m::mock('someobject');
-        $resource->shouldReceive('delete')->once();
-
-        $this->assertEquals($resource, $this->repository->delete($resource));
+        $this->assertInstanceOf(RepositoryModelStub::class, $this->resource->getModel());
+        $this->resource->setModel('foo');
+        $this->assertEquals('foo', $this->resource->getModel());
     }
 
-    public function testDeleteRecordPermanently()
+    /**
+    * @test
+    */
+    public function savesIfAttributesNotEmpty()
     {
-        $resource = m::mock('someobject');
-        $resource->shouldReceive('forceDelete')->once();
-
-        $this->assertEquals($resource, $this->repository->delete($resource, true));
+        $this->model->setIsDirty(['title' => 'bar']);
+        $this->assertInstanceOf(RepositoryModelStub::class, $this->resource->save($this->model));
     }
 
-    public function testGetNewShouldMakeAndReturnANewRecord()
+    /**
+    * @test
+    */
+    public function repositorySavesCollectionOfModels()
     {
-        $record = 'record';
-
-        $this->model->shouldReceive('newInstance')->andReturn($record);
-
-        $this->assertEquals($record, $this->repository->getNew());
+        $model1 = new RepositoryModelStub();
+        $model2 = new RepositoryModelStub();
+        $this->assertNull($this->resource->saveAll([$model1, $model2]));
+        $this->assertNull($this->resource->saveAll($model1, $model2));
     }
 
-    public function testUpdateShouldSaveAndReturnExistingDirtyRecord()
+    /**
+    * @test
+    * @expectedException \Illuminate\Database\Eloquent\ModelNotFoundException
+    */
+    public function repositoryThrowsExceptionWhenIdDoesntExist()
     {
-        $params = ['testParam' => 1];
-
-        $foundRecord = m::mock('FoundRecord');
-
-        $foundRecord->shouldReceive('fill')->once()->with($params);
-        $foundRecord->shouldReceive('getDirty')->andReturn(true);
-        $foundRecord->exists = true;
-        $foundRecord->shouldReceive('save')->once();
-
-        $this->assertEquals($foundRecord, $this->repository->update($foundRecord, $params));
+        $this->resource->requiredIsFound = false;
+        $this->resource->requireById(999);
     }
 
-    public function testCleanModelsShouldNotSave()
+    /**
+     * @test
+     * @expectedException \Illuminate\Database\Eloquent\ModelNotFoundException
+    */
+    public function repositoryThrowsExceptionWhenRequiredFieldDoesntExist()
     {
-        $mockRecord = m::mock('resource');
-        $mockRecord->shouldReceive('getDirty')->once()->andReturn(false);
-        $mockRecord->shouldReceive('touch')->once();
-        $mockRecord->exists = true;
-
-        $this->assertEquals($mockRecord, $this->repository->save($mockRecord));
+        $this->resource->requiredIsFound = true;
+        $result = $this->resource->requireBy('title', 999);
     }
 
-    public function testUpdateShouldTouchAndReturnExistingCleanRecord()
+    /**
+    * @test
+    */
+    public function repositoryRequiresById()
     {
-        $params = ['testParam' => 1];
+        $result = $this->resource->requireById(20);
+        $this->assertEquals(1, $result);
+    }
 
-        $foundRecord = m::mock('FoundRecord');
-        $foundRecord->shouldReceive('fill')->with($params);
-        $foundRecord->shouldReceive('touch');
-        $foundRecord->shouldReceive('getDirty')->andReturn(false);
-        $foundRecord->exists = true;
-
-        $this->assertEquals($foundRecord, $this->repository->update($foundRecord, $params));
+    /**
+    * @test
+    */
+    public function repositoryRequiresByArbitraryField()
+    {
+        $result = $this->resource->requireBy('title', 'my title');
+        $this->assertEquals(1, $result);
     }
 }

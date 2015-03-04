@@ -1,27 +1,21 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Database;
 
-use Event;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-abstract class EloquentRepository implements RepositoryInterface
+abstract class EloquentRepository implements Repository
 {
+    public function getAll()
+    {
+        return $this->model->all();
+    }
+
     /**
      * Stores the model object for querying.
      *
      * @var Eloquent
      */
     protected $model;
-
-    /**
-     * Returns a collection of eloquent models consisting of the entire database table's records.
-     *
-     * @return mixed
-     */
-    public function getAll()
-    {
-        return $this->model->get();
-    }
 
     /**
      * Get a specific resource.
@@ -51,7 +45,7 @@ abstract class EloquentRepository implements RepositoryInterface
      * Retrieve a model based on the field and value.
      *
      * @param string $field
-     * @param mixed $value
+     * @param mixed  $value
      * @return mixed
      */
     public function getBy($field, $value)
@@ -71,7 +65,7 @@ abstract class EloquentRepository implements RepositoryInterface
     {
         $model = $this->getBy($field, $value);
 
-        if (!$model) {
+        if (! $model) {
             $exception = new ModelNotFoundException;
             $exception->setModel(get_class($this->model));
 
@@ -102,21 +96,11 @@ abstract class EloquentRepository implements RepositoryInterface
     }
 
     /**
-     * Create a resource based on the data provided.
-     *
-     * @param array $data
-     * @return Resource
-     */
-    public function getNew(array $data = [])
-    {
-        return $this->model->newInstance($data);
-    }
-
-    /**
      * Delete a specific resource. Returns the resource that was deleted.
      *
-     * @param Resource  $resource
-     * @param boolean $permanent
+     * @deprecated
+     * @param Resource $resource
+     * @param boolean  $permanent
      * @fires Resource.Deleted
      * @return Resource
      */
@@ -132,22 +116,6 @@ abstract class EloquentRepository implements RepositoryInterface
     }
 
     /**
-     * Update a resource based on the id and data provided.
-     *
-     * @param object $resource
-     * @param array  $data
-     * @return Resource
-     */
-    public function update($resource, $data = [])
-    {
-        if (is_array($data) && count($data) > 0) {
-            $resource->fill($data);
-        }
-
-        return $this->save($resource);
-    }
-
-    /**
      * Saves the resource provided to the database.
      *
      * @param $resource
@@ -157,7 +125,7 @@ abstract class EloquentRepository implements RepositoryInterface
     {
         $attributes = $resource->getDirty();
 
-        if (!empty($attributes)) {
+        if (! empty($attributes)) {
             $resource->save();
         } else {
             $resource->touch();
@@ -168,24 +136,16 @@ abstract class EloquentRepository implements RepositoryInterface
 
     /**
      * Save all resources provided to the method.
+     *
+     * @param $resources
+     * @return mixed|void
      */
-    public function saveAll()
+    public function saveAll($resources)
     {
-        $resources = func_get_args();
+        $resources = is_array($resources) ? $resources : func_get_args();
 
         foreach ($resources as $resource) {
             $this->save($resource);
         }
-    }
-
-    /**
-     * Require a specific record by its slug.
-     *
-     * @param string $slug
-     * @return mixed
-     */
-    public function requireBySlug($slug)
-    {
-        return $this->requireBy('slug', $slug);
     }
 }
