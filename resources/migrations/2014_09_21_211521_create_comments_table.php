@@ -16,9 +16,8 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->index();
             $table->integer('discussion_id')->index();
-            $table->string('title', '100')->nullable();
             $table->string('slug')->index();
-            $table->text('content');
+            $table->text('comment');
             $table->softDeletes();
             $table->timestamps();
         });

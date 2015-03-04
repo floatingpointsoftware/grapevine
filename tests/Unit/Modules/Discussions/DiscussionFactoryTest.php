@@ -2,31 +2,22 @@
 namespace Tests\Unit\Modules\Topics;
 
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicFactory;
+use FloatingPoint\Grapevine\Modules\Discussions\Data\DiscussionFactory;
 use Tests\UnitTestCase;
 
-class TopicFactoryTest extends UnitTestCase
+class DiscussionFactoryTest extends UnitTestCase
 {
     protected $resource;
     
-    public function setUp()
+    public function init()
     {
-        parent::setUp();
-        $this->resource = new TopicFactory();
+        $this->resource = new DiscussionFactory();
     }
 
     /**
     * @test
     */
-    public function instantiatesResource()
-    {
-        $this->assertInstanceOf(TopicFactory::class, $this->resource);
-    }
-
-    /**
-    * @test
-    */
-    public function factoryStartsTopics()
+    public function factoryStartsDiscussions()
     {
         $category = new Category();
         $category->id = 1;

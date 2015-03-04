@@ -1,7 +1,7 @@
 <?php 
-namespace Tests\Stubs\Modules\Topics;
+namespace Tests\Stubs\Modules\Discussions;
 
-class TopicStub
+class DiscussionStub
 {
     public $deleted = false;
 

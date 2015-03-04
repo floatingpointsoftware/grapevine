@@ -5,7 +5,7 @@ namespace FloatingPoint\Grapevine\Library\Slugs;
  * Class Sluggable
  *
  * Can be utilised inside models that require slug functionality. This will automatically create
- * slugs baseed on the id of the model once it has been created. Does not run on model record updates.
+ * slugs based on the id of the model once it has been created. Does not run on model record updates.
  *
  * @package FloatingPoint\Grapevine\Library\Slugs
  */
@@ -33,9 +33,10 @@ trait Sluggable
 
     public function updateSlug($attr = 'title')
     {
-        if($attr == 'title') {
+        if ($attr == 'title') {
             $this->slug = Slug::fromTitle($this->title);
-        } else {
+        }
+        else {
             $this->slug = Slug::fromId($this->id);
         }
     }

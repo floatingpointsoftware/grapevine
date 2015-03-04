@@ -1,27 +1,17 @@
 <?php
 namespace Tests\Unit\Modules\Topics;
 
+use FloatingPoint\Grapevine\Modules\Discussions\Data\CommentFactory;
 use Tests\UnitTestCase;
-use FloatingPoint\Grapevine\Modules\Topics\Data\ReplyFactory;
 use Illuminate\Contracts\Support\Arrayable;
-use FloatingPoint\Grapevine\Modules\Topics\Data\Reply;
 
-class ReplyFactoryTest extends UnitTestCase
+class CommentFactoryTest extends UnitTestCase
 {
     protected $resource;
     
-    public function setUp()
+    public function init()
     {
-        parent::setUp();
-        $this->resource = new ReplyFactory();
-    }
-
-    /**
-    * @test
-    */
-    public function instantiatesResource()
-    {
-        $this->assertInstanceOf(ReplyFactory::class, $this->resource);
+        $this->resource = new CommentFactory;
     }
 
     /**
@@ -29,11 +19,11 @@ class ReplyFactoryTest extends UnitTestCase
     */
     public function factoryCreatesReplies()
     {
-        $createdReply = $this->resource->create(1, 2, 'my title', 'my content');
-        $this->assertEquals(1, $createdReply->topicId);
-        $this->assertEquals(2, $createdReply->userId);
-        $this->assertEquals('my title', $createdReply->title);
-        $this->assertEquals('my content', $createdReply->content);
+        $createdComment = $this->resource->create(1, 2, 'my title', 'my content');
+        $this->assertEquals(1, $createdComment->discussionId);
+        $this->assertEquals(2, $createdComment->userId);
+        $this->assertEquals('my title', $createdComment->title);
+        $this->assertEquals('my content', $createdComment->content);
     }
 
     /**

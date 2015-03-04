@@ -17,14 +17,6 @@ class CategoryFactoryTest extends UnitTestCase
     /**
     * @test
     */
-    public function instantiatesResources()
-    {
-        $this->assertInstanceOf(CategoryFactory::class, $this->resource);
-    }
-
-    /**
-    * @test
-    */
     public function factoryCreatesCategories()
     {
         $createdCategory = $this->resource->create('my title', 'my description');

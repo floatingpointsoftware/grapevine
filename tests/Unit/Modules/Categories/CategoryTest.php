@@ -5,7 +5,7 @@ use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryCollection;
 use Illuminate\Support\Collection;
 use Tests\Stubs\Modules\Categories\CategoryStub;
-use Tests\Stubs\Modules\Topics\TopicStub;
+use Tests\Stubs\Modules\Discussions\DiscussionStub;
 use Tests\UnitTestCase;
 
 class CategoryTest extends UnitTestCase
@@ -31,11 +31,11 @@ class CategoryTest extends UnitTestCase
     */
     public function categoryDeletesChildTopics()
     {
-        $topic = new TopicStub();
+        $discussion = new DiscussionStub();
         $category = new CategoryStub();
-        $category->topics = new Collection([$topic]);
-        $category->deleteTopics();
-        $this->assertTrue($topic->deleted);
+        $category->discussions = new Collection([$discussion]);
+        $category->deleteDiscussions();
+        $this->assertTrue($discussion->deleted);
 
     }
 
