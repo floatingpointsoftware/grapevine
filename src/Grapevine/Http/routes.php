@@ -8,11 +8,16 @@ $routeGroupAttributes = [
 Route::group($routeGroupAttributes, function() {
     Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
-    Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
+    Route::group(['before' => 'auth'], function() {
+        Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
 
-    Route::resource('category', 'CategoryController');
-    Route::resource('topics', 'TopicController');
-    Route::resource('topics.replies', 'ReplyController');
+        Route::get('discussion/create/{category}', ['as' => 'discussion.create.with', 'uses' => 'DiscussionController@create']);
+
+        Route::resource('category', 'CategoryController');
+        Route::resource('discussion', 'DiscussionController');
+        Route::resource('comment', 'CommentController');
+    });
+
     Route::resource('user', 'UserController');
 
     // Registrations
@@ -22,7 +27,7 @@ Route::group($routeGroupAttributes, function() {
     Route::get('login', ['as' => 'login.form', 'uses' => 'AuthenticationController@form']);
     Route::post('login', ['as' => 'login.submit', 'uses' => 'AuthenticationController@login']);
 
-    // Catch-all routes, which should direct to categories, topics.etc.
-    Route::get('{category}/{topic}', ['as' => 'topic.read', 'uses' => 'TopicController@read']);
-    Route::get('{category}', ['as' => 'topic.browse', 'uses' => 'TopicController@browse']);
+    // Catch-all routes, which should direct to categories, discussions.etc.
+    Route::get('{category}/{discussion}', ['as' => 'discussion.read', 'uses' => 'DiscussionController@read']);
+    Route::get('{category}', ['as' => 'discussion.browse', 'uses' => 'DiscussionController@browse']);
 });

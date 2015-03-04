@@ -2,32 +2,32 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Topics\Data\TopicRepository;
+use FloatingPoint\Grapevine\Modules\Discussions\Data\DiscussionRepository;
 
 class HomeController extends Controller
 {
     /**
-     * @var TopicRepository
+     * @var DiscussionRepository
      */
-    private $topics;
+    private $discussions;
 
     /**
-     * @param TopicRepository $topics
+     * @param DiscussionRepository $discussions
      */
-    function __construct(TopicRepository $topics)
+    function __construct(DiscussionRepository $discussions)
     {
-        $this->topics = $topics;
+        $this->discussions = $discussions;
     }
 
     /**
-     * Retrieves a list of the most recently updated topics.
+     * Retrieves a list of the most recently updated discussions.
      *
      * @return mixed
      */
     public function index()
     {
-        $topics = $this->topics->getRecent();
+        $discussions = $this->discussions->getRecent();
 
-        return $this->respond('home.index', compact('topics'));
+        return $this->respond('home.index', compact('discussions'));
     }
 }

@@ -1,10 +1,10 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Categories\Handlers\Events;
 
-use FloatingPoint\Grapevine\Modules\Topics\Events\TopicWasStarted;
+use FloatingPoint\Grapevine\Modules\Discussions\Events\DiscussionWasStarted;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 
-class IncreaseCategoryTopicCount
+class IncreaseCategoryDiscussionCount
 {
 	/**
 	 * @var CategoryRepository
@@ -20,10 +20,10 @@ class IncreaseCategoryTopicCount
 	}
 
 	/**
-	 * @param TopicWasStarted $topic
+	 * @param DiscussionWasStarted $discussion
      */
-	public function handle(\FloatingPoint\Grapevine\Modules\Topics\Events\TopicWasStarted $topic)
+	public function handle(\FloatingPoint\Grapevine\Modules\Discussions\Events\DiscussionWasStarted $discussion)
 	{
-		$this->categories->increaseTopicCount($topic->categoryId);
+		$this->categories->increaseDiscussionCount($discussion->categoryId);
 	}
 }

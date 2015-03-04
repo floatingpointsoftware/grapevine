@@ -3,23 +3,23 @@
         <h1>{{ $category->title }}</h1>
     </div>
     @if($category->children->count() < 1)
-        <h3>No Topics Created Yet!</h3>
+        <h3>No Discussions Created Yet!</h3>
     @else
-        @foreach($category->children as $topic)
+        @foreach($category->children as $discussion)
             <div class="row">
-                <div class="col-md-3">{!! HTML::linkRoute('topics.show', $topic->title, [$topic->slug]) !!}</div>
-                <div class="col-md-3">{{ $topic->replies_count }} replies, {{ $topic->views }} views</div>
-                <div class="col-md-3">Created {{ $topic->createdAt->toDayDateTimeString() }}</div>
+                <div class="col-md-3">{!! HTML::linkRoute('discussions.show', $discussion->title, [$discussion->slug]) !!}</div>
+                <div class="col-md-3">{{ $discussion->replies_count }} replies, {{ $discussion->views }} views</div>
+                <div class="col-md-3">Created {{ $discussion->createdAt->toDayDateTimeString() }}</div>
                 <div class="col-md-3">
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['topics.destroy', $topic->slug]]) !!}
+                    {!! Form::open(['method' => 'DELETE', 'route' => ['discussions.destroy', $discussion->slug]]) !!}
                         {!! Form::hidden('slug', $category->slug) !!}
                         {!! Form::submit('Delete') !!}
                     {!! Form::close() !!}
-                    {!! HTML::linkRoute('topics.edit', 'Edit', [$topic->category->slug, $topic->slug]) !!}
+                    {!! HTML::linkRoute('discussions.edit', 'Edit', [$discussion->category->slug, $discussion->slug]) !!}
                 </div>
             </div>
             <hr/>
         @endforeach
     @endif
-    {!! HTML::linkRoute('topics.create', 'New Topic', 'category='.$category->slug) !!}
+    {!! HTML::linkRoute('discussions.create', 'New Discussion', 'category='.$category->slug) !!}
 @stop

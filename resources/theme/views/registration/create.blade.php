@@ -1,6 +1,6 @@
 @section('main')
     {!! Form::open(['route' => 'register.submit']) !!}
-        <div class="row">
+        <div class="page-header">
             <h1>Registration</h1>
         </div>
 
@@ -51,7 +51,7 @@
                 <div class="col-sm-offset-2 col-sm-6">
                     {!! Form::submit('Register', ['class' => 'btn btn-primary']) !!}
 
-                    <span class="login-link">or <a href="{!! route('register.form') !!}">login</a></span>
+                    <span class="login-link">or <a href="{!! route('login.form') !!}">login</a></span>
                 </div>
             </div>
         </div>

@@ -18,15 +18,11 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->string('slug')->index();
             $table->text('description');
-            $table->integer('topics_count')->default(0);
-            $table->integer('replies_count')->default(0);
+            $table->integer('discussion_count')->default(0);
+            $table->integer('comment_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
-
-//        Schema::table('forums', function (Blueprint $table) {
-//            $table->foreign('parent_id')->references('id')->on('forums');
-//        });
     }
 
     /**
@@ -36,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('forums');
+        Schema::drop('categories');
     }
 }

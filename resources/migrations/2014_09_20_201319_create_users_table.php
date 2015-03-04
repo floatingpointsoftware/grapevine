@@ -17,8 +17,8 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('email')->index();
             $table->string('password');
-            $table->integer('posts')->index()->default(0);
-            $table->integer('topics')->index()->default(0);
+            $table->integer('discussion_count')->index()->default(0);
+            $table->integer('comment_count')->index()->default(0);
             $table->string('slug')->index();
             $table->string('remember_token')->nullable();
             $table->softDeletes();

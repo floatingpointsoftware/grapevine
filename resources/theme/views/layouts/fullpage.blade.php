@@ -9,23 +9,34 @@
         <section class="header">
             <div class="container">
                 <div class="row">
-                    <nav class="navbar">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="/">{!! Theme::image('img/logo.png') !!}</a>
-                        </div>
-                    </nav>
+                    <a class="logo" href="/">{!! Theme::image('img/logo.png') !!}</a>
+
+                    <div class="user-actions col-lg-6">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <ol class="breadcrumb">
+                            <li><a href="{!! route('home') !!}">Home</a></li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="main container">
-            <div id="pjaxContainer" class="col-md-9">
-                @yield('main')
-            </div>
+            <div class="row">
+                <div id="pjaxContainer" class="col-md-9">
+                    @yield('main')
+                </div>
 
-            <div class="left-menu col-md-3">
-                @include('partials.aside')
+                <div class="left-menu col-md-3">
+                    @include('partials.aside')
+                </div>
             </div>
         </section>
 

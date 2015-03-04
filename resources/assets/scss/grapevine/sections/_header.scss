@@ -1,20 +1,29 @@
 section.header {
 	background: $colour-primary;
-	padding-top: 25px;
-	padding-bottom: 25px;
 
-	.navbar {
-		min-height: inherit;
-		margin-bottom: 0;
+	.logo {
+		display: block;
+		margin: 35px 0;
 	}
 
-	.navbar-brand {
-		height: auto;
-		width: auto;
-		padding: 0;
-	}
-
-	.navbar-nav {
+	.user-actions {
 		float: right;
+	}
+
+	.breadcrumbs {
+		background: $colour-secondary;
+		padding: 15px 0;
+
+		.breadcrumb {
+			background: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		a {
+			color: #fff;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
 	}
 }

@@ -4,6 +4,6 @@
     </header>
 
     <div class="buttons">
-        <a class="btn btn-default" href="{!! route('register.form') !!}" role="button">Sign out</a>
+        <a class="btn btn-default" href="{!! route('register.form') !!}" role="button">Start discussion</a>
     </div>
 </div>

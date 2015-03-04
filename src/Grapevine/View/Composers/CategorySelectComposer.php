@@ -24,6 +24,11 @@ class CategorySelectComposer
      */
     public function compose(View $view)
     {
-        $view->with('categories', $this->categories->getAll()->forSelect($view->category->id));
+        $categories = $this->categories->getAll();
+        $removeCategory = isset($view->category) ? $view->category->id : null;
+
+        if ($categories->count()) {
+            $view->with('categories', $categories->forSelect($removeCategory));
+        }
     }
 }

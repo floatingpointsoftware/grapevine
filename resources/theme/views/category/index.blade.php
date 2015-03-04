@@ -13,9 +13,10 @@
                 </header>
                     <footer>
                         @if ($category->description)
-                        <p>{!! $category->description !!}</p>
+                            <p>{!! $category->description !!}</p>
                         @endif
-                        <p>{{ $category->topics_count . ' topics, ' . $category->replies_count . ' replies' }}</p>
+
+                        <p>{{ $category->discussion_count . ' discussions, ' . $category->replies_count . ' replies' }}</p>
                     </footer>
             </div>
         @empty

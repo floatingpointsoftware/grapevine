@@ -6514,18 +6514,23 @@ section.main {
   margin-bottom: 50px; }
 
 section.header {
-  background: #353638;
-  padding-top: 25px;
-  padding-bottom: 25px; }
-  section.header .navbar {
-    min-height: inherit;
-    margin-bottom: 0; }
-  section.header .navbar-brand {
-    height: auto;
-    width: auto;
-    padding: 0; }
-  section.header .navbar-nav {
+  background: #353638; }
+  section.header .logo {
+    display: block;
+    margin: 35px 0; }
+  section.header .user-actions {
     float: right; }
+  section.header .breadcrumbs {
+    background: #286794;
+    padding: 15px 0; }
+    section.header .breadcrumbs .breadcrumb {
+      background: none;
+      margin: 0;
+      padding: 0; }
+    section.header .breadcrumbs a {
+      color: #fff;
+      font-weight: 600;
+      text-transform: uppercase; }
 
 .menu.categories a {
   color: inherit;

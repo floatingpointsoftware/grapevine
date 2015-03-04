@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Categories\Data;
 use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
-use FloatingPoint\Grapevine\Modules\Topics\Data\Topic;
+use FloatingPoint\Grapevine\Modules\Discussions\Data\Discussion;
 
 class Category extends Model
 {
@@ -25,7 +25,7 @@ class Category extends Model
         });
 
         static::deleted(function ($category) {
-            $category->deleteTopics();
+            $category->deleteDiscussions();
         });
     }
 
@@ -43,7 +43,7 @@ class Category extends Model
 
     public function children()
     {
-        return $this->hasMany(Topic::class);
+        return $this->hasMany(Discussion::class);
     }
 
     public static function slugToId($slug)
@@ -51,11 +51,11 @@ class Category extends Model
         return self::whereSlug($slug)->first();
     }
 
-    public function deleteTopics()
+    public function deleteDiscussions()
     {
-        if (! empty($this->topics)) {
-            $this->topics->each(function ($topic) {
-                $topic->delete();
+        if (! empty($this->discussions)) {
+            $this->discussions->each(function ($discussion) {
+                $discussion->delete();
             });
         }
     }

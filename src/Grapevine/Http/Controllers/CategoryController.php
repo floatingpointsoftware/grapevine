@@ -1,12 +1,12 @@
 <?php
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
-use FloatingPoint\Grapevine\Http\Requests\Categories\CreateCategoryRequest;
-use FloatingPoint\Grapevine\Http\Requests\Categories\UpdateCategoryRequest;
+use FloatingPoint\Grapevine\Http\Requests\Categories\SetupCategoryRequest;
+use FloatingPoint\Grapevine\Http\Requests\Categories\ModifyCategoryRequest;
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Categories\Commands\CreateCategoryCommand;
-use FloatingPoint\Grapevine\Modules\Categories\Commands\UpdateCategoryCommand;
+use FloatingPoint\Grapevine\Modules\Categories\Commands\SetupCategoryCommand;
+use FloatingPoint\Grapevine\Modules\Categories\Commands\ModifyCategoryCommand;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 
@@ -46,7 +46,7 @@ class CategoryController extends Controller
     {
         $category = new Category;
 
-        return $this->respond('category.create', compact('category'));
+        return $this->respond('category.setup', compact('category'));
     }
 
     public function show($slug)
@@ -62,9 +62,9 @@ class CategoryController extends Controller
      * @param CreateCategoryRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CreateCategoryRequest $request)
+    public function store(SetupCategoryRequest $request)
     {
-        $this->dispatch(new CreateCategoryCommand(
+        $this->dispatch(new SetupCategoryCommand(
             $request->get('parent_id', null),
             $request->get('title'),
             $request->get('description')
@@ -86,9 +86,9 @@ class CategoryController extends Controller
         return $this->respond('category.edit', compact('category'));
     }
 
-    public function update(UpdateCategoryRequest $request)
+    public function update(ModifyCategoryRequest $request)
     {
-        $this->dispatch(new UpdateCategoryCommand($request->get('id'), $request->only(['title','description'])));
+        $this->dispatch(new ModifyCategoryCommand($request->get('id'), $request->only(['title','description'])));
 
         return redirect()->route('category.show', [Slug::fromTitle($request->get('title'))]);
     }

@@ -1,7 +1,7 @@
 @section('main')
     {!! Form::open(['route' => 'login.submit']) !!}
-        <div class="row">
-            <h2>Login</h2>
+        <div class="page-header">
+            <h1>Login</h1>
         </div>
 
         @include('partials.error')
