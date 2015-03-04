@@ -1,16 +1,14 @@
 @section('main')
-    {!! Form::model($category, ['route' => 'register.submit']) !!}
-        <div class="row">
-            <h2 class="control-heading">
-                Edit category
-            </h2>
+    {!! Form::model($category, ['route' => 'category.update', 'class' => 'form-horizontal']) !!}
+        <div class="page-header">
+            <h1>Edit category</h1>
+        </div>
 
-            @include('category.form')
+        @include('category.form')
 
-            <div class="form-actions">
-                <div class="control-field column-two-thirds">
-                    {!! Form::submit('Update') !!}
-                </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                {!! Form::submit('Save', ['class' => 'btn btn-default']) !!}
             </div>
         </div>
     {!! Form::close() !!}

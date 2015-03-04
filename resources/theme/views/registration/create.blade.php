@@ -1,69 +1,57 @@
 @section('main')
     {!! Form::open(['route' => 'register.submit']) !!}
         <div class="row">
-            <h2 class="control-heading">
-                Identity
-            </h2>
+            <h1>Registration</h1>
+        </div>
 
-            <div class="control">
-                <div class="control-label">
-                    {!! Form::label('username') !!}
-                </div>
-                <div class="control-field column-two-thirds">
-                    {!! Form::text('username') !!}
+        @include('partials.error')
+
+        <div class="form-horizontal row">
+            <div class="form-group">
+                {!! Form::label('username', null, ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::text('username', null, ['class' => 'form-control']) !!}
                     @include('partials.field-error', ['field' => 'username'])
                 </div>
             </div>
 
-            <h2 class="control-heading">
-                Credentials
-            </h2>
-
-            <div class="control">
-                <div class="control-label">
-                    {!! Form::label('email') !!}
-                </div>
-                <div class="control-field column-two-thirds">
-                    {!! Form::email('email') !!}
+            <div class="form-group">
+                {!! Form::label('email', null, ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::email('email', null, ['class' => 'form-control']) !!}
                     @include('partials.field-error', ['field' => 'email'])
                 </div>
             </div>
 
-            <div class="control">
-                <div class="control-label">
-                    {!! Form::label('email_confirmation') !!}
-                </div>
-                <div class="control-field column-two-thirds">
-                    {!! Form::email('email_confirmation') !!}
+            <div class="form-group">
+                {!! Form::label('email_confirmation', 'Confirm', ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::email('email_confirmation', null, ['placeholder' => 'Confirm email entered above', 'class' => 'form-control']) !!}
                     @include('partials.field-error', ['field' => 'email_confirmation'])
                 </div>
             </div>
 
-            <div class="control">
-                <div class="control-label">
-                    {!! Form::label('password') !!}
-                </div>
-                <div class="control-field column-two-thirds">
-                    {!! Form::password('password') !!}
+            <div class="form-group">
+                {!! Form::label('password', null, ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::password('password', ['class' => 'form-control']) !!}
                     @include('partials.field-error', ['field' => 'password'])
                 </div>
             </div>
 
-            <div class="control">
-                <div class="control-label">
-                    {!! Form::label('password_confirmation') !!}
-                </div>
-                <div class="control-field column-two-thirds">
-                    {!! Form::password('password_confirmation') !!}
-                    @include('partials.field-error', ['field' => 'password_confirmation'])
+            <div class="form-group">
+                {!! Form::label('password_confirmation', null, ['class' => 'col-sm-2 control-label']) !!}
+                <div class="col-sm-6">
+                    {!! Form::password('password_confirmation', ['placeholder' => 'Confirm password entered above', 'class' => 'form-control']) !!}
+                    @include('partials.field-error', ['field' => 'password'])
                 </div>
             </div>
 
-            <div class="form-actions">
-                <div class="control-field column-two-thirds">
-                    {!! Form::submit('Register') !!}
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    {!! Form::submit('Register', ['class' => 'btn btn-primary']) !!}
 
-                    <a href="{!! route('login.form') !!}" class="login-link">Or Log in</a>
+                    <span class="login-link">or <a href="{!! route('register.form') !!}">login</a></span>
                 </div>
             </div>
         </div>

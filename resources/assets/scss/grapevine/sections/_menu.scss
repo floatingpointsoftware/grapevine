@@ -1,10 +1,10 @@
 .menu {
-	&.forums {
-		font-size: em(20);
-		letter-spacing: -1px;
-
+	&.categories {
 		a {
-			font-weight: bold;
+			color: inherit;
+			font-size: 14px;
+			font-weight: 600;
+			text-transform: uppercase;
 		}
 	}
 }

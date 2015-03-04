@@ -262,8 +262,8 @@ th {
     border: 1px solid #ddd !important; } }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url("../../../../../../../../../../Downloads/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.eot");
-  src: url("../../../../../../../../../../Downloads/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../../../../../../../../../../Downloads/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../../../../../../../../../../Downloads/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.woff") format("woff"), url("../../../../../../../../../../Downloads/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../../../../../../../../../../Downloads/bootstrap-3.3.2-dist/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
+  src: url("../fonts/glyphicons-halflings-regular.eot");
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); }
 
 .glyphicon {
   position: relative;
@@ -1063,15 +1063,7 @@ th {
   box-sizing: border-box; }
 
 html {
-  font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
-
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333;
-  background-color: #fff; }
 
 input,
 button,
@@ -1167,9 +1159,10 @@ h6,
 .h5,
 .h6 {
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.1;
-  color: inherit; }
+  color: inherit;
+  text-transform: uppercase; }
 
 h1 small,
 h2 small,
@@ -6419,49 +6412,102 @@ button.close {
   .hidden-print {
     display: none !important; } }
 /*# sourceMappingURL=bootstrap.css.map */
-input[type=submit],
-input[type=button],
-button,
-.button {
-  -webkit-transition: background, 0.15s;
-  -moz-transition: background, 0.15s;
-  transition: background, 0.15s;
-  background: #73a7d3;
-  border: none;
-  border-radius: 2px;
-  color: #fff;
-  display: inline-block;
-  padding: 8px 20px;
-  width: auto; }
-  input[type=submit]:hover,
-  input[type=button]:hover,
-  button:hover,
-  .button:hover {
-    background: #86b3d9; }
+.btn .glyphicon {
+  font-size: 0.8em; }
+  .btn .glyphicon:before {
+    position: relative;
+    top: -1px; }
 
-header .buttons {
-  display: inline-block;
-  margin-left: 25px;
-  position: relative;
-  top: -2px; }
-  header .buttons .button {
-    font-size: 80%;
-    padding: 2px 10px; }
+label {
+  font-weight: 600; }
+
+.page-header {
+  padding-bottom: 9px;
+  margin: 0 0 30px;
+  border-bottom: 1px solid #eee; }
+
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0 30px;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px; }
+
+.bs-callout h4 {
+  margin-top: 0;
+  margin-bottom: 5px; }
+
+.bs-callout p:last-child {
+  margin-bottom: 0; }
+
+.bs-callout code {
+  border-radius: 3px; }
+
+.bs-callout + .bs-callout {
+  margin-top: -5px; }
+
+.bs-callout-default {
+  border-left-color: #777; }
+
+.bs-callout-default h4 {
+  color: #777; }
+
+.bs-callout-primary {
+  border-left-color: #428bca; }
+
+.bs-callout-primary h4 {
+  color: #428bca; }
+
+.bs-callout-success {
+  border-left-color: #5cb85c; }
+
+.bs-callout-success h4 {
+  color: #5cb85c; }
+
+.bs-callout-danger {
+  border-left-color: #d9534f; }
+
+.bs-callout-danger h4 {
+  color: #d9534f; }
+
+.bs-callout-warning {
+  border-left-color: #f0ad4e; }
+
+.bs-callout-warning h4 {
+  color: #f0ad4e; }
+
+.bs-callout-info {
+  border-left-color: #5bc0de; }
+
+.bs-callout-info h4 {
+  color: #5bc0de; }
 
 body {
-  font-family: "Open Sans", sans-serif; }
+  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  line-height: 1.6em; }
 
 a {
   -webkit-transition: color, 0.25s;
   -moz-transition: color, 0.25s;
   transition: color, 0.25s;
-  color: #73a7d3;
+  color: #df8f1d;
   text-decoration: none; }
   a:hover {
-    color: #2f6897; }
+    color: #6e470e; }
 
-ul {
-  list-style: none; }
+.soft {
+  color: #cccccc; }
+
+.field-errors {
+  font-size: 0.9em;
+  margin-top: 2px; }
+
+.component {
+  margin-bottom: 2.1875em; }
+
+.welcome p {
+  margin: 0.9375em 0; }
 
 section.main {
   margin-top: 50px;
@@ -6481,18 +6527,20 @@ section.header {
   section.header .navbar-nav {
     float: right; }
 
-.menu.forums {
-  font-size: 1.25em;
-  letter-spacing: -1px; }
-  .menu.forums a {
-    font-weight: bold; }
+.menu.categories a {
+  color: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase; }
 
 .login-link {
   display: inline-block;
-  margin-left: 20px; }
+  margin-left: 15px;
+  position: relative;
+  top: 2px; }
 
 .forum {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #9a9c9f;
   padding-bottom: 15px; }
   .forum h2 {
     display: inline-block;

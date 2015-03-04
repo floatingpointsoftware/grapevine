@@ -1,5 +1,7 @@
 body {
 	font-family: $font-primary;
+	font-size: $font-size;
+	line-height: 1.6em;
 }
 
 a {
@@ -11,4 +13,13 @@ a {
 	&:hover {
 		color: darken($colour-tertiary, 25%);
 	}
+}
+
+.soft {
+	color: $colour-soft;
+}
+
+.field-errors {
+	font-size: 0.9em;
+	margin-top: 2px;
 }

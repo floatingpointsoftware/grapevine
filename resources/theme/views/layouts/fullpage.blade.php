@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,700,800' rel='stylesheet' type='text/css'>
         {!! Theme::style('css/grapevine.dev.css') !!}
         <title></title>
     </head>
@@ -14,14 +14,6 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="/">{!! Theme::image('img/logo.png') !!}</a>
                         </div>
-
-                        <nav class="nav navbar-nav">
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="{!! route('category.create') !!}">Setup category</a></li>
-                                </ul>
-                            </div>
-                        </nav>
                     </nav>
                 </div>
             </div>
@@ -33,7 +25,7 @@
             </div>
 
             <div class="left-menu col-md-3">
-                @include('menus.right')
+                @include('partials.aside')
             </div>
         </section>
 
