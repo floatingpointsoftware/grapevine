@@ -19,6 +19,7 @@ class ThemingProvider extends ServiceProvider
     public function boot()
     {
         $this->setupTheme();
+        $this->requireMacros();
     }
 
     /**
@@ -27,5 +28,14 @@ class ThemingProvider extends ServiceProvider
     public function setupTheme()
     {
         $this->app['stylist']->registerPath(__DIR__.'/../../../../resources/theme/', true);
+    }
+
+    /**
+     * Grapevine comes bundled with a handful of HTML macros to help with building
+     * your forum implementations - mainly just helpers for otherwise more verbose tasks.
+     */
+    public function requireMacros()
+    {
+        require __DIR__.'/../Html/macros.php';
     }
 }

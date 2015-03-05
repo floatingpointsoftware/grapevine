@@ -1,4 +1,5 @@
 <?php
+
 use FloatingPoint\Grapevine\Library\Avatars\Facade as Avatar;
 use FloatingPoint\Grapevine\Modules\Users\Data\User;
 

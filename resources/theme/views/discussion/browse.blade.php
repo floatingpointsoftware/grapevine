@@ -4,7 +4,9 @@
             <ul class="discussions">
                 @foreach ($discussions as $discussion)
                     <li>
-                        <div class="avatar"></div>
+                        <div class="avatar">
+                            {!! HTML::avatar($discussion->user) !!}
+                        </div>
                         <div class="content"></div>
                     </li>
                 @endforeach

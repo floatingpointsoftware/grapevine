@@ -2,6 +2,7 @@
 namespace FloatingPoint\Grapevine;
 
 use FloatingPoint\Grapevine\Library\Providers\AliasesServiceProvider;
+use FloatingPoint\Grapevine\Library\Providers\AvatarServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\BindingsServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\BusServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ConfigServiceProvider;
@@ -22,6 +23,7 @@ class GrapevineServiceProvider extends AggregateServiceProvider
 	 */
 	protected $providers = [
         AliasesServiceProvider::class,
+        AvatarServiceProvider::class,
         BusServiceProvider::class,
         BindingsServiceProvider::class,
         ConsoleServiceProvider::class,
