@@ -26,6 +26,7 @@ class CreateDiscussionsTable extends Migration
             $table->boolean('pinned')->default(0);
             $table->softDeletes();
             $table->timestamps();
+            $table->integer('updated_by')->index();
         });
     }
 

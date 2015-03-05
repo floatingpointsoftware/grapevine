@@ -22,6 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('comment_count')->default(0);
             $table->softDeletes();
             $table->timestamps();
+            $table->integer('updated_by')->index();
         });
     }
 

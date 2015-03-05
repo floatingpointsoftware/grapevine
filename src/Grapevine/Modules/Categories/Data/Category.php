@@ -23,10 +23,6 @@ class Category extends Model
         static::creating(function ($category) {
             $category->updateSlug();
         });
-
-        static::deleted(function ($category) {
-            $category->deleteDiscussions();
-        });
     }
 
     /**
@@ -46,17 +42,13 @@ class Category extends Model
         return $this->hasMany(Discussion::class);
     }
 
-    public static function slugToId($slug)
+    /**
+     * Use the category's slug for all get requests to the category.
+     *
+     * @return mixed
+     */
+    public function getRouteKey()
     {
-        return self::whereSlug($slug)->first();
-    }
-
-    public function deleteDiscussions()
-    {
-        if (! empty($this->discussions)) {
-            $this->discussions->each(function ($discussion) {
-                $discussion->delete();
-            });
-        }
+        return $this->slug;
     }
 }

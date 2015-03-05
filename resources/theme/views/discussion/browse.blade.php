@@ -12,7 +12,7 @@
                                 <h1 class="h2 normalize">{{ $discussion->title }}</h1>
                             </header>
                             <footer>
-                                {!! HTML::label($discussion->category->title, $discussion->category->slug) !!}
+                                <a href="{{ route('discussion.browse', [$discussion->category]) }}">{!! HTML::label($discussion->category->title, $discussion->category->slug) !!}</a>
                                 <span class="soft">Updated <strong>{{ $discussion->updatedAt->diffForHumans() }}</strong> by {{ $discussion->updatedBy }}</span>
                             </footer>
                         </article>
