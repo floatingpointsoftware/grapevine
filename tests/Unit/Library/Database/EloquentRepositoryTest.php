@@ -19,14 +19,6 @@ class EloquentRepositoryTest extends \Tests\UnitTestCase
     /**
     * @test
     */
-    public function repositoryRetrievesAllEntries()
-    {
-        $this->assertCount(3, $this->resource->getAll());
-    }
-
-    /**
-    * @test
-    */
     public function repositorySetsAndGetsModel()
     {
         $this->assertInstanceOf(RepositoryModelStub::class, $this->resource->getModel());

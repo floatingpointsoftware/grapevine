@@ -15,6 +15,7 @@ class AliasesServiceProvider extends ServiceProvider
     protected $aliases = [
         'Avatar' => 'FloatingPoint\Grapevine\Library\Avatars\Facade',
         'Form' => 'Illuminate\Html\FormFacade',
+        'HTML' => 'Illuminate\Html\HtmlFacade'
     ];
 
     /**

@@ -1,49 +1,14 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Support;
 
-use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Discussions\Data\Discussion;
-
 class Links
 {
-    /**
-     * Stores an index of the links that pertain to URL
-     * locations throughout the application.
-     *
-     * @var array
-     */
-    protected $links = [];
-
     /**
      * A mutable property that defines the current scope for link generation.
      *
      * @var null
      */
     protected $scope = null;
-
-    /**
-     * When instantiated, setup the required links.
-     */
-    public function __construct()
-    {
-        $this->setupLinks();
-    }
-
-    /**
-     * Sole purpose is to create the index of links required by the application.
-     */
-    protected function setupLinks()
-    {
-        $this->links['discussion'] = [
-            'read' => 'discussion.read',
-            'start' => 'discussion.start'
-        ];
-
-        $this->links['category'] = [
-            'browse' => 'category.browse',
-            'setup' => 'category.setup'
-        ];
-    }
 
     /**
      * Returns the route for the requested link.
@@ -54,8 +19,8 @@ class Links
      */
     protected function link($route, $args)
     {
-        $route = $this->links[$this->scope][$route];
-        $args = array_merge((array) $route, $args);
+        $routeName = "{$this->scope}.{$route}";
+        $args = array_merge((array) $routeName, $args);
         $link = call_user_func_array('route', $args);
 
         $this->resetScope();
@@ -72,19 +37,6 @@ class Links
     }
 
     /**
-     * Sets the scope to be used for the next method call.
-     *
-     * @param $scope
-     * @return $this
-     */
-    protected function setScope($scope)
-    {
-        $this->scope = $scope;
-
-        return $this;
-    }
-
-    /**
      * Retrieve a required scope.
      *
      * @param string $key
@@ -92,7 +44,9 @@ class Links
      */
     public function __get($key)
     {
-        return $this->setScope($key);
+        $this->scope = $key;
+
+        return $this;
     }
 
     /**

@@ -29,19 +29,6 @@ class CategoryTest extends UnitTestCase
     /**
     * @test
     */
-    public function categoryDeletesChildTopics()
-    {
-        $discussion = new DiscussionStub();
-        $category = new CategoryStub();
-        $category->discussions = new Collection([$discussion]);
-        $category->deleteDiscussions();
-        $this->assertTrue($discussion->deleted);
-
-    }
-
-    /**
-    * @test
-    */
     public function categoryIsSluggable()
     {
         $this->assertRespondsTo(['setSlugAttribute', 'getSlugAttribute'], $this->resource);
@@ -61,13 +48,5 @@ class CategoryTest extends UnitTestCase
     public function buildsCategoryCollection()
     {
         $this->assertInstanceOf(CategoryCollection::class, $this->resource->newCollection());
-    }
-
-    /**
-    * @test
-    */
-    public function convertsSlugToId()
-    {
-        $this->assertInstanceOf(Category::class, CategoryStub::slugToId('slug'));
     }
 }

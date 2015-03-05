@@ -38,7 +38,7 @@ class ThemingServiceProvider extends ServiceProvider
      */
     protected function shareVars()
     {
-        $this->app['view']->share('links', new Links);
+        $this->app['view']->share('links', new Links($this->app['route']));
     }
 
     /**
