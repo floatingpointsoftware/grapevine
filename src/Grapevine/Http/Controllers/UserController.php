@@ -58,6 +58,19 @@ class UserController extends Controller
     }
 
     /**
+     * Show a user's profile, including their recent discussions, comments,
+     * and any information they've chosen to provide along with their account.
+     *
+     * @param string $username
+     */
+    public function show($username)
+    {
+        $user = $this->users->getByUsername($username);
+
+        return view('user.show', compact('user'));
+    }
+
+    /**
      * Renders a registration form for the user.
      *
      * @return \Illuminate\View\View

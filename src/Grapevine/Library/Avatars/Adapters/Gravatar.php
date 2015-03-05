@@ -24,8 +24,8 @@ class Gravatar implements Adapter
      * @param User $user
      * @return string
      */
-    public function get(User $user)
+    public function get(User $user, $size = null)
     {
-        return $this->gravatar->src($user->email, app()['config']->get('grapevine.avatar.gravatar.size'));
+        return $this->gravatar->src($user->email, config('grapevine.avatar.size', $size ?: 100));
     }
 }

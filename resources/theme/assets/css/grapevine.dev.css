@@ -6421,6 +6421,11 @@ button.close {
 label {
   font-weight: 600; }
 
+span.label {
+  font-weight: normal;
+  padding-top: .3em;
+  text-transform: uppercase; }
+
 .page-header {
   padding-bottom: 9px;
   margin: 0 0 30px;
@@ -6497,11 +6502,14 @@ a {
     color: #6e470e; }
 
 .soft {
-  color: #cccccc; }
+  color: #999999; }
 
 .field-errors {
   font-size: 0.9em;
   margin-top: 2px; }
+
+.normalize {
+  text-transform: none; }
 
 .component {
   margin-bottom: 2.1875em; }
@@ -6537,6 +6545,23 @@ section.header {
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase; }
+
+ul.discussions {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  ul.discussions li {
+    overflow: hidden; }
+  ul.discussions .avatar {
+    display: block;
+    float: left;
+    height: 80px;
+    margin-right: 15px;
+    width: 80px; }
+  ul.discussions article {
+    margin-bottom: 25px; }
+    ul.discussions article header h1 {
+      margin: 5px 0 10px; }
 
 .login-link {
   display: inline-block;

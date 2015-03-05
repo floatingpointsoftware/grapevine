@@ -5,5 +5,5 @@ use FloatingPoint\Grapevine\Modules\Users\Data\User;
 
 interface Adapter
 {
-	public function get(User $user);
+	public function get(User $user, $size = null);
 }

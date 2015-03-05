@@ -18,8 +18,12 @@ class AvatarServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('avatar', function($app) {
-            $manager = new Manager;
+            $driver = config('grapevine.avatar.driver', 'gravatar');
+
+            $manager = new Manager($driver);
             $manager->extend('gravatar', $app->make(Gravatar::class));
+
+            return $manager;
         });
     }
 

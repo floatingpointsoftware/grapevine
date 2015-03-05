@@ -37,4 +37,14 @@ class User extends Model
             $this->attributes["password"] = \Hash::make($value);
         }
     }
+
+    /**
+     * User profile pages should be accessible via their username - not their id.
+     *
+     * @return string
+     */
+    public function getRouteKey()
+    {
+        return str_slug($this->username);
+    }
 }

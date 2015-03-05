@@ -13,6 +13,12 @@ label {
 	font-weight: 600;
 }
 
+span.label {
+	font-weight: normal;
+	padding-top: .3em;
+	text-transform: uppercase;
+}
+
 .page-header {
 	padding-bottom: 9px;
 	margin: 0 0 30px;

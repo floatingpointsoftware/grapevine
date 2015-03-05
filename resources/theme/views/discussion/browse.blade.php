@@ -7,7 +7,15 @@
                         <div class="avatar">
                             {!! HTML::avatar($discussion->user) !!}
                         </div>
-                        <div class="content"></div>
+                        <article>
+                            <header>
+                                <h1 class="h2 normalize">{{ $discussion->title }}</h1>
+                            </header>
+                            <footer>
+                                {!! HTML::label($discussion->category->title, $discussion->category->slug) !!}
+                                <span class="soft">Updated <strong>{{ $discussion->updatedAt->diffForHumans() }}</strong> by {{ $discussion->updatedBy }}</span>
+                            </footer>
+                        </article>
                     </li>
                 @endforeach
             </ul>
