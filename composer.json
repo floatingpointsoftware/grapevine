@@ -13,6 +13,7 @@
   ],
   "require": {
     "php": ">=5.5.0",
+    "floatingpoint/gravatar": "dev-master",
     "floatingpoint/stylist": "dev-master",
     "hashids/hashids": "1.0.*@dev",
     "kirkbushell/eloquence": "dev-master",

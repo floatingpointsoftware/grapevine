@@ -4,6 +4,7 @@ namespace FloatingPoint\Grapevine;
 use FloatingPoint\Grapevine\Library\Providers\AliasesServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\BindingsServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\BusServiceProvider;
+use FloatingPoint\Grapevine\Library\Providers\ConfigServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ConsoleServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\EventServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ObserverServiceProvider;
@@ -24,6 +25,7 @@ class GrapevineServiceProvider extends AggregateServiceProvider
         BusServiceProvider::class,
         BindingsServiceProvider::class,
         ConsoleServiceProvider::class,
+        ConfigServiceProvider::class,
         EventServiceProvider::class,
         ObserverServiceProvider::class,
         StylistServiceProvider::class,

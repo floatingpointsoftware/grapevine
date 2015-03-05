@@ -13,7 +13,8 @@ class AliasesServiceProvider extends ServiceProvider
      * @var array
      */
     protected $aliases = [
-        'Form' => 'Illuminate\Html\FormFacade'
+        'Avatar' => 'FloatingPoint\Grapevine\Library\Avatars\Facade',
+        'Form' => 'Illuminate\Html\FormFacade',
     ];
 
     /**
