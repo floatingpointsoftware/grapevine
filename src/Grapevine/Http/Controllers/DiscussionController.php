@@ -54,7 +54,7 @@ class DiscussionController extends Controller
     {
         $discussion = new Discussion;
 
-        if (!is_null($categorySlug)) {
+        if (! is_null($categorySlug)) {
             $category = $this->categories->getBySlug($categorySlug);
         }
 
@@ -62,8 +62,7 @@ class DiscussionController extends Controller
     }
 
     /**
-     * @param StartDiscussionRequest           $request
-     * @param                             $categorySlug
+     * @param StartDiscussionRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StartDiscussionRequest $request)
@@ -74,7 +73,7 @@ class DiscussionController extends Controller
     }
 
     /**
-     * @param $discussionSlug
+     * @param string $discussionSlug
      * @return mixed
      */
     public function edit($discussionSlug)

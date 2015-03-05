@@ -1,4 +1,4 @@
-@if (count($categories) > 1)
+@if (isset($categories) && count($categories) > 1)
     <div class="form-group">
         {!! Form::label('parent_id', 'Parent', ['class' => 'control-label col-sm-2']) !!}
         <div class="col-sm-10">

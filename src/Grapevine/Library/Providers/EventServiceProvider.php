@@ -1,5 +1,5 @@
 <?php
-namespace FloatingPoint\Grapevine\Providers;
+namespace FloatingPoint\Grapevine\Library\Providers;
 
 class EventServiceProvider extends \Illuminate\Foundation\Support\Providers\EventServiceProvider
 {

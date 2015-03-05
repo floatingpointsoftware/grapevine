@@ -1,13 +1,14 @@
 <?php 
 namespace FloatingPoint\Grapevine\Modules\Discussions\Data;
 
+use Eloquence\Behaviours\CountCache\CountCache;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Users\Data\User;
 use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 
-class Comment extends Model
+class Comment extends Model implements CountCache
 {
     use Raiseable;
     use Sluggable;
@@ -20,15 +21,17 @@ class Comment extends Model
         static::created(function($comment)
         {
             $comment->slug = Slug::fromId($comment->id);
-            $comment->discussion->increment('comments_count');
-            $comment->category()->increment('comments_count');
         });
+    }
 
-        static::deleted(function($comment)
-        {
-            $comment->discussion->decrement('comments_count');
-            $comment->category()->decrement('comments_count');
-        });
+    /**
+     * Comment has relevant count caches on several models.
+     *
+     * @return array
+     */
+    public function countCaches()
+    {
+        return ['Category', 'Discussion', 'User'];
     }
 
     /**
@@ -53,5 +56,16 @@ class Comment extends Model
     public function category()
     {
         return $this->discussion->category;
+    }
+
+    /**
+     * This simply allows us a little syntactical sugar - instead of doing $comment->comment,
+     * you can just output the $comment object itself.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->comment;
     }
 }

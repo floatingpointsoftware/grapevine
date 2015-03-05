@@ -18,6 +18,7 @@ class CreateDiscussionsTable extends Migration
             $table->integer('user_id')->index();
             $table->integer('category_id')->index();
             $table->string('title', 100);
+            $table->text('body');
             $table->string('slug')->index();
             $table->integer('views')->default(0);
             $table->integer('comment_count')->default(0);

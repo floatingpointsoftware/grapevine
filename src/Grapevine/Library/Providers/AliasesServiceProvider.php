@@ -1,5 +1,5 @@
 <?php
-namespace FloatingPoint\Grapevine\Providers;
+namespace FloatingPoint\Grapevine\Library\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Html\FormFacade;

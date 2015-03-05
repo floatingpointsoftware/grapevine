@@ -10,7 +10,7 @@ class StartDiscussionRequest extends FormRequest
         return [
             'title' => 'required',
             'body' => 'required',
-            'category' => 'required|min:3'
+            'category' => 'required'
         ];
     }
 

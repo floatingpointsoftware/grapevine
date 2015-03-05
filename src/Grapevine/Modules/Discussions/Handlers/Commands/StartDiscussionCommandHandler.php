@@ -37,10 +37,12 @@ class StartDiscussionCommandHandler
      */
     public function handle(StartDiscussionCommand $command)
     {
-        $discussion = $this->factory->start($command->categoryId, Auth::user()->id, $command->title);
+        $discussion = $this->factory->start($command->category, Auth::user()->id, $command->title);
 
         $this->discussions->save($discussion);
 
         $this->dispatch($discussion->releaseEvents());
+
+        return $discussion;
     }
 }

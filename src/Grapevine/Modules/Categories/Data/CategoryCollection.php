@@ -24,7 +24,7 @@ class CategoryCollection extends Collection
         }
 
         if ($empty) {
-            $categories = array_merge([null => ''], $categories);
+            $categories = array_merge((array) '', $categories);
         }
 
         return $categories;

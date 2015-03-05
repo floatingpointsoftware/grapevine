@@ -1,5 +1,5 @@
 <?php
-namespace FloatingPoint\Grapevine\Providers;
+namespace FloatingPoint\Grapevine\Library\Providers;
 
 use FloatingPoint\Grapevine\Modules\Categories\Data\CategoryRepository;
 use FloatingPoint\Grapevine\Modules\Categories\Data\EloquentCategoryRepository;

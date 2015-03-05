@@ -3,14 +3,14 @@ namespace FloatingPoint\Grapevine\Modules\Discussions\Commands;
 
 class StartDiscussionCommand
 {
-    public $categoryId;
+    public $category;
     public $title;
-    public $comment;
+    public $body;
 
-    public function __construct($category_id, $title, $comment)
+    public function __construct($category, $title, $body)
     {
-        $this->categoryId = $category_id;
+        $this->category = $category;
         $this->title = $title;
-        $this->comment = $comment;
+        $this->body = $body;
     }
 }

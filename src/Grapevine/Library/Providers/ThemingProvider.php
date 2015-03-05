@@ -1,5 +1,5 @@
 <?php
-namespace FloatingPoint\Grapevine\Providers;
+namespace FloatingPoint\Grapevine\Library\Providers;
 
 use FloatingPoint\Stylist\Facades\Stylist;
 use Illuminate\Support\ServiceProvider;
@@ -26,6 +26,6 @@ class ThemingProvider extends ServiceProvider
      */
     public function setupTheme()
     {
-        $this->app['stylist']->registerPath(__DIR__.'/../../../resources/theme/', true);
+        $this->app['stylist']->registerPath(__DIR__.'/../../../../resources/theme/', true);
     }
 }
