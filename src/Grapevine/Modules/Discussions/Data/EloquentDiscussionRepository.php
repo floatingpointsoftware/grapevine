@@ -59,6 +59,8 @@ class EloquentDiscussionRepository extends EloquentRepository implements Discuss
      */
     public function getByCategorySlug($categorySlug)
     {
-        return $this->model->whereCategoryId(Category::slugToId($categorySlug));
+        return $this->model->whereHas('category', function($query) use ($categorySlug) {
+            $query->whereSlug($categorySlug);
+        })->paginate();
     }
 }
