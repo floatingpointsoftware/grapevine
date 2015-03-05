@@ -4,7 +4,7 @@ namespace FloatingPoint\Grapevine\Modules\Users\Handlers\Commands;
 use FloatingPoint\Grapevine\Library\Events\Dispatcher;
 use FloatingPoint\Grapevine\Modules\Users\Commands\RegisterUserCommand;
 use FloatingPoint\Grapevine\Modules\Users\Data\UserFactory;
-use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Users\Data\UserRepository;
 
 class RegisterUserCommandHandler
 {
@@ -18,7 +18,7 @@ class RegisterUserCommandHandler
     /**
      * @param UserRepositoryInterface $users
      */
-    public function __construct(UserRepositoryInterface $users)
+    public function __construct(UserRepository $users)
     {
         $this->users = $users;
     }

@@ -1,7 +1,7 @@
 <?php
 namespace FloatingPoint\Grapevine\Modules\Users\Data;
 
-interface UserRepositoryInterface
+interface UserRepository
 {
     /**
      * Require a user record based on the email provided.

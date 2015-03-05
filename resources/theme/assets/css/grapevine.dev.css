@@ -6493,13 +6493,14 @@ body {
   line-height: 1.6em; }
 
 a {
-  -webkit-transition: color, 0.25s;
-  -moz-transition: color, 0.25s;
-  transition: color, 0.25s;
-  color: #df8f1d;
+  -webkit-transition: color, 0.15s;
+  -moz-transition: color, 0.15s;
+  transition: color, 0.15s;
+  color: #353638;
   text-decoration: none; }
   a:hover {
-    color: #6e470e; }
+    color: #286794;
+    text-decoration: none; }
 
 .soft {
   color: #999999; }
@@ -6541,7 +6542,6 @@ section.header {
       text-transform: uppercase; }
 
 .menu.categories a {
-  color: inherit;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase; }
@@ -6551,7 +6551,9 @@ ul.discussions {
   margin: 0;
   padding: 0; }
   ul.discussions li {
-    overflow: hidden; }
+    display: block;
+    overflow: hidden;
+    margin-bottom: 35px; }
   ul.discussions .avatar {
     display: block;
     float: left;
@@ -6559,7 +6561,7 @@ ul.discussions {
     margin-right: 15px;
     width: 80px; }
   ul.discussions article {
-    margin-bottom: 25px; }
+    display: block; }
     ul.discussions article header h1 {
       margin: 5px 0 10px; }
 

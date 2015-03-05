@@ -30,6 +30,14 @@ interface Repository
     public function getBy($field, $value);
 
     /**
+     * Find a record based on it's url slug value.
+     *
+     * @param string $slug
+     * @return mixed
+     */
+    public function getBySlug($slug);
+
+    /**
      * Similar to getById, but should raise an EntityNotFoundException.
      *
      * @param $id

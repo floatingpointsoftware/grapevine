@@ -5,11 +5,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 abstract class EloquentRepository implements Repository
 {
-    public function getAll()
-    {
-        return $this->model->all();
-    }
-
     /**
      * Stores the model object for querying.
      *
@@ -51,6 +46,15 @@ abstract class EloquentRepository implements Repository
     public function getBy($field, $value)
     {
         return $this->model->where($field, '=', $value)->first();
+    }
+
+    /**
+     * @param string $slug
+     * @return mixed
+     */
+    public function getBySlug($slug)
+    {
+        return $this->model->where('slug', $slug)->firstOrFail();
     }
 
     /**

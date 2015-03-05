@@ -36,12 +36,12 @@ class DiscussionController extends Controller
     /**
      * Method supporting the ability to browse a category's discussions.
      *
+     * @param Category $category
      * @return mixed
      */
-    public function browse($categorySlug)
+    public function browse($category)
     {
-        $category = $this->categories->getBySlug($categorySlug);
-        $discussions = $this->discussions->getByCategorySlug($categorySlug);
+        $discussions = $this->discussions->getByCategorySlug($category->slug);
 
         return $this->respond('discussion.browse', compact('category', 'discussions'));
     }
@@ -50,7 +50,7 @@ class DiscussionController extends Controller
      * @param null $categorySlug
      * @return \Illuminate\View\View
      */
-    public function create($categorySlug = null)
+    public function start($categorySlug = null)
     {
         $discussion = new Discussion;
 
@@ -97,16 +97,14 @@ class DiscussionController extends Controller
     }
 
     /**
-     * @param $discussionSlug
+     * @param $category
+     * @param $discussion
      * @return mixed
+     * @internal param $discussionSlug
      */
-    public function show($discussionSlug)
+    public function read($category, $discussion)
     {
-        $discussion = $this->discussions->getBySlug($discussionSlug);
-
-        $discussion->incrementViews();
-
-        return $this->respond('discussion.show', compact('discussion'));
+        return $this->respond('discussion.show', compact('category', 'discussion'));
     }
 
     /**

@@ -30,17 +30,6 @@ class EloquentDiscussionRepository extends EloquentRepository implements Discuss
     }
 
     /**
-     * Retrieve a discussion by its slug string.
-     *
-     * @param string $discussionSlug
-     * @return mixed
-     */
-    public function getBySlug($discussionSlug)
-    {
-        return $this->model->whereSlug($discussionSlug)->firstOrFail();
-    }
-
-    /**
      * Retrieve all discussions by the category id, paginated.
      *
      * @param integer $categoryId
@@ -59,8 +48,13 @@ class EloquentDiscussionRepository extends EloquentRepository implements Discuss
      */
     public function getByCategorySlug($categorySlug)
     {
-        return $this->model->whereHas('category', function($query) use ($categorySlug) {
+        $categoryWhere = function($query) use ($categorySlug) {
             $query->whereSlug($categorySlug);
-        })->paginate();
+        };
+
+        return $this->model
+            ->whereHas('category', $categoryWhere)
+            ->orderBy('updated_at', 'desc')
+            ->paginate();
     }
 }

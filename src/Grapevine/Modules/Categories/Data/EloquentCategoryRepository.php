@@ -18,21 +18,12 @@ class EloquentCategoryRepository extends EloquentRepository implements CategoryR
     }
 
     /**
-     * @param string $slug
+     * Return all categories in the system.
+     *
      * @return mixed
      */
-    public function getBySlug($slug)
+    public function getAll()
     {
-        return $this->model->where('slug', $slug)->firstOrFail();
-    }
-
-    /**
-     * Increases the discussion count for a given category.
-     *
-     * @param integer $categoryId
-     */
-    public function increaseDiscussionCount($categoryId)
-    {
-        DB::statement('UPDATE '.$this->model->getTable().' SET discussions = discussions + 1');
+        return $this->model->all();
     }
 }

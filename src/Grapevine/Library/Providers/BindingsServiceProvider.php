@@ -8,7 +8,7 @@ use FloatingPoint\Grapevine\Modules\Discussions\Data\EloquentDiscussionRepositor
 use FloatingPoint\Grapevine\Modules\Discussions\Data\CommentRepository;
 use FloatingPoint\Grapevine\Modules\Discussions\Data\DiscussionRepository;
 use FloatingPoint\Grapevine\Modules\Users\Data\EloquentUserRepository;
-use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Users\Data\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -24,7 +24,7 @@ class BindingsServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(CategoryRepository::class, EloquentCategoryRepository::class);
-        $this->app->singleton(UserRepositoryInterface::class, EloquentUserRepository::class);
+        $this->app->singleton(UserRepository::class, EloquentUserRepository::class);
         $this->app->singleton(DiscussionRepository::class, EloquentDiscussionRepository::class);
         $this->app->singleton(CommentRepository::class, EloquentCommentRepository::class);
     }

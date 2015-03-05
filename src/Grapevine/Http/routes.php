@@ -1,8 +1,7 @@
 <?php
 
 $routeGroupAttributes = [
-    'prefix' => Config::get('grapevine.route_prefix', ''),
-    'namespace' => 'FloatingPoint\Grapevine\Http\Controllers'
+    'prefix' => config('grapevine.route_prefix', '')
 ];
 
 Route::group($routeGroupAttributes, function() {
@@ -14,7 +13,10 @@ Route::group($routeGroupAttributes, function() {
     Route::group(['middleware' => 'auth'], function() {
         Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
 
-        Route::get('discussion/create/{category}', ['as' => 'discussion.create.with', 'uses' => 'DiscussionController@create']);
+        Route::get('discussion/start/{category}', ['as' => 'discussion.start.with', 'uses' => 'DiscussionController@start']);
+
+        Route::get('discussion/start', ['as' => 'discussion.start', 'uses' => 'DiscussionController@start']);
+        Route::post('discussion/start', ['as' => 'discussion.start', 'uses' => 'DiscussionController@start']);
 
         Route::resource('category', 'CategoryController');
         Route::resource('discussion', 'DiscussionController');
@@ -32,6 +34,7 @@ Route::group($routeGroupAttributes, function() {
         Route::post('login', ['as' => 'login.submit', 'uses' => 'AuthenticationController@login']);
 
         // Support laravel login routes
+        // @TODO: Implement our own auth checks, avoiding laravel's implementation
         Route::get('auth/login', function() {
             return redirect()->route('login');
         });
@@ -39,5 +42,5 @@ Route::group($routeGroupAttributes, function() {
 
     // Catch-all routes, which should direct to categories, discussions.etc.
     Route::get('{category}/{discussion}', ['as' => 'discussion.read', 'uses' => 'DiscussionController@read']);
-    Route::get('{category}', ['as' => 'discussion.browse', 'uses' => 'DiscussionController@browse']);
+    Route::get('{category}', ['as' => 'category.browse', 'uses' => 'DiscussionController@browse']);
 });

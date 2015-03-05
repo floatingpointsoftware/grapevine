@@ -4,7 +4,9 @@ ul.discussions {
 	padding: 0;
 
 	li {
+		display: block;
 		overflow: hidden;
+		margin-bottom: 35px;
 	}
 
 	.avatar {
@@ -16,7 +18,7 @@ ul.discussions {
 	}
 
 	article {
-		margin-bottom: 25px;
+		display: block;
 
 		header {
 			h1 {

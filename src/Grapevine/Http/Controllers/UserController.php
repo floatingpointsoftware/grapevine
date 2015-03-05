@@ -2,7 +2,7 @@
 namespace FloatingPoint\Grapevine\Http\Controllers;
 
 use FloatingPoint\Grapevine\Library\Support\Controller;
-use FloatingPoint\Grapevine\Modules\Users\Data\UserRepositoryInterface;
+use FloatingPoint\Grapevine\Modules\Users\Data\UserRepository;
 
 class UserController extends Controller
 {
@@ -14,7 +14,7 @@ class UserController extends Controller
     /**
      * @param UserRepositoryInterface $users
      */
-    public function __construct(UserRepositoryInterface $users)
+    public function __construct(UserRepository $users)
     {
         $this->users = $users;
     }

@@ -58,4 +58,9 @@ class Discussion extends Model implements CountCache
     {
         $this->increment('views');
     }
+
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
 }

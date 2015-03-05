@@ -9,7 +9,8 @@ use FloatingPoint\Grapevine\Library\Providers\ConfigServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ConsoleServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\EventServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ObserverServiceProvider;
-use FloatingPoint\Grapevine\Library\Providers\ThemingProvider;
+use FloatingPoint\Grapevine\Library\Providers\RouteServiceProvider;
+use FloatingPoint\Grapevine\Library\Providers\ThemingServiceProvider;
 use FloatingPoint\Stylist\Facades\Stylist;
 use FloatingPoint\Stylist\StylistServiceProvider;
 use Illuminate\Support\AggregateServiceProvider;
@@ -30,8 +31,9 @@ class GrapevineServiceProvider extends AggregateServiceProvider
         ConfigServiceProvider::class,
         EventServiceProvider::class,
         ObserverServiceProvider::class,
+        RouteServiceProvider::class,
         StylistServiceProvider::class,
-        ThemingProvider::class,
+        ThemingServiceProvider::class,
     ];
 
     /**
@@ -41,7 +43,6 @@ class GrapevineServiceProvider extends AggregateServiceProvider
     {
         parent::register();
 
-        require_once __DIR__.'/Http/routes.php';
         require_once __DIR__.'/View/composers.php';
     }
 }

@@ -1,10 +1,11 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Providers;
 
+use FloatingPoint\Grapevine\Library\Support\Links;
 use FloatingPoint\Stylist\Facades\Stylist;
 use Illuminate\Support\ServiceProvider;
 
-class ThemingProvider extends ServiceProvider
+class ThemingServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
@@ -19,6 +20,7 @@ class ThemingProvider extends ServiceProvider
     public function boot()
     {
         $this->setupTheme();
+        $this->shareVars();
         $this->requireMacros();
     }
 
@@ -28,6 +30,15 @@ class ThemingProvider extends ServiceProvider
     public function setupTheme()
     {
         $this->app['stylist']->registerPath(__DIR__.'/../../../../resources/theme/', true);
+    }
+
+    /**
+     * There are some variables we want available to all views. This method makes
+     * those particular variables available for use.
+     */
+    protected function shareVars()
+    {
+        $this->app['view']->share('links', new Links);
     }
 
     /**
