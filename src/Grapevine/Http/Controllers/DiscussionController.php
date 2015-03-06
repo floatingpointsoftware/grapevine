@@ -47,16 +47,12 @@ class DiscussionController extends Controller
     }
 
     /**
-     * @param null $categorySlug
+     * @param null|Category $category
      * @return \Illuminate\View\View
      */
-    public function start($categorySlug = null)
+    public function start(Category $category = null)
     {
         $discussion = new Discussion;
-
-        if (! is_null($categorySlug)) {
-            $category = $this->categories->getBySlug($categorySlug);
-        }
 
         return $this->respond('discussion.start', compact('discussion', 'category'));
     }
