@@ -44,7 +44,7 @@ class Link
             $args = call_user_func_array($this->links[$routeName], $args);
         }
 
-        $params = array_merge((array) $routeName, $args);
+        $params = [$routeName, $args];
         $link = call_user_func_array('route', $params);
 
         $this->resetScope();
