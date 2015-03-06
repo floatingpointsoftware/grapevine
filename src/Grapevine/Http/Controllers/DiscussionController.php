@@ -39,7 +39,7 @@ class DiscussionController extends Controller
      * @param Category $category
      * @return mixed
      */
-    public function browse($category)
+    public function browse(Category $category)
     {
         $discussions = $this->discussions->getByCategorySlug($category->slug);
 
@@ -50,7 +50,7 @@ class DiscussionController extends Controller
      * @param null|Category $category
      * @return \Illuminate\View\View
      */
-    public function start($category = null)
+    public function start(Category $category = null)
     {
         $discussion = new Discussion;
 

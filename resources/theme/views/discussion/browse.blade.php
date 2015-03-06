@@ -26,7 +26,7 @@
 
             <p>It's looking pretty quiet here in {{ $category->title }}. Let's get a dialog going.</p>
             <br>
-            <p><a href="{!! $link->discussion->startWith($category) !!}" class="btn btn-default btn-lg">Start a discussion.</a></p>
+            <p><a href="{!! $link->discussion->start($category) !!}" class="btn btn-default btn-lg">Start a discussion.</a></p>
         @endif
     </div>
 @endsection

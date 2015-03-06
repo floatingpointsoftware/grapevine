@@ -30,9 +30,9 @@ class LinkServiceProvider extends ServiceProvider
             'discussion.read' => function(Discussion $discussion) {
                 return [$discussion->category, $discussion];
             },
-            'discussion.startWith' => function(Category $category) {
+            'discussion.start' => function(Category $category = null) {
                 return [$category];
-            },
+            }
         ]);
     }
 }
