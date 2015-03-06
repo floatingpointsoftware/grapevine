@@ -15,7 +15,7 @@ class Link
      *
      * @var null
      */
-    protected $scope = null;
+    protected $scopes = [];
 
     /**
      * Register a collection of links.
@@ -36,7 +36,7 @@ class Link
      */
     protected function link($route, $args)
     {
-        $routeName = "{$this->scope}.{$route}";
+        $routeName = $this->routeName($route);
 
         // Why do we do this? To validate the arguments provided. We let the
         // language use type-hinting to check the validity of the arguments.
@@ -53,11 +53,22 @@ class Link
     }
 
     /**
+     * Generates the route name based on the scopes + the route provided.
+     *
+     * @param string $route
+     * @return string
+     */
+    protected function routeName($route)
+    {
+        return implode('.', $this->scopes).'.'.$route;
+    }
+
+    /**
      * Reset the scope for future link requests.
      */
     protected function resetScope()
     {
-        $this->scope = null;
+        $this->scopes = [];
     }
 
     /**
@@ -68,7 +79,7 @@ class Link
      */
     public function __get($key)
     {
-        $this->scope = $key;
+        $this->scopes[] = $key;
 
         return $this;
     }

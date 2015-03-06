@@ -13,10 +13,10 @@ Route::group($routeGroupAttributes, function() {
     Route::group(['middleware' => 'auth'], function() {
         Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
 
-        Route::get('discussion/start/{category}', ['as' => 'discussion.start.with', 'uses' => 'DiscussionController@start']);
-
+        Route::get('discussion/start/{category}', ['as' => 'discussion.startWith', 'uses' => 'DiscussionController@start']);
         Route::get('discussion/start', ['as' => 'discussion.start', 'uses' => 'DiscussionController@start']);
         Route::post('discussion/start', ['as' => 'discussion.store', 'uses' => 'DiscussionController@store']);
+        Route::delete('discussion/{discussion}', ['as' => 'discussion.store', 'uses' => 'DiscussionController@store']);
 
         Route::resource('category', 'CategoryController');
         Route::resource('discussion', 'DiscussionController');

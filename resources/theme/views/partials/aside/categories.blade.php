@@ -12,7 +12,7 @@
     @endif
 
     <div class="buttons">
-        <a class="btn btn-default btn-sm" href="{!! route('category.create') !!}" role="button">
+        <a class="btn btn-default btn-sm" href="{{ $link->category->create() }}" role="button">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Setup category
         </a>
     </div>

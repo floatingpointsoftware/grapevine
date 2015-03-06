@@ -58,7 +58,7 @@ class DiscussionController extends Controller
             $category = $this->categories->getBySlug($categorySlug);
         }
 
-        return $this->respond('discussion.create', compact('discussion', 'category'));
+        return $this->respond('discussion.start', compact('discussion', 'category'));
     }
 
     /**
