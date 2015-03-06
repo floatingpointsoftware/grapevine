@@ -1,14 +1,31 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Support;
 
-class Links
+class Link
 {
+    /**
+     * Collection of links to be checked with for route instantiation.
+     *
+     * @var array
+     */
+    protected $links = [];
+
     /**
      * A mutable property that defines the current scope for link generation.
      *
      * @var null
      */
     protected $scope = null;
+
+    /**
+     * Register a collection of links.
+     *
+     * @param array $links
+     */
+    public function register(array $links)
+    {
+        $this->links = array_merge($this->links, $links);
+    }
 
     /**
      * Returns the route for the requested link.
@@ -20,8 +37,15 @@ class Links
     protected function link($route, $args)
     {
         $routeName = "{$this->scope}.{$route}";
-        $args = array_merge((array) $routeName, $args);
-        $link = call_user_func_array('route', $args);
+
+        // Why do we do this? To validate the arguments provided. We let the
+        // language use type-hinting to check the validity of the arguments.
+        if (isset($this->links[$routeName])) {
+            $args = call_user_func_array($this->links[$routeName], $args);
+        }
+
+        $params = array_merge((array) $routeName, $args);
+        $link = call_user_func_array('route', $params);
 
         $this->resetScope();
 
@@ -40,7 +64,7 @@ class Links
      * Retrieve a required scope.
      *
      * @param string $key
-     * @return Links
+     * @return Link
      */
     public function __get($key)
     {
@@ -56,7 +80,7 @@ class Links
      *
      * @param string $method
      * @param array $args
-     * @return Links|mixed
+     * @return Link|mixed
      */
     public function __call($method, $args)
     {

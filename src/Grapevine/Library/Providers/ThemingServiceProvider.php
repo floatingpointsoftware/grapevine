@@ -1,7 +1,7 @@
 <?php
 namespace FloatingPoint\Grapevine\Library\Providers;
 
-use FloatingPoint\Grapevine\Library\Support\Links;
+use FloatingPoint\Grapevine\Library\Support\Link;
 use FloatingPoint\Stylist\Facades\Stylist;
 use Illuminate\Support\ServiceProvider;
 
@@ -38,7 +38,7 @@ class ThemingServiceProvider extends ServiceProvider
      */
     protected function shareVars()
     {
-        $this->app['view']->share('links', new Links($this->app['route']));
+        $this->app['view']->share('link', $this->app->make('link'));
     }
 
     /**

@@ -8,6 +8,7 @@ use FloatingPoint\Grapevine\Library\Providers\BusServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ConfigServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ConsoleServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\EventServiceProvider;
+use FloatingPoint\Grapevine\Library\Providers\LinkServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ObserverServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\RouteServiceProvider;
 use FloatingPoint\Grapevine\Library\Providers\ThemingServiceProvider;
@@ -30,6 +31,7 @@ class GrapevineServiceProvider extends AggregateServiceProvider
         ConsoleServiceProvider::class,
         ConfigServiceProvider::class,
         EventServiceProvider::class,
+        LinkServiceProvider::class,
         ObserverServiceProvider::class,
         RouteServiceProvider::class,
         StylistServiceProvider::class,

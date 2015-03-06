@@ -9,10 +9,10 @@
                         </div>
                         <article>
                             <header>
-                                <h1 class="h2 normalize"><a href="{{ $links->discussion->read($discussion) }}">{{ $discussion->title }}</a></h1>
+                                <h1 class="h2 normalize"><a href="{{ $link->discussion->read($discussion) }}">{{ $discussion->title }}</a></h1>
                             </header>
                             <footer>
-                                <a href="{{ $links->category->browse($discussion->category) }}">{!! HTML::label($discussion->category->title, $discussion->category->slug) !!}</a>
+                                <a href="{{ $link->category->browse($discussion->category) }}">{!! HTML::label($discussion->category->title, $discussion->category->slug) !!}</a>
                                 <span class="soft">Updated <strong>{{ $discussion->updatedAt->diffForHumans() }}</strong> by {{ $discussion->updatedBy }}</span>
                             </footer>
                         </article>

@@ -16,7 +16,7 @@ Route::group($routeGroupAttributes, function() {
         Route::get('discussion/start/{category}', ['as' => 'discussion.start.with', 'uses' => 'DiscussionController@start']);
 
         Route::get('discussion/start', ['as' => 'discussion.start', 'uses' => 'DiscussionController@start']);
-        Route::post('discussion/start', ['as' => 'discussion.start', 'uses' => 'DiscussionController@start']);
+        Route::post('discussion/start', ['as' => 'discussion.store', 'uses' => 'DiscussionController@store']);
 
         Route::resource('category', 'CategoryController');
         Route::resource('discussion', 'DiscussionController');
