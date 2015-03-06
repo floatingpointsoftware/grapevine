@@ -3,7 +3,6 @@ namespace Tests\Unit\Library\Support;
 
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 use FloatingPoint\Grapevine\Modules\Categories\Data\Category;
-use FloatingPoint\Grapevine\Modules\Discussions\Data\Discussion;
 use Tests\UnitTestCase;
 
 class LinkTest extends UnitTestCase
