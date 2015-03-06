@@ -30,8 +30,17 @@
 
         <section class="main container">
             <div class="row">
-                <div id="pjaxContainer" class="col-md-9">
-                    @yield('main')
+                <div class="col-md-9">
+                    <div id="pjax-container">
+                        @yield('main')
+                    </div>
+
+                    <div id="loader">
+                        <div class="spinner">
+                            <div class="cube1"></div>
+                            <div class="cube2"></div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="left-menu col-md-3">
@@ -43,5 +52,9 @@
         <section class="footer">
 
         </section>
+
+        {!! HTML::script('//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js') !!}
+        {!! Theme::script('/js/jquery.pjax.js') !!}
+        {!! Theme::script('/js/grapevine.dev.js') !!}
     </body>
 </html>

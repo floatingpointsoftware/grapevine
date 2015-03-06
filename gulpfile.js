@@ -2,8 +2,9 @@
 var gulp   = require('gulp'),
 	fs     = require('fs'),
 	exec   = require('gulp-exec'),
+	coffee = require('gulp-coffee'),
 	concat = require('gulp-concat'),
-	jshint = require('gulp-jshint'),
+	gutil  = require('gulp-util'),
 	notify = require('gulp-notify'),
 	rename = require('gulp-rename'),
 	sass   = require('gulp-ruby-sass'),
@@ -14,7 +15,7 @@ var input  = 'resources/assets/',
 	output = 'resources/theme/assets/';
 
 var scripts = [
-
+	input + 'coffee/*.coffee'
 ];
 
 var styles = [
@@ -34,8 +35,7 @@ gulp.task('styles', function() {
 
 gulp.task('scripts', function() {
 	return gulp.src(scripts)
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
+		.pipe(coffee().on('error', gutil.log))
 		.pipe(concat('grapevine.dev.js'))
 		.pipe(gulp.dest(output + 'js'))
 		.pipe(rename('grapevine.min.js'))
@@ -48,7 +48,7 @@ gulp.task('scripts', function() {
 gulp.task('scripts-watch', function() {
 	gulp.run('scripts');
 
-	gulp.watch(input + 'js/**', function() {
+	gulp.watch(input + 'coffee/**', function() {
 		gulp.run('scripts');
 	});
 });

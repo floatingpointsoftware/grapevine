@@ -36,7 +36,6 @@ class HomeController extends Controller
         $discussions = $this->discussions->getRecent();
         $categoryCount = $this->categories->count();
 
-
         return $this->respond('home.index', compact('discussions', 'categoryCount'));
     }
 }
