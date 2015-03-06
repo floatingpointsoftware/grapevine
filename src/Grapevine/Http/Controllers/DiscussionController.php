@@ -50,7 +50,7 @@ class DiscussionController extends Controller
      * @param null|Category $category
      * @return \Illuminate\View\View
      */
-    public function start(Category $category = null)
+    public function start($category = null)
     {
         $discussion = new Discussion;
 
