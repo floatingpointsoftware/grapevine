@@ -152,4 +152,12 @@ abstract class EloquentRepository implements Repository
             $this->save($resource);
         }
     }
+
+    /**
+     * @return integer
+     */
+    public function count()
+    {
+        return $this->model->count();
+    }
 }

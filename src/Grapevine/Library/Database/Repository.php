@@ -60,4 +60,9 @@ interface Repository
      * @return mixed
      */
     public function saveAll($resources);
+
+    /**
+     * @return int
+     */
+    public function count();
 }
