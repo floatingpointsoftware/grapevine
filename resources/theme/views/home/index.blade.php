@@ -3,13 +3,13 @@
     <br>
     @if ($categoryCount < 1)
         <div class="buttons">
-            <a class="btn btn-default btn-lg" href="{!! route('category.create') !!}" role="button">
+            <a class="btn btn-default btn-lg" href="{{ $link->category->setup() }}" role="button">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Setup category
             </a>
         </div>
     @else
         <div class="buttons">
-            <a class="btn btn-default btn-lg" href="{!! route('category.create') !!}" role="button">
+            <a class="btn btn-default btn-lg" href="{{ $link->discussion->start() }}" role="button">
                 Start a Discussion
             </a>
         </div>

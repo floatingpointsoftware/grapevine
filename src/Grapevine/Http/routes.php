@@ -10,21 +10,24 @@ Route::group($routeGroupAttributes, function() {
         return redirect()->route('home');
     });
 
-    Route::group(['middleware' => 'auth'], function() {
-        Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
-        
-        Route::get('discussion/start/{category}', ['as' => 'discussion.startWith', 'uses' => 'DiscussionController@start']);
-        Route::get('discussion/start', ['as' => 'discussion.start', 'uses' => 'DiscussionController@start']);
-        Route::post('discussion/start', ['as' => 'discussion.store', 'uses' => 'DiscussionController@store']);
-        Route::get('discussion/{discussion}', ['as' => 'discussion.modify', 'uses' => 'DiscussionController@modify']);
-        Route::put('discussion/{discussion}', ['as' => 'discussion.update', 'uses' => 'DiscussionController@update']);
-        Route::delete('discussion/{discussion}', ['as' => 'discussion.store', 'uses' => 'DiscussionController@store']);
+    Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
 
-        Route::resource('category', 'CategoryController');
-        Route::resource('discussion', 'DiscussionController');
-        Route::resource('comment', 'CommentController');
-        Route::resource('user', 'UserController');
-    });
+    // Discussions
+    Route::get('discussion/start/{category}', ['as' => 'discussion.startWith', 'uses' => 'DiscussionController@start']);
+    Route::get('discussion/start', ['as' => 'discussion.start', 'uses' => 'DiscussionController@start']);
+    Route::post('discussion/start', ['as' => 'discussion.store', 'uses' => 'DiscussionController@store']);
+    Route::get('discussion/{discussion}', ['as' => 'discussion.modify', 'uses' => 'DiscussionController@modify']);
+    Route::put('discussion/{discussion}', ['as' => 'discussion.update', 'uses' => 'DiscussionController@update']);
+    Route::delete('discussion/{discussion}', ['as' => 'discussion.store', 'uses' => 'DiscussionController@store']);
+
+    // Categories
+    Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
+    Route::post('category/setup', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
+    Route::get('category/{category}', ['as' => 'category.modify', 'uses' => 'CategoryController@modify']);
+    Route::put('category/{category}', ['as' => 'category.update', 'uses' => 'CategoryController@update']);
+
+    Route::resource('comment', 'CommentController');
+    Route::resource('user', 'UserController');
 
     Route::group(['middleware' => 'guest'], function() {
         // Registrations
