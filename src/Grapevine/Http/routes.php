@@ -28,14 +28,17 @@ Route::group($routeGroupAttributes, function() {
     Route::resource('comment', 'CommentController');
     Route::resource('user', 'UserController');
 
+    Route::get('user/{user}/profile', ['as' => 'user.profile', 'uses' => 'UserController@profile']);
+
     Route::group(['middleware' => 'guest'], function() {
         // Registrations
         Route::get('register', ['as' => 'register.form', 'uses' => 'RegistrationController@create']);
         Route::post('register', ['as' => 'register.submit', 'uses' => 'RegistrationController@store']);
 
         // Authentication
-        Route::get('login', ['as' => 'login.form', 'uses' => 'AuthenticationController@form']);
+        Route::get('login', ['as' => 'login', 'uses' => 'AuthenticationController@form']);
         Route::post('login', ['as' => 'login.submit', 'uses' => 'AuthenticationController@login']);
+        Route::get('logout', ['as' => 'logout', 'uses' => 'AuthenticationController@logout']);
 
         // Support laravel login routes
         // @TODO: Implement our own auth checks, avoiding laravel's implementation

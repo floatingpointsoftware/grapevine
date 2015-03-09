@@ -47,6 +47,7 @@ class AuthenticationController extends Controller
      */
     public function logout()
     {
+        dd('wtf');
         Auth::logout();
 
         return redirect()->route('home');

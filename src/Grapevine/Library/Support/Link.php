@@ -65,7 +65,7 @@ class Link
      */
     protected function routeName($route)
     {
-        return implode('.', $this->scopes).'.'.$route;
+        return implode('.', array_merge($this->scopes, [$route]));
     }
 
     /**

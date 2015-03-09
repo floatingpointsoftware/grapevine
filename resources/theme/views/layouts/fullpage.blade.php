@@ -15,10 +15,10 @@
 
                     <div class="user-actions col-lg-6 hi-icon-effect">
                         @if (Auth::check())
-                            <a href=""><span class="glyphicon glyphicon-user hi-icon" aria-hidden="true"></span></a>
-                            <a href=""><span class="glyphicon glyphicon-log-out hi-icon" aria-hidden="true"></span></a>
+                            <a href="{{ $link->user->profile(Auth::user()) }}"><span class="glyphicon glyphicon-user hi-icon" aria-hidden="true"></span></a>
+                            <a href="{{ $link->logout() }}"><span class="glyphicon glyphicon-log-out hi-icon" aria-hidden="true"></span></a>
                         @else
-                            <a href=""><span class="glyphicon glyphicon-log-in hi-icon" aria-hidden="true"></span></a>
+                            <a href="{{ $link->login() }}"><span class="glyphicon glyphicon-log-in hi-icon" aria-hidden="true"></span></a>
                         @endif
                     </div>
                 </div>

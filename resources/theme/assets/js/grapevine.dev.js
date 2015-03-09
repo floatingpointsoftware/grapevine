@@ -11,7 +11,7 @@
     return $.pjax.submit(event, pjaxContainer);
   };
 
-  document.pjax('a', '#pjax-container', {
+  document.pjax('.main a', '#pjax-container', {
     "timeout": timeout
   });
 

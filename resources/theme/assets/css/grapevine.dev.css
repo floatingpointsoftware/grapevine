@@ -6680,8 +6680,8 @@ section.header {
       left: -1px; }
   section.header .breadcrumbs {
     background: #286794;
-    padding: 15px 0; }
-    section.header .breadcrumbs .breadcrumb {
+    padding: 15px 0 15px 30px; }
+    section.header .breadcrumbs ol {
       background: none;
       margin: 0;
       padding: 0; }

@@ -8,7 +8,7 @@ submissionCallback = (event) ->
 	$.pjax.submit(event, pjaxContainer)
 
 # Setup our required PJAX handlers and listeners
-document.pjax('a', '#pjax-container', {"timeout": timeout})
+document.pjax('.main a', '#pjax-container', {"timeout": timeout})
 document.on('submit', 'form[data-pjax]', submissionCallback)
 
 # Just in case the load time is really fast, we don't bother showing the loader.
