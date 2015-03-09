@@ -8,7 +8,7 @@
     </p>
 
     <div class="buttons">
-        <a class="btn btn-default" href="{!! route('register.form') !!}" role="button">Register</a>
-        <a class="btn btn-default" href="{!! route('login.form') !!}" role="button">Sign in</a>
+        <a class="btn btn-default" href="{!! $link->register() !!}" role="button">Register</a>
+        <a class="btn btn-default" href="{!! $link->login() !!}" role="button">Sign in</a>
     </div>
 </div>

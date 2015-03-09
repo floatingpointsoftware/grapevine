@@ -6678,6 +6678,8 @@ section.header {
       margin-left: 25px; }
     section.header .user-actions .glyphicon-user:before {
       left: -1px; }
+    section.header .user-actions .glyphicon-log-in:before {
+      left: -2px; }
   section.header .breadcrumbs {
     background: #286794;
     padding: 15px 0 15px 30px; }

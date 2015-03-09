@@ -36,7 +36,7 @@ class AuthenticationController extends Controller
             return redirect()->route('home');
         }
         else {
-            return redirect()->route('login.form')->with('error', 'Incorrect credentials. Please try again.');
+            return redirect()->route('login')->with('error', 'Incorrect credentials. Please try again.');
         }
     }
 
@@ -47,7 +47,6 @@ class AuthenticationController extends Controller
      */
     public function logout()
     {
-        dd('wtf');
         Auth::logout();
 
         return redirect()->route('home');

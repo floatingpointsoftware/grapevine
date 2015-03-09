@@ -22,7 +22,7 @@ class Link
      *
      * @param array $links
      */
-    public function register(array $links)
+    public function add(array $links)
     {
         $this->links = array_merge($this->links, $links);
     }

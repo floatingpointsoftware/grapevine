@@ -23,7 +23,7 @@ class LinkServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app['link']->register([
+        $this->app['link']->add([
             'category.browse' => function(Category $category) {
                 return [$category];
             },

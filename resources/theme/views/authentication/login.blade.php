@@ -37,7 +37,7 @@
                 <div class="col-sm-offset-2 col-sm-6">
                     {!! Form::submit('Login', ['class' => 'btn btn-primary']) !!}
 
-                    <span class="login-link">or <a href="{!! route('register.form') !!}">register</a></span>
+                    <span class="login-link">or <a href="{!! $link->register() !!}">register</a></span>
                 </div>
             </div>
         </div>

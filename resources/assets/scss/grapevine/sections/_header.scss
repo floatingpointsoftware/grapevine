@@ -24,6 +24,12 @@ section.header {
 				left: -1px;
 			}
 		}
+
+		.glyphicon-log-in {
+			&:before {
+				left: -2px;
+			}
+		}
 	}
 
 	.breadcrumbs {
