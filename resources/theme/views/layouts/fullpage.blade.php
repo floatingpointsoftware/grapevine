@@ -9,10 +9,17 @@
         <section class="header">
             <div class="container">
                 <div class="row">
-                    <a class="logo" href="/">{!! Theme::image('img/logo.png') !!}</a>
+                    <div class="col-lg-6">
+                        <a class="logo" href="/">{!! Theme::image('img/logo.png') !!}</a>
+                    </div>
 
-                    <div class="user-actions col-lg-6">
-
+                    <div class="user-actions col-lg-6 hi-icon-effect">
+                        @if (Auth::check())
+                            <a href=""><span class="glyphicon glyphicon-user hi-icon" aria-hidden="true"></span></a>
+                            <a href=""><span class="glyphicon glyphicon-log-out hi-icon" aria-hidden="true"></span></a>
+                        @else
+                            <a href=""><span class="glyphicon glyphicon-log-in hi-icon" aria-hidden="true"></span></a>
+                        @endif
                     </div>
                 </div>
             </div>

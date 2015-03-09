@@ -6511,6 +6511,73 @@ a {
 .normalize {
   text-transform: none; }
 
+.hi-icon-wrap {
+  text-align: center;
+  margin: 0 auto;
+  padding: 2em 0 3em; }
+
+.hi-icon {
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0px;
+  padding: 15px 15px;
+  text-align: center;
+  z-index: 1; }
+  .hi-icon:before {
+    position: relative;
+    left: 2px;
+    top: -2px; }
+  .hi-icon:after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: '';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
+
+.hi-icon-effect .hi-icon {
+  -webkit-transition: background 0.2s, color 0.2s;
+  -moz-transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
+  background: rgba(255, 255, 255, 0.1); }
+  .hi-icon-effect .hi-icon:after {
+    top: -7px;
+    left: -7px;
+    padding: 7px;
+    box-shadow: 0 0 0 4px #fff;
+    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
+    -webkit-transform: scale(0.8);
+    -moz-transition: -moz-transform 0.2s, opacity 0.2s;
+    -moz-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transition: transform 0.2s, opacity 0.2s;
+    transform: scale(0.8);
+    opacity: 0;
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2); }
+  .hi-icon-effect .hi-icon:hover {
+    background: white;
+    color: #353638; }
+    .hi-icon-effect .hi-icon:hover:after {
+      -webkit-transform: scale(1);
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+      opacity: 1; }
+
 .component {
   margin-bottom: 2.1875em; }
 
@@ -6602,7 +6669,15 @@ section.header {
     display: block;
     margin: 35px 0; }
   section.header .user-actions {
-    float: right; }
+    color: #fff;
+    margin: 32px 0 0 0;
+    text-align: right; }
+    section.header .user-actions .glyphicon {
+      font-size: 2em; }
+    section.header .user-actions .hi-icon {
+      margin-left: 25px; }
+    section.header .user-actions .glyphicon-user:before {
+      left: -1px; }
   section.header .breadcrumbs {
     background: #286794;
     padding: 15px 0; }

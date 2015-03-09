@@ -7,7 +7,23 @@ section.header {
 	}
 
 	.user-actions {
-		float: right;
+		color: #fff;
+		margin: 32px 0 0 0;
+		text-align: right;
+
+		.glyphicon {
+			font-size: 2em;
+		}
+
+		.hi-icon {
+			margin-left: 25px;
+		}
+
+		.glyphicon-user {
+			&:before {
+				left: -1px;
+			}
+		}
 	}
 
 	.breadcrumbs {

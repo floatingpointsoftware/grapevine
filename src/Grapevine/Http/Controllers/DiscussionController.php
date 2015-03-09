@@ -65,7 +65,7 @@ class DiscussionController extends Controller
     {
         $discussion = $this->dispatchFrom(StartDiscussionCommand::class, $request);
 
-        return redirect()->route('discussion.show', [$discussion->slug]);
+        return redirect()->route('discussion.read', [$discussion->category, $discussion]);
     }
 
     /**
