@@ -36,3 +36,13 @@ HTML::macro('label', function($text, $class = null) {
 
     return "<span class=\"label label-default {$class}\">{$text}</span>";
 });
+
+/**
+ * Simple macro for converting markdown-enabled fields to HTML.
+ *
+ * @param string $text
+ * @return string
+ */
+HTML::macro('markdown', function($text) {
+    return (new Parsedown)->text($text);
+});

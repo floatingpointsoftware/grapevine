@@ -18,7 +18,8 @@
     "hashids/hashids": "1.0.*@dev",
     "kirkbushell/eloquence": "1.3.3",
     "illuminate/html": "5.0.*",
-    "illuminate/support": "5.0.*"
+    "illuminate/support": "5.0.*",
+    "erusev/parsedown": "dev-master"
   },
   "require-dev": {
     "mockery/mockery": "~0.9.3",

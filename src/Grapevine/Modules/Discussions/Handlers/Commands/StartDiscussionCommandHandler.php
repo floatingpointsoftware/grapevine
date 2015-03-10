@@ -37,7 +37,7 @@ class StartDiscussionCommandHandler
      */
     public function handle(StartDiscussionCommand $command)
     {
-        $discussion = $this->factory->start($command->category, Auth::user()->id, $command->title);
+        $discussion = $this->factory->start($command->category, Auth::user()->id, $command->title, $command->body);
 
         $this->discussions->save($discussion);
 

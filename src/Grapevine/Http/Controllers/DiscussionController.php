@@ -50,7 +50,18 @@ class DiscussionController extends Controller
      * @param null|Category $category
      * @return \Illuminate\View\View
      */
-    public function start(Category $category = null)
+    public function start()
+    {
+        $discussion = new Discussion;
+
+        return $this->respond('discussion.start', compact('discussion'));
+    }
+
+    /**
+     * @param null|Category $category
+     * @return \Illuminate\View\View
+     */
+    public function startWith(Category $category)
     {
         $discussion = new Discussion;
 
@@ -100,7 +111,7 @@ class DiscussionController extends Controller
      */
     public function read($category, $discussion)
     {
-        return $this->respond('discussion.show', compact('category', 'discussion'));
+        return $this->respond('discussion.read', compact('category', 'discussion'));
     }
 
     /**

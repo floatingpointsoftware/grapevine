@@ -3,8 +3,6 @@
         @if ($discussions->count())
             <ul class="discussions">
                 @foreach ($discussions as $discussion)
-                    {{ var_dump($discussion) }}
-                    {{ dd('hmm') }}
                     <li>
                         <div class="avatar">
                             {!! HTML::avatar($discussion->user) !!}
@@ -15,7 +13,8 @@
                             </header>
                             <footer>
                                 <a href="{{ $link->category->browse($discussion->category) }}">{!! HTML::label($discussion->category->title, $discussion->category->slug) !!}</a>
-                                <span class="soft">Updated <strong>{{ $discussion->updatedAt->diffForHumans() }}</strong> by {{ $discussion->updatedByUser->username }}</span>
+                                <span class="soft">Updated <strong>{{ $discussion->updatedAt->diffForHumans() }}</strong>
+                                by <strong><a href="{{ $link->user->profile($discussion->updatedByUser) }}">{{ $discussion->updatedByUser->username }}</a></strong></span>
                             </footer>
                         </article>
                     </li>
@@ -28,7 +27,7 @@
 
             <p>It's looking pretty quiet here in {{ $category->title }}. Let's get a dialog going.</p>
             <br>
-            <p><a href="{!! $link->discussion->start($category) !!}" class="btn btn-default btn-lg">Start a discussion.</a></p>
+            <p><a href="{!! $link->discussion->startWith($category) !!}" class="btn btn-default btn-lg">Start a discussion.</a></p>
         @endif
     </div>
 @endsection
