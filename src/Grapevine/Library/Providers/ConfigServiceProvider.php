@@ -20,8 +20,11 @@ class ConfigServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $resources = __DIR__.'/../../../../resources';
+
         $this->publishes([
-            __DIR__.'/../../../../resources/config/grapevine.php' => config_path('grapevine.php')
+            $resources.'/config/grapevine.php' => config_path('grapevine.php'),
+            $resources.'/migrations/' => $this->app->databasePath().'/migrations'
         ]);
     }
 }

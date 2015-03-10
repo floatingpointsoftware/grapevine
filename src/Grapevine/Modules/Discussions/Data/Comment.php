@@ -2,13 +2,14 @@
 namespace FloatingPoint\Grapevine\Modules\Discussions\Data;
 
 use Eloquence\Behaviours\CountCache\CountCache;
+use FloatingPoint\Grapevine\Library\Database\UpdatedByCache;
 use FloatingPoint\Grapevine\Library\Slugs\Sluggable;
 use FloatingPoint\Grapevine\Modules\Users\Data\User;
 use FloatingPoint\Grapevine\Library\Database\Model;
 use FloatingPoint\Grapevine\Library\Events\Raiseable;
 use FloatingPoint\Grapevine\Library\Slugs\Slug;
 
-class Comment extends Model implements CountCache
+class Comment extends Model implements CountCache, UpdatedByCache
 {
     use Raiseable;
     use Sluggable;
@@ -32,6 +33,16 @@ class Comment extends Model implements CountCache
     public function countCaches()
     {
         return ['Category', 'Discussion', 'User'];
+    }
+
+    /**
+     * Return an array of models that need their updatedBy fields updated.
+     *
+     * @return array
+     */
+    public function updatedByCaches()
+    {
+        return [Discussion::class, Category::class];
     }
 
     /**

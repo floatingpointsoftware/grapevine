@@ -24,9 +24,9 @@ class CreateDiscussionsTable extends Migration
             $table->integer('comment_count')->default(0);
             $table->boolean('locked')->default(0);
             $table->boolean('pinned')->default(0);
-            $table->softDeletes();
-            $table->timestamps();
             $table->integer('updated_by')->index();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

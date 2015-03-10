@@ -31,8 +31,9 @@ class DiscussionFactory
     {
         $discussion = $this->executeUnguarded(Discussion::class, function() use($category, $userId, $title) {
             return new Discussion([
-                'category_id' => $category,
-                'user_id' => $userId,
+                'categoryId' => $category,
+                'userId' => $userId,
+                'updatedBy' => $userId,
                 'title' => $title
             ]);
         });

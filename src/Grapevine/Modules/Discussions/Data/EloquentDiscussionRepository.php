@@ -53,6 +53,7 @@ class EloquentDiscussionRepository extends EloquentRepository implements Discuss
         };
 
         return $this->model
+            ->with(['user', 'updatedByUser'])
             ->whereHas('category', $categoryWhere)
             ->orderBy('updated_at', 'desc')
             ->paginate();

@@ -26,7 +26,7 @@ Route::group($routeGroupAttributes, function() {
     // Categories
     Route::get('category/setup', ['as' => 'category.setup', 'uses' => 'CategoryController@setup']);
     Route::post('category/setup', ['as' => 'category.store', 'uses' => 'CategoryController@store']);
-    Route::get('category/{category}', ['as' => 'category.modify', 'uses' => 'CategoryController@modify']);
+    Route::get('category/{category}', ['as' => 'category.edit', 'uses' => 'CategoryController@edit']);
     Route::put('category/{category}', ['as' => 'category.update', 'uses' => 'CategoryController@update']);
 
     Route::resource('comment', 'CommentController');

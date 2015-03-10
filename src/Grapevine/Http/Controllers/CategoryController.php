@@ -26,34 +26,15 @@ class CategoryController extends Controller
     }
 
     /**
-     * Retrieve a list of categories and return a view.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        $categories = $this->categories->getAll();
-
-        return $this->respond('category.index', compact('categories'));
-    }
-
-    /**
      * Render the category creation form.
      *
      * @return mixed
      */
-    public function create()
+    public function setup()
     {
         $category = new Category;
 
         return $this->respond('category.setup', compact('category'));
-    }
-
-    public function show($slug)
-    {
-        $category = $this->categories->getBySlug($slug);
-
-        return $this->respond('category.show', compact('category'));
     }
 
     /**
@@ -64,28 +45,30 @@ class CategoryController extends Controller
      */
     public function store(SetupCategoryRequest $request)
     {
-        $this->dispatch(new SetupCategoryCommand(
+        $category = $this->dispatch(new SetupCategoryCommand(
             $request->get('parent_id', null),
             $request->get('title'),
             $request->get('description')
         ));
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.browse', [$category->slug]);
     }
 
     /**
      * Edit a specific category based on its slug.
      *
-     * @param string $slug
+     * @param Category $category
      * @return mixed
      */
-    public function edit($slug)
+    public function edit(Category $category)
     {
-        $category = $this->categories->requireBySlug($slug);
-
-        return $this->respond('category.edit', compact('category'));
+        return $this->respond('category.modify', compact('category'));
     }
 
+    /**
+     * @param ModifyCategoryRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(ModifyCategoryRequest $request)
     {
         $this->dispatch(new ModifyCategoryCommand($request->get('id'), $request->only(['title','description'])));

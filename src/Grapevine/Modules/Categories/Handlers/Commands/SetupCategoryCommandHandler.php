@@ -42,5 +42,7 @@ class SetupCategoryCommandHandler
         $this->categories->save($category);
 
         $this->dispatch($category->releaseEvents());
+
+        return $category;
     }
 }

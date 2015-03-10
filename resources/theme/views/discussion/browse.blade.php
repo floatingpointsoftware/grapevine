@@ -3,6 +3,8 @@
         @if ($discussions->count())
             <ul class="discussions">
                 @foreach ($discussions as $discussion)
+                    {{ var_dump($discussion) }}
+                    {{ dd('hmm') }}
                     <li>
                         <div class="avatar">
                             {!! HTML::avatar($discussion->user) !!}
@@ -13,7 +15,7 @@
                             </header>
                             <footer>
                                 <a href="{{ $link->category->browse($discussion->category) }}">{!! HTML::label($discussion->category->title, $discussion->category->slug) !!}</a>
-                                <span class="soft">Updated <strong>{{ $discussion->updatedAt->diffForHumans() }}</strong> by {{ $discussion->updatedBy }}</span>
+                                <span class="soft">Updated <strong>{{ $discussion->updatedAt->diffForHumans() }}</strong> by {{ $discussion->updatedByUser->username }}</span>
                             </footer>
                         </article>
                     </li>

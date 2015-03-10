@@ -20,9 +20,9 @@ class CreateCategoriesTable extends Migration
             $table->text('description');
             $table->integer('discussion_count')->default(0);
             $table->integer('comment_count')->default(0);
-            $table->softDeletes();
-            $table->timestamps();
             $table->integer('updated_by')->index();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -2,6 +2,7 @@
 namespace FloatingPoint\Grapevine\Library\Providers;
 
 use Eloquence\Behaviours\CountCache\CountCacheObserver;
+use FloatingPoint\Grapevine\Library\Database\UpdatedByObserver;
 use FloatingPoint\Grapevine\Modules\Discussions\Data\Comment;
 use FloatingPoint\Grapevine\Modules\Discussions\Data\Discussion;
 use Illuminate\Support\ServiceProvider;
@@ -26,11 +27,19 @@ class ObserverServiceProvider extends ServiceProvider
     {
     }
 
+    /**
+     * We have a number of observers that immediately update related data when certain
+     * actions occur, such as the number of comments on a discussion, or who last updated
+     * or contributed to a category in some way.
+     */
     public function boot()
     {
         $countCacheObserver = $this->app->make(CountCacheObserver::class);
+        $updatedByObserver = new UpdatedByObserver;
 
         Comment::observe($countCacheObserver);
+        Comment::observe($updatedByObserver);
         Discussion::observe($countCacheObserver);
+        Discussion::observe($updatedByObserver);
     }
 }
